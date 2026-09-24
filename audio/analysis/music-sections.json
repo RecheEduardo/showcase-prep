@@ -1,6 +1,6 @@
 {
   "file": "public/audio/music.wav",
-  "frames": 1968000,
+  "frames": 2352000,
   "sample_rate": 48000,
   "bpm": 120,
   "key": "A minor",
@@ -79,163 +79,163 @@
     }
   },
   "integrated_lufs": -15.94,
-  "lra": 5.96,
-  "normalization_gain_db": -7.64,
+  "lra": 6.29,
+  "normalization_gain_db": -7.52,
   "sections": [
     {
       "id": "intro",
       "start": 0,
-      "end": 5,
+      "end": 7,
       "intensity": 2,
-      "lufs": -22.18,
-      "low_db": -28.4,
-      "mid_db": -31.7,
-      "high_db": -36
+      "lufs": -21.75,
+      "low_db": -27.8,
+      "mid_db": -31.3,
+      "high_db": -35.9
     },
     {
       "id": "drop1",
-      "start": 5,
-      "end": 11,
+      "start": 7,
+      "end": 13,
       "intensity": 4,
-      "lufs": -16.29,
-      "low_db": -17.6,
-      "mid_db": -27.9,
-      "high_db": -37
+      "lufs": -16.58,
+      "low_db": -17.9,
+      "mid_db": -28,
+      "high_db": -37.6
     },
     {
       "id": "groove_lift",
-      "start": 11,
-      "end": 13.5,
+      "start": 13,
+      "end": 18,
       "intensity": 3,
-      "lufs": -15.64,
-      "low_db": -17.3,
+      "lufs": -15.48,
+      "low_db": -17,
       "mid_db": -26.5,
-      "high_db": -36.1
+      "high_db": -35.9
     },
     {
       "id": "breakdown",
-      "start": 13.5,
-      "end": 17.5,
+      "start": 18,
+      "end": 22,
       "intensity": 1,
-      "lufs": -19.16,
-      "low_db": -19.2,
-      "mid_db": -32.6,
-      "high_db": -42.8
+      "lufs": -19.03,
+      "low_db": -19.1,
+      "mid_db": -32.5,
+      "high_db": -42.6
     },
     {
       "id": "drop2",
-      "start": 17.5,
-      "end": 22.5,
+      "start": 22,
+      "end": 27,
       "intensity": 5,
-      "lufs": -12.85,
-      "low_db": -15.3,
-      "mid_db": -22.2,
-      "high_db": -30.3
+      "lufs": -12.68,
+      "low_db": -15.2,
+      "mid_db": -21.9,
+      "high_db": -30.2
     },
     {
       "id": "groove_rise",
-      "start": 22.5,
-      "end": 25.5,
+      "start": 27,
+      "end": 33,
       "intensity": 4,
-      "lufs": -16.43,
-      "low_db": -17.7,
-      "mid_db": -27.7,
-      "high_db": -38.1
+      "lufs": -15.92,
+      "low_db": -17.3,
+      "mid_db": -27.2,
+      "high_db": -37.4
     },
     {
       "id": "microdrop",
-      "start": 25.5,
-      "end": 28.5,
+      "start": 33,
+      "end": 37,
       "intensity": 4,
-      "lufs": -16.31,
-      "low_db": -19.1,
+      "lufs": -15.99,
+      "low_db": -18.9,
       "mid_db": -25.4,
-      "high_db": -36.8
+      "high_db": -36.1
     },
     {
       "id": "swap",
-      "start": 28.5,
-      "end": 36.5,
+      "start": 37,
+      "end": 44.5,
       "intensity": 4,
-      "lufs": -16.59,
-      "low_db": -18.7,
-      "mid_db": -26.6,
-      "high_db": -35.7
+      "lufs": -16.54,
+      "low_db": -18.6,
+      "mid_db": -26.7,
+      "high_db": -35.6
     },
     {
       "id": "finale",
-      "start": 36.5,
-      "end": 40,
+      "start": 44.5,
+      "end": 48,
       "intensity": 5,
-      "lufs": -14.47,
-      "low_db": -17.8,
-      "mid_db": -23.1,
-      "high_db": -31.4
+      "lufs": -14.44,
+      "low_db": -17.6,
+      "mid_db": -23.5,
+      "high_db": -31.2
     },
     {
       "id": "tail",
-      "start": 40,
-      "end": 41,
+      "start": 48,
+      "end": 49,
       "intensity": 1,
-      "lufs": -23.69,
-      "low_db": -32.6,
-      "mid_db": -30.4,
-      "high_db": -45.6
+      "lufs": -23.28,
+      "low_db": -32.5,
+      "mid_db": -30,
+      "high_db": -45.5
     }
   ],
   "snare_rolls": [
     {
       "id": "sfx.c04.roll",
-      "t": 16.5,
+      "t": 21,
       "dur": 0.5,
       "hits": [
-        16.5,
-        16.75,
-        17,
-        17.125
+        21,
+        21.25,
+        21.5,
+        21.625
       ]
     },
     {
       "id": "sfx.c08.roll",
-      "t": 36,
+      "t": 44,
       "dur": 0.45,
       "hits": [
-        36,
-        36.25,
-        36.5,
-        36.625
+        44,
+        44.25,
+        44.5,
+        44.625
       ]
     }
   ],
   "risers": [
     {
-      "t": 2.5,
-      "dur": 2.4,
-      "dry_cut_at": 4.9
+      "t": 3.5,
+      "dur": 3.36,
+      "dry_cut_at": 6.859999999999999
     },
     {
-      "t": 15.5,
+      "t": 20,
       "dur": 2,
-      "dry_cut_at": 17
+      "dry_cut_at": 21.5
     },
     {
-      "t": 35.5,
+      "t": 43.5,
       "dur": 1,
-      "dry_cut_at": 36.5
+      "dry_cut_at": 44.5
     }
   ],
   "gaps": [
     {
-      "t0": 4.9,
-      "t1": 5,
-      "s0": 235200,
-      "s1": 240000
+      "t0": 6.866666666666666,
+      "t1": 7.006667,
+      "s0": 329600,
+      "s1": 336320
     },
     {
-      "t0": 17,
-      "t1": 17.5,
-      "s0": 816000,
-      "s1": 840000
+      "t0": 21.5,
+      "t1": 22,
+      "s0": 1032000,
+      "s1": 1056000
     }
   ]
 }

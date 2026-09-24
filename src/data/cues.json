@@ -1,81 +1,81 @@
 {
   "_generated_by": "scripts/audio/cues.mjs from src/timeline.ts (src/pacing.ts)",
   "pacing": {
-    "C00": 5,
+    "C00": 7,
     "C01": 3,
     "C02": 3,
-    "C03": 2.5,
+    "C03": 5,
     "C04": 4,
     "C05": 5,
-    "C06": 3,
-    "C07": 3,
-    "C08": 8,
+    "C06": 6,
+    "C07": 4,
+    "C08": 7.5,
     "C09": 4.5
   },
   "fps": 60,
   "sample_rate_hz": 48000,
   "samples_per_frame": 800,
-  "total_seconds": 41,
-  "total_frames": 2460,
+  "total_seconds": 49,
+  "total_frames": 2940,
   "scenes": [
     {
       "id": "C00",
       "start": 0,
-      "end": 5,
-      "stretch": 1
+      "end": 7,
+      "stretch": 1.4
     },
     {
       "id": "C01",
-      "start": 5,
-      "end": 8,
+      "start": 7,
+      "end": 10,
       "stretch": 1
     },
     {
       "id": "C02",
-      "start": 8,
-      "end": 11,
+      "start": 10,
+      "end": 13,
       "stretch": 1
     },
     {
       "id": "C03",
-      "start": 11,
-      "end": 13.5,
-      "stretch": 1
+      "start": 13,
+      "end": 18,
+      "stretch": 2
     },
     {
       "id": "C04",
-      "start": 13.5,
-      "end": 17.5,
+      "start": 18,
+      "end": 22,
       "stretch": 1
     },
     {
       "id": "C05",
-      "start": 17.5,
-      "end": 22.5,
+      "start": 22,
+      "end": 27,
       "stretch": 1
     },
     {
       "id": "C06",
-      "start": 22.5,
-      "end": 25.5,
-      "stretch": 1
+      "start": 27,
+      "end": 33,
+      "stretch": 2
     },
     {
       "id": "C07",
-      "start": 25.5,
-      "end": 28.5,
-      "stretch": 1
+      "start": 33,
+      "end": 37,
+      "stretch": 1.3333
     },
     {
       "id": "C08",
-      "start": 28.5,
-      "end": 36.5,
-      "stretch": 1
+      "start": 37,
+      "end": 44.5,
+      "stretch": 0.9375
     },
     {
       "id": "C09",
-      "start": 36.5,
-      "end": 41,
+      "start": 44.5,
+      "end": 49,
       "stretch": 1
     }
   ],
@@ -83,66 +83,66 @@
     {
       "id": "intro",
       "start": 0,
-      "end": 5,
+      "end": 7,
       "intensity": 2
     },
     {
       "id": "drop1",
-      "start": 5,
-      "end": 11,
+      "start": 7,
+      "end": 13,
       "intensity": 4
     },
     {
       "id": "groove_lift",
-      "start": 11,
-      "end": 13.5,
+      "start": 13,
+      "end": 18,
       "intensity": 3
     },
     {
       "id": "breakdown",
-      "start": 13.5,
-      "end": 17.5,
+      "start": 18,
+      "end": 22,
       "intensity": 1
     },
     {
       "id": "drop2",
-      "start": 17.5,
-      "end": 22.5,
+      "start": 22,
+      "end": 27,
       "intensity": 5
     },
     {
       "id": "groove_rise",
-      "start": 22.5,
-      "end": 25.5,
+      "start": 27,
+      "end": 33,
       "intensity": 4
     },
     {
       "id": "microdrop",
-      "start": 25.5,
-      "end": 28.5,
+      "start": 33,
+      "end": 37,
       "intensity": 4
     },
     {
       "id": "swap",
-      "start": 28.5,
-      "end": 36.5,
+      "start": 37,
+      "end": 44.5,
       "intensity": 4
     },
     {
       "id": "finale",
-      "start": 36.5,
-      "end": 40,
+      "start": 44.5,
+      "end": 48,
       "intensity": 5
     },
     {
       "id": "tail",
-      "start": 40,
-      "end": 41,
+      "start": 48,
+      "end": 49,
       "intensity": 1
     }
   ],
   "music_anchors": {
-    "finaleHold": 38.5
+    "finaleHold": 46.5
   },
   "mix_targets": {
     "integrated_lufs": -14,
@@ -159,15 +159,15 @@
       "t": 0,
       "frame": 0,
       "gain_db": -20,
-      "dur": 2.5
+      "dur": 3.5
     },
     {
       "id": "sfx.c00.deadclick",
       "parent": "sfx.c00.deadclick",
       "kind": "click",
       "source": "custom",
-      "t": 1.5,
-      "frame": 90,
+      "t": 2.1,
+      "frame": 126,
       "gain_db": -14
     },
     {
@@ -175,8 +175,8 @@
       "parent": "sfx.c00.errors",
       "kind": "tick",
       "source": "custom",
-      "t": 2.5,
-      "frame": 150,
+      "t": 3.5,
+      "frame": 210,
       "gain_db": -14,
       "index": 0,
       "count": 10
@@ -186,18 +186,18 @@
       "parent": "sfx.c00.riser",
       "kind": "riser",
       "source": "custom",
-      "t": 2.5,
-      "frame": 150,
+      "t": 3.5,
+      "frame": 210,
       "gain_db": -12,
-      "dur": 2.4
+      "dur": 3.36
     },
     {
       "id": "sfx.c00.errors#1",
       "parent": "sfx.c00.errors",
       "kind": "tick",
       "source": "custom",
-      "t": 2.9833333333333334,
-      "frame": 179,
+      "t": 4.183333333333334,
+      "frame": 251,
       "gain_db": -14,
       "index": 1,
       "count": 10
@@ -207,8 +207,8 @@
       "parent": "sfx.c00.errors",
       "kind": "tick",
       "source": "custom",
-      "t": 3.3833333333333333,
-      "frame": 203,
+      "t": 4.733333333333333,
+      "frame": 284,
       "gain_db": -14,
       "index": 2,
       "count": 10
@@ -218,8 +218,8 @@
       "parent": "sfx.c00.errors",
       "kind": "tick",
       "source": "custom",
-      "t": 3.716666666666667,
-      "frame": 223,
+      "t": 5.2,
+      "frame": 312,
       "gain_db": -14,
       "index": 3,
       "count": 10
@@ -229,8 +229,8 @@
       "parent": "sfx.c00.errors",
       "kind": "tick",
       "source": "custom",
-      "t": 3.9833333333333334,
-      "frame": 239,
+      "t": 5.583333333333333,
+      "frame": 335,
       "gain_db": -14,
       "index": 4,
       "count": 10
@@ -240,8 +240,8 @@
       "parent": "sfx.c00.errors",
       "kind": "tick",
       "source": "custom",
-      "t": 4.2,
-      "frame": 252,
+      "t": 5.883333333333334,
+      "frame": 353,
       "gain_db": -14,
       "index": 5,
       "count": 10
@@ -251,8 +251,8 @@
       "parent": "sfx.c00.errors",
       "kind": "tick",
       "source": "custom",
-      "t": 4.383333333333334,
-      "frame": 263,
+      "t": 6.133333333333334,
+      "frame": 368,
       "gain_db": -14,
       "index": 6,
       "count": 10
@@ -262,8 +262,8 @@
       "parent": "sfx.c00.errors",
       "kind": "tick",
       "source": "custom",
-      "t": 4.533333333333333,
-      "frame": 272,
+      "t": 6.35,
+      "frame": 381,
       "gain_db": -14,
       "index": 7,
       "count": 10
@@ -273,8 +273,8 @@
       "parent": "sfx.c00.errors",
       "kind": "tick",
       "source": "custom",
-      "t": 4.65,
-      "frame": 279,
+      "t": 6.516666666666667,
+      "frame": 391,
       "gain_db": -14,
       "index": 8,
       "count": 10
@@ -284,8 +284,8 @@
       "parent": "sfx.c00.errors",
       "kind": "tick",
       "source": "custom",
-      "t": 4.75,
-      "frame": 285,
+      "t": 6.65,
+      "frame": 399,
       "gain_db": -14,
       "index": 9,
       "count": 10
@@ -295,18 +295,18 @@
       "parent": "sfx.c00.gap",
       "kind": "silence_gap",
       "source": "custom",
-      "t": 4.9,
-      "frame": 294,
+      "t": 6.866666666666666,
+      "frame": 412,
       "gain_db": 0,
-      "dur": 0.1
+      "dur": 0.14
     },
     {
       "id": "sfx.drop1.impact",
       "parent": "sfx.drop1.impact",
       "kind": "impact_big",
       "source": "custom",
-      "t": 5,
-      "frame": 300,
+      "t": 7,
+      "frame": 420,
       "gain_db": -4
     },
     {
@@ -314,8 +314,8 @@
       "parent": "sfx.c01.float",
       "kind": "whoosh_up",
       "source": "custom",
-      "t": 5.25,
-      "frame": 315,
+      "t": 7.25,
+      "frame": 435,
       "gain_db": -14
     },
     {
@@ -323,8 +323,8 @@
       "parent": "sfx.c01.tagline",
       "kind": "tick_soft",
       "source": "custom",
-      "t": 5.5,
-      "frame": 330,
+      "t": 7.5,
+      "frame": 450,
       "gain_db": -18,
       "index": 0,
       "count": 6
@@ -334,8 +334,8 @@
       "parent": "sfx.c01.tagline",
       "kind": "tick_soft",
       "source": "custom",
-      "t": 5.55,
-      "frame": 333,
+      "t": 7.55,
+      "frame": 453,
       "gain_db": -18,
       "index": 1,
       "count": 6
@@ -345,8 +345,8 @@
       "parent": "sfx.c01.tagline",
       "kind": "tick_soft",
       "source": "custom",
-      "t": 5.6,
-      "frame": 336,
+      "t": 7.6,
+      "frame": 456,
       "gain_db": -18,
       "index": 2,
       "count": 6
@@ -356,8 +356,8 @@
       "parent": "sfx.c01.tagline",
       "kind": "tick_soft",
       "source": "custom",
-      "t": 5.65,
-      "frame": 339,
+      "t": 7.65,
+      "frame": 459,
       "gain_db": -18,
       "index": 3,
       "count": 6
@@ -367,8 +367,8 @@
       "parent": "sfx.c01.tagline",
       "kind": "tick_soft",
       "source": "custom",
-      "t": 5.7,
-      "frame": 342,
+      "t": 7.7,
+      "frame": 462,
       "gain_db": -18,
       "index": 4,
       "count": 6
@@ -378,8 +378,8 @@
       "parent": "sfx.c01.tagline",
       "kind": "tick_soft",
       "source": "custom",
-      "t": 5.75,
-      "frame": 345,
+      "t": 7.75,
+      "frame": 465,
       "gain_db": -18,
       "index": 5,
       "count": 6
@@ -389,8 +389,8 @@
       "parent": "sfx.c01.out",
       "kind": "whoosh",
       "source": "remotion-sfx:whip|whoosh",
-      "t": 7.833333333333333,
-      "frame": 470,
+      "t": 9.833333333333334,
+      "frame": 590,
       "gain_db": -8
     },
     {
@@ -398,8 +398,8 @@
       "parent": "sfx.c02.in",
       "kind": "impact_soft",
       "source": "custom",
-      "t": 8,
-      "frame": 480,
+      "t": 10,
+      "frame": 600,
       "gain_db": -12
     },
     {
@@ -407,8 +407,8 @@
       "parent": "sfx.c02.tiles",
       "kind": "blip_pop",
       "source": "custom",
-      "t": 8.25,
-      "frame": 495,
+      "t": 10.25,
+      "frame": 615,
       "gain_db": -14,
       "index": 0,
       "count": 10,
@@ -419,8 +419,8 @@
       "parent": "sfx.c02.tiles",
       "kind": "blip_pop",
       "source": "custom",
-      "t": 8.3,
-      "frame": 498,
+      "t": 10.3,
+      "frame": 618,
       "gain_db": -14,
       "index": 1,
       "count": 10,
@@ -431,8 +431,8 @@
       "parent": "sfx.c02.tiles",
       "kind": "blip_pop",
       "source": "custom",
-      "t": 8.35,
-      "frame": 501,
+      "t": 10.35,
+      "frame": 621,
       "gain_db": -14,
       "index": 2,
       "count": 10,
@@ -443,8 +443,8 @@
       "parent": "sfx.c02.tiles",
       "kind": "blip_pop",
       "source": "custom",
-      "t": 8.4,
-      "frame": 504,
+      "t": 10.4,
+      "frame": 624,
       "gain_db": -14,
       "index": 3,
       "count": 10,
@@ -455,8 +455,8 @@
       "parent": "sfx.c02.tiles",
       "kind": "blip_pop",
       "source": "custom",
-      "t": 8.45,
-      "frame": 507,
+      "t": 10.45,
+      "frame": 627,
       "gain_db": -14,
       "index": 4,
       "count": 10,
@@ -467,8 +467,8 @@
       "parent": "sfx.c02.tiles",
       "kind": "blip_pop",
       "source": "custom",
-      "t": 8.5,
-      "frame": 510,
+      "t": 10.5,
+      "frame": 630,
       "gain_db": -14,
       "index": 5,
       "count": 10,
@@ -479,8 +479,8 @@
       "parent": "sfx.c02.tiles",
       "kind": "blip_pop",
       "source": "custom",
-      "t": 8.55,
-      "frame": 513,
+      "t": 10.55,
+      "frame": 633,
       "gain_db": -14,
       "index": 6,
       "count": 10,
@@ -491,8 +491,8 @@
       "parent": "sfx.c02.tiles",
       "kind": "blip_pop",
       "source": "custom",
-      "t": 8.6,
-      "frame": 516,
+      "t": 10.6,
+      "frame": 636,
       "gain_db": -14,
       "index": 7,
       "count": 10,
@@ -503,8 +503,8 @@
       "parent": "sfx.c02.tiles",
       "kind": "blip_pop",
       "source": "custom",
-      "t": 8.65,
-      "frame": 519,
+      "t": 10.65,
+      "frame": 639,
       "gain_db": -14,
       "index": 8,
       "count": 10,
@@ -515,8 +515,8 @@
       "parent": "sfx.c02.tiles",
       "kind": "blip_pop",
       "source": "custom",
-      "t": 8.7,
-      "frame": 522,
+      "t": 10.7,
+      "frame": 642,
       "gain_db": -14,
       "index": 9,
       "count": 10,
@@ -527,8 +527,8 @@
       "parent": "sfx.c02.out",
       "kind": "whoosh",
       "source": "remotion-sfx:whip|whoosh",
-      "t": 10.833333333333334,
-      "frame": 650,
+      "t": 12.833333333333334,
+      "frame": 770,
       "gain_db": -8
     },
     {
@@ -536,8 +536,8 @@
       "parent": "sfx.c03.in",
       "kind": "impact_soft",
       "source": "custom",
-      "t": 11,
-      "frame": 660,
+      "t": 13,
+      "frame": 780,
       "gain_db": -12
     },
     {
@@ -545,8 +545,8 @@
       "parent": "sfx.c03.panel",
       "kind": "whoosh_soft",
       "source": "custom",
-      "t": 11.25,
-      "frame": 675,
+      "t": 13.5,
+      "frame": 810,
       "gain_db": -14
     },
     {
@@ -554,8 +554,8 @@
       "parent": "sfx.c03.click",
       "kind": "click",
       "source": "custom",
-      "t": 12.5,
-      "frame": 750,
+      "t": 16,
+      "frame": 960,
       "gain_db": -8
     },
     {
@@ -563,8 +563,8 @@
       "parent": "sfx.c03.ping",
       "kind": "chime_ping",
       "source": "custom",
-      "t": 12.566666666666666,
-      "frame": 754,
+      "t": 16.116666666666667,
+      "frame": 967,
       "gain_db": -14
     },
     {
@@ -572,8 +572,8 @@
       "parent": "sfx.c03.out",
       "kind": "whoosh",
       "source": "remotion-sfx:whoosh|custom",
-      "t": 13.05,
-      "frame": 783,
+      "t": 17.1,
+      "frame": 1026,
       "gain_db": -6
     },
     {
@@ -581,8 +581,8 @@
       "parent": "sfx.c04.thud",
       "kind": "sub_hit",
       "source": "custom",
-      "t": 13.5,
-      "frame": 810,
+      "t": 18,
+      "frame": 1080,
       "gain_db": -8
     },
     {
@@ -590,8 +590,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 14,
-      "frame": 840,
+      "t": 18.5,
+      "frame": 1110,
       "gain_db": -18,
       "index": 0,
       "count": 40
@@ -601,8 +601,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 14.15,
-      "frame": 849,
+      "t": 18.65,
+      "frame": 1119,
       "gain_db": -18,
       "index": 1,
       "count": 40
@@ -612,8 +612,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 14.3,
-      "frame": 858,
+      "t": 18.8,
+      "frame": 1128,
       "gain_db": -18,
       "index": 2,
       "count": 40
@@ -623,8 +623,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 14.45,
-      "frame": 867,
+      "t": 18.95,
+      "frame": 1137,
       "gain_db": -18,
       "index": 3,
       "count": 40
@@ -634,8 +634,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 14.583333333333334,
-      "frame": 875,
+      "t": 19.083333333333332,
+      "frame": 1145,
       "gain_db": -18,
       "index": 4,
       "count": 40
@@ -645,8 +645,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 14.716666666666667,
-      "frame": 883,
+      "t": 19.216666666666665,
+      "frame": 1153,
       "gain_db": -18,
       "index": 5,
       "count": 40
@@ -656,8 +656,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 14.833333333333334,
-      "frame": 890,
+      "t": 19.333333333333332,
+      "frame": 1160,
       "gain_db": -18,
       "index": 6,
       "count": 40
@@ -667,8 +667,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 14.95,
-      "frame": 897,
+      "t": 19.45,
+      "frame": 1167,
       "gain_db": -18,
       "index": 7,
       "count": 40
@@ -678,8 +678,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 15.066666666666666,
-      "frame": 904,
+      "t": 19.566666666666666,
+      "frame": 1174,
       "gain_db": -18,
       "index": 8,
       "count": 40
@@ -689,8 +689,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 15.183333333333334,
-      "frame": 911,
+      "t": 19.683333333333334,
+      "frame": 1181,
       "gain_db": -18,
       "index": 9,
       "count": 40
@@ -700,8 +700,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 15.283333333333333,
-      "frame": 917,
+      "t": 19.783333333333335,
+      "frame": 1187,
       "gain_db": -18,
       "index": 10,
       "count": 40
@@ -711,8 +711,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 15.383333333333333,
-      "frame": 923,
+      "t": 19.883333333333333,
+      "frame": 1193,
       "gain_db": -18,
       "index": 11,
       "count": 40
@@ -722,8 +722,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 15.483333333333333,
-      "frame": 929,
+      "t": 19.983333333333334,
+      "frame": 1199,
       "gain_db": -18,
       "index": 12,
       "count": 40
@@ -733,8 +733,8 @@
       "parent": "sfx.c04.riser",
       "kind": "riser",
       "source": "custom",
-      "t": 15.5,
-      "frame": 930,
+      "t": 20,
+      "frame": 1200,
       "gain_db": -12,
       "dur": 2
     },
@@ -743,8 +743,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 15.566666666666666,
-      "frame": 934,
+      "t": 20.066666666666666,
+      "frame": 1204,
       "gain_db": -18,
       "index": 13,
       "count": 40
@@ -754,8 +754,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 15.666666666666666,
-      "frame": 940,
+      "t": 20.166666666666668,
+      "frame": 1210,
       "gain_db": -18,
       "index": 14,
       "count": 40
@@ -765,8 +765,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 15.75,
-      "frame": 945,
+      "t": 20.25,
+      "frame": 1215,
       "gain_db": -18,
       "index": 15,
       "count": 40
@@ -776,8 +776,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 15.833333333333334,
-      "frame": 950,
+      "t": 20.333333333333332,
+      "frame": 1220,
       "gain_db": -18,
       "index": 16,
       "count": 40
@@ -787,8 +787,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 15.9,
-      "frame": 954,
+      "t": 20.4,
+      "frame": 1224,
       "gain_db": -18,
       "index": 17,
       "count": 40
@@ -798,8 +798,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 15.983333333333333,
-      "frame": 959,
+      "t": 20.483333333333334,
+      "frame": 1229,
       "gain_db": -18,
       "index": 18,
       "count": 40
@@ -809,8 +809,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 16.05,
-      "frame": 963,
+      "t": 20.55,
+      "frame": 1233,
       "gain_db": -18,
       "index": 19,
       "count": 40
@@ -820,8 +820,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 16.116666666666667,
-      "frame": 967,
+      "t": 20.616666666666667,
+      "frame": 1237,
       "gain_db": -18,
       "index": 20,
       "count": 40
@@ -831,8 +831,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 16.183333333333334,
-      "frame": 971,
+      "t": 20.683333333333334,
+      "frame": 1241,
       "gain_db": -18,
       "index": 21,
       "count": 40
@@ -842,8 +842,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 16.25,
-      "frame": 975,
+      "t": 20.75,
+      "frame": 1245,
       "gain_db": -18,
       "index": 22,
       "count": 40
@@ -853,8 +853,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 16.316666666666666,
-      "frame": 979,
+      "t": 20.816666666666666,
+      "frame": 1249,
       "gain_db": -18,
       "index": 23,
       "count": 40
@@ -864,8 +864,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 16.366666666666667,
-      "frame": 982,
+      "t": 20.866666666666667,
+      "frame": 1252,
       "gain_db": -18,
       "index": 24,
       "count": 40
@@ -875,8 +875,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 16.416666666666668,
-      "frame": 985,
+      "t": 20.916666666666668,
+      "frame": 1255,
       "gain_db": -18,
       "index": 25,
       "count": 40
@@ -886,8 +886,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 16.483333333333334,
-      "frame": 989,
+      "t": 20.983333333333334,
+      "frame": 1259,
       "gain_db": -18,
       "index": 26,
       "count": 40
@@ -897,8 +897,8 @@
       "parent": "sfx.c04.roll",
       "kind": "snare_roll",
       "source": "custom",
-      "t": 16.5,
-      "frame": 990,
+      "t": 21,
+      "frame": 1260,
       "gain_db": -12,
       "dur": 0.5
     },
@@ -907,8 +907,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 16.533333333333335,
-      "frame": 992,
+      "t": 21.033333333333335,
+      "frame": 1262,
       "gain_db": -18,
       "index": 27,
       "count": 40
@@ -918,8 +918,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 16.583333333333332,
-      "frame": 995,
+      "t": 21.083333333333332,
+      "frame": 1265,
       "gain_db": -18,
       "index": 28,
       "count": 40
@@ -929,8 +929,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 16.616666666666667,
-      "frame": 997,
+      "t": 21.116666666666667,
+      "frame": 1267,
       "gain_db": -18,
       "index": 29,
       "count": 40
@@ -940,8 +940,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 16.666666666666668,
-      "frame": 1000,
+      "t": 21.166666666666668,
+      "frame": 1270,
       "gain_db": -18,
       "index": 30,
       "count": 40
@@ -951,8 +951,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 16.716666666666665,
-      "frame": 1003,
+      "t": 21.216666666666665,
+      "frame": 1273,
       "gain_db": -18,
       "index": 31,
       "count": 40
@@ -962,8 +962,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 16.75,
-      "frame": 1005,
+      "t": 21.25,
+      "frame": 1275,
       "gain_db": -18,
       "index": 32,
       "count": 40
@@ -973,8 +973,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 16.8,
-      "frame": 1008,
+      "t": 21.3,
+      "frame": 1278,
       "gain_db": -18,
       "index": 33,
       "count": 40
@@ -984,8 +984,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 16.833333333333332,
-      "frame": 1010,
+      "t": 21.333333333333332,
+      "frame": 1280,
       "gain_db": -18,
       "index": 34,
       "count": 40
@@ -995,8 +995,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 16.866666666666667,
-      "frame": 1012,
+      "t": 21.366666666666667,
+      "frame": 1282,
       "gain_db": -18,
       "index": 35,
       "count": 40
@@ -1006,8 +1006,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 16.9,
-      "frame": 1014,
+      "t": 21.4,
+      "frame": 1284,
       "gain_db": -18,
       "index": 36,
       "count": 40
@@ -1017,8 +1017,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 16.933333333333334,
-      "frame": 1016,
+      "t": 21.433333333333334,
+      "frame": 1286,
       "gain_db": -18,
       "index": 37,
       "count": 40
@@ -1028,8 +1028,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 16.966666666666665,
-      "frame": 1018,
+      "t": 21.466666666666665,
+      "frame": 1288,
       "gain_db": -18,
       "index": 38,
       "count": 40
@@ -1039,8 +1039,8 @@
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "t": 17,
-      "frame": 1020,
+      "t": 21.5,
+      "frame": 1290,
       "gain_db": -18,
       "index": 39,
       "count": 40
@@ -1050,8 +1050,8 @@
       "parent": "sfx.c04.stoptime",
       "kind": "silence_gap",
       "source": "custom",
-      "t": 17,
-      "frame": 1020,
+      "t": 21.5,
+      "frame": 1290,
       "gain_db": 0,
       "dur": 0.5
     },
@@ -1060,8 +1060,8 @@
       "parent": "sfx.drop2.chime",
       "kind": "chime_success",
       "source": "custom",
-      "t": 17.5,
-      "frame": 1050,
+      "t": 22,
+      "frame": 1320,
       "gain_db": -10
     },
     {
@@ -1069,8 +1069,8 @@
       "parent": "sfx.drop2.impact",
       "kind": "impact_huge",
       "source": "custom",
-      "t": 17.5,
-      "frame": 1050,
+      "t": 22,
+      "frame": 1320,
       "gain_db": -3
     },
     {
@@ -1078,8 +1078,8 @@
       "parent": "sfx.c05.rows",
       "kind": "blip_pop",
       "source": "custom",
-      "t": 17.75,
-      "frame": 1065,
+      "t": 22.25,
+      "frame": 1335,
       "gain_db": -16,
       "index": 0,
       "count": 4,
@@ -1090,8 +1090,8 @@
       "parent": "sfx.c05.rows",
       "kind": "blip_pop",
       "source": "custom",
-      "t": 17.8,
-      "frame": 1068,
+      "t": 22.3,
+      "frame": 1338,
       "gain_db": -16,
       "index": 1,
       "count": 4,
@@ -1102,8 +1102,8 @@
       "parent": "sfx.c05.rows",
       "kind": "blip_pop",
       "source": "custom",
-      "t": 17.85,
-      "frame": 1071,
+      "t": 22.35,
+      "frame": 1341,
       "gain_db": -16,
       "index": 2,
       "count": 4,
@@ -1114,8 +1114,8 @@
       "parent": "sfx.c05.rows",
       "kind": "blip_pop",
       "source": "custom",
-      "t": 17.9,
-      "frame": 1074,
+      "t": 22.4,
+      "frame": 1344,
       "gain_db": -16,
       "index": 3,
       "count": 4,
@@ -1126,8 +1126,8 @@
       "parent": "sfx.c05.click1",
       "kind": "click",
       "source": "custom",
-      "t": 18.5,
-      "frame": 1110,
+      "t": 23,
+      "frame": 1380,
       "gain_db": -8
     },
     {
@@ -1135,8 +1135,8 @@
       "parent": "sfx.c05.fill1",
       "kind": "swell_fill",
       "source": "custom",
-      "t": 18.6,
-      "frame": 1116,
+      "t": 23.1,
+      "frame": 1386,
       "gain_db": -12,
       "dur": 0.6,
       "pitch_semitones": 0
@@ -1146,8 +1146,8 @@
       "parent": "sfx.c05.tip1",
       "kind": "pop",
       "source": "custom",
-      "t": 19,
-      "frame": 1140,
+      "t": 23.5,
+      "frame": 1410,
       "gain_db": -14
     },
     {
@@ -1155,8 +1155,8 @@
       "parent": "sfx.c05.click2",
       "kind": "click",
       "source": "custom",
-      "t": 20.5,
-      "frame": 1230,
+      "t": 25,
+      "frame": 1500,
       "gain_db": -8
     },
     {
@@ -1164,8 +1164,8 @@
       "parent": "sfx.c05.fill2",
       "kind": "swell_fill",
       "source": "custom",
-      "t": 20.6,
-      "frame": 1236,
+      "t": 25.1,
+      "frame": 1506,
       "gain_db": -12,
       "dur": 0.6,
       "pitch_semitones": 3
@@ -1175,8 +1175,8 @@
       "parent": "sfx.c05.tip2",
       "kind": "pop",
       "source": "custom",
-      "t": 21,
-      "frame": 1260,
+      "t": 25.5,
+      "frame": 1530,
       "gain_db": -14
     },
     {
@@ -1184,8 +1184,8 @@
       "parent": "sfx.c05.out",
       "kind": "whoosh_soft",
       "source": "custom",
-      "t": 22.2,
-      "frame": 1332,
+      "t": 26.7,
+      "frame": 1602,
       "gain_db": -12
     },
     {
@@ -1193,8 +1193,8 @@
       "parent": "sfx.c06.appear",
       "kind": "pop",
       "source": "custom",
-      "t": 22.5,
-      "frame": 1350,
+      "t": 27,
+      "frame": 1620,
       "gain_db": -12
     },
     {
@@ -1202,8 +1202,8 @@
       "parent": "sfx.c06.plus1",
       "kind": "click",
       "source": "custom",
-      "t": 23,
-      "frame": 1380,
+      "t": 28,
+      "frame": 1680,
       "gain_db": -8
     },
     {
@@ -1211,18 +1211,18 @@
       "parent": "sfx.c06.roll1",
       "kind": "counter_roll",
       "source": "custom",
-      "t": 23,
-      "frame": 1380,
+      "t": 28,
+      "frame": 1680,
       "gain_db": -18,
-      "dur": 0.4
+      "dur": 0.8
     },
     {
       "id": "sfx.c06.plus2",
       "parent": "sfx.c06.plus2",
       "kind": "click",
       "source": "custom",
-      "t": 23.5,
-      "frame": 1410,
+      "t": 29,
+      "frame": 1740,
       "gain_db": -8
     },
     {
@@ -1230,18 +1230,18 @@
       "parent": "sfx.c06.roll2",
       "kind": "counter_roll",
       "source": "custom",
-      "t": 23.5,
-      "frame": 1410,
+      "t": 29,
+      "frame": 1740,
       "gain_db": -18,
-      "dur": 0.4
+      "dur": 0.8
     },
     {
       "id": "sfx.c06.total",
       "parent": "sfx.c06.total",
       "kind": "whoosh_up",
       "source": "custom",
-      "t": 23.75,
-      "frame": 1425,
+      "t": 29.5,
+      "frame": 1770,
       "gain_db": -10
     },
     {
@@ -1249,8 +1249,8 @@
       "parent": "sfx.c06.shine",
       "kind": "shine",
       "source": "custom",
-      "t": 24.5,
-      "frame": 1470,
+      "t": 31,
+      "frame": 1860,
       "gain_db": -12
     },
     {
@@ -1258,8 +1258,8 @@
       "parent": "sfx.c06.out",
       "kind": "whoosh",
       "source": "remotion-sfx:whip|whoosh",
-      "t": 25.333333333333332,
-      "frame": 1520,
+      "t": 32.833333333333336,
+      "frame": 1970,
       "gain_db": -8
     },
     {
@@ -1267,8 +1267,8 @@
       "parent": "sfx.c07.in",
       "kind": "impact_small",
       "source": "custom",
-      "t": 25.5,
-      "frame": 1530,
+      "t": 33,
+      "frame": 1980,
       "gain_db": -8
     },
     {
@@ -1276,8 +1276,8 @@
       "parent": "sfx.c07.slide",
       "kind": "whoosh",
       "source": "remotion-sfx:whip|whoosh",
-      "t": 25.75,
-      "frame": 1545,
+      "t": 33.333333333333336,
+      "frame": 2000,
       "gain_db": -10
     },
     {
@@ -1285,8 +1285,8 @@
       "parent": "sfx.c07.done",
       "kind": "pop",
       "source": "custom",
-      "t": 26.8,
-      "frame": 1608,
+      "t": 34.733333333333334,
+      "frame": 2084,
       "gain_db": -16,
       "index": 0,
       "count": 2
@@ -1296,8 +1296,8 @@
       "parent": "sfx.c07.done",
       "kind": "pop",
       "source": "custom",
-      "t": 27.466666666666665,
-      "frame": 1648,
+      "t": 35.61666666666667,
+      "frame": 2137,
       "gain_db": -16,
       "index": 1,
       "count": 2
@@ -1307,8 +1307,8 @@
       "parent": "sfx.c07.out",
       "kind": "whoosh",
       "source": "remotion-sfx:whip|whoosh",
-      "t": 28.333333333333332,
-      "frame": 1700,
+      "t": 36.833333333333336,
+      "frame": 2210,
       "gain_db": -8
     },
     {
@@ -1316,8 +1316,8 @@
       "parent": "sfx.c08.swap",
       "kind": "impact_small",
       "source": "custom",
-      "t": 28.5,
-      "frame": 1710,
+      "t": 37,
+      "frame": 2220,
       "gain_db": -6
     },
     {
@@ -1325,8 +1325,8 @@
       "parent": "sfx.c08.list",
       "kind": "blip_pop",
       "source": "custom",
-      "t": 29.05,
-      "frame": 1743,
+      "t": 37.516666666666666,
+      "frame": 2251,
       "gain_db": -16,
       "index": 0,
       "count": 4,
@@ -1337,8 +1337,8 @@
       "parent": "sfx.c08.list",
       "kind": "blip_pop",
       "source": "custom",
-      "t": 29.1,
-      "frame": 1746,
+      "t": 37.56666666666667,
+      "frame": 2254,
       "gain_db": -16,
       "index": 1,
       "count": 4,
@@ -1349,8 +1349,8 @@
       "parent": "sfx.c08.list",
       "kind": "blip_pop",
       "source": "custom",
-      "t": 29.15,
-      "frame": 1749,
+      "t": 37.61666666666667,
+      "frame": 2257,
       "gain_db": -16,
       "index": 2,
       "count": 4,
@@ -1361,8 +1361,8 @@
       "parent": "sfx.c08.list",
       "kind": "blip_pop",
       "source": "custom",
-      "t": 29.2,
-      "frame": 1752,
+      "t": 37.65,
+      "frame": 2259,
       "gain_db": -16,
       "index": 3,
       "count": 4,
@@ -1373,8 +1373,8 @@
       "parent": "sfx.c08.poly",
       "kind": "pluck_note",
       "source": "custom",
-      "t": 29.3,
-      "frame": 1758,
+      "t": 37.75,
+      "frame": 2265,
       "gain_db": -14,
       "index": 0,
       "count": 8,
@@ -1385,8 +1385,8 @@
       "parent": "sfx.c08.poly",
       "kind": "pluck_note",
       "source": "custom",
-      "t": 29.666666666666668,
-      "frame": 1780,
+      "t": 38.1,
+      "frame": 2286,
       "gain_db": -14,
       "index": 1,
       "count": 8,
@@ -1397,8 +1397,8 @@
       "parent": "sfx.c08.poly",
       "kind": "pluck_note",
       "source": "custom",
-      "t": 30.05,
-      "frame": 1803,
+      "t": 38.45,
+      "frame": 2307,
       "gain_db": -14,
       "index": 2,
       "count": 8,
@@ -1409,8 +1409,8 @@
       "parent": "sfx.c08.poly",
       "kind": "pluck_note",
       "source": "custom",
-      "t": 30.416666666666668,
-      "frame": 1825,
+      "t": 38.8,
+      "frame": 2328,
       "gain_db": -14,
       "index": 3,
       "count": 8,
@@ -1421,8 +1421,8 @@
       "parent": "sfx.c08.poly",
       "kind": "pluck_note",
       "source": "custom",
-      "t": 30.783333333333335,
-      "frame": 1847,
+      "t": 39.15,
+      "frame": 2349,
       "gain_db": -14,
       "index": 4,
       "count": 8,
@@ -1433,8 +1433,8 @@
       "parent": "sfx.c08.poly",
       "kind": "pluck_note",
       "source": "custom",
-      "t": 31.15,
-      "frame": 1869,
+      "t": 39.483333333333334,
+      "frame": 2369,
       "gain_db": -14,
       "index": 5,
       "count": 8,
@@ -1445,8 +1445,8 @@
       "parent": "sfx.c08.poly",
       "kind": "pluck_note",
       "source": "custom",
-      "t": 31.533333333333335,
-      "frame": 1892,
+      "t": 39.833333333333336,
+      "frame": 2390,
       "gain_db": -14,
       "index": 6,
       "count": 8,
@@ -1457,8 +1457,8 @@
       "parent": "sfx.c08.poly",
       "kind": "pluck_note",
       "source": "custom",
-      "t": 31.9,
-      "frame": 1914,
+      "t": 40.18333333333333,
+      "frame": 2411,
       "gain_db": -14,
       "index": 7,
       "count": 8,
@@ -1469,8 +1469,8 @@
       "parent": "sfx.c08.turn",
       "kind": "whoosh",
       "source": "remotion-sfx:whoosh|custom",
-      "t": 32.7,
-      "frame": 1962,
+      "t": 40.93333333333333,
+      "frame": 2456,
       "gain_db": -8
     },
     {
@@ -1478,8 +1478,8 @@
       "parent": "sfx.c08.card",
       "kind": "whoosh_soft",
       "source": "custom",
-      "t": 32.95,
-      "frame": 1977,
+      "t": 41.166666666666664,
+      "frame": 2470,
       "gain_db": -16,
       "index": 0,
       "count": 4
@@ -1489,8 +1489,8 @@
       "parent": "sfx.c08.card",
       "kind": "whoosh_soft",
       "source": "custom",
-      "t": 33.1,
-      "frame": 1986,
+      "t": 41.31666666666667,
+      "frame": 2479,
       "gain_db": -16,
       "index": 1,
       "count": 4
@@ -1500,8 +1500,8 @@
       "parent": "sfx.c08.card",
       "kind": "whoosh_soft",
       "source": "custom",
-      "t": 33.25,
-      "frame": 1995,
+      "t": 41.45,
+      "frame": 2487,
       "gain_db": -16,
       "index": 2,
       "count": 4
@@ -1511,8 +1511,8 @@
       "parent": "sfx.c08.card",
       "kind": "whoosh_soft",
       "source": "custom",
-      "t": 33.4,
-      "frame": 2004,
+      "t": 41.6,
+      "frame": 2496,
       "gain_db": -16,
       "index": 3,
       "count": 4
@@ -1522,8 +1522,8 @@
       "parent": "sfx.c08.approved1",
       "kind": "check_ding",
       "source": "custom",
-      "t": 34.083333333333336,
-      "frame": 2045,
+      "t": 42.233333333333334,
+      "frame": 2534,
       "gain_db": -10
     },
     {
@@ -1531,8 +1531,8 @@
       "parent": "sfx.c08.approved2",
       "kind": "check_ding",
       "source": "custom",
-      "t": 34.93333333333333,
-      "frame": 2096,
+      "t": 43.03333333333333,
+      "frame": 2582,
       "gain_db": -10
     },
     {
@@ -1540,8 +1540,8 @@
       "parent": "sfx.c08.riser",
       "kind": "riser",
       "source": "custom",
-      "t": 35.5,
-      "frame": 2130,
+      "t": 43.5,
+      "frame": 2610,
       "gain_db": -12,
       "dur": 1
     },
@@ -1550,8 +1550,8 @@
       "parent": "sfx.c08.roll",
       "kind": "snare_roll",
       "source": "custom",
-      "t": 36,
-      "frame": 2160,
+      "t": 44,
+      "frame": 2640,
       "gain_db": -14,
       "dur": 0.45
     },
@@ -1560,8 +1560,8 @@
       "parent": "sfx.c09.impact",
       "kind": "impact_huge",
       "source": "custom",
-      "t": 36.5,
-      "frame": 2190,
+      "t": 44.5,
+      "frame": 2670,
       "gain_db": -3
     },
     {
@@ -1569,8 +1569,8 @@
       "parent": "sfx.c09.reveal",
       "kind": "tick_soft",
       "source": "custom",
-      "t": 36.75,
-      "frame": 2205,
+      "t": 44.75,
+      "frame": 2685,
       "gain_db": -18,
       "index": 0,
       "count": 6
@@ -1580,8 +1580,8 @@
       "parent": "sfx.c09.reveal",
       "kind": "tick_soft",
       "source": "custom",
-      "t": 36.8,
-      "frame": 2208,
+      "t": 44.8,
+      "frame": 2688,
       "gain_db": -18,
       "index": 1,
       "count": 6
@@ -1591,8 +1591,8 @@
       "parent": "sfx.c09.reveal",
       "kind": "tick_soft",
       "source": "custom",
-      "t": 36.85,
-      "frame": 2211,
+      "t": 44.85,
+      "frame": 2691,
       "gain_db": -18,
       "index": 2,
       "count": 6
@@ -1602,8 +1602,8 @@
       "parent": "sfx.c09.reveal",
       "kind": "tick_soft",
       "source": "custom",
-      "t": 36.9,
-      "frame": 2214,
+      "t": 44.9,
+      "frame": 2694,
       "gain_db": -18,
       "index": 3,
       "count": 6
@@ -1613,8 +1613,8 @@
       "parent": "sfx.c09.reveal",
       "kind": "tick_soft",
       "source": "custom",
-      "t": 36.95,
-      "frame": 2217,
+      "t": 44.95,
+      "frame": 2697,
       "gain_db": -18,
       "index": 4,
       "count": 6
@@ -1624,8 +1624,8 @@
       "parent": "sfx.c09.reveal",
       "kind": "tick_soft",
       "source": "custom",
-      "t": 37,
-      "frame": 2220,
+      "t": 45,
+      "frame": 2700,
       "gain_db": -18,
       "index": 5,
       "count": 6
@@ -1635,8 +1635,8 @@
       "parent": "sfx.c09.shine",
       "kind": "shine",
       "source": "custom",
-      "t": 37.5,
-      "frame": 2250,
+      "t": 45.5,
+      "frame": 2730,
       "gain_db": -10
     },
     {
@@ -1644,8 +1644,8 @@
       "parent": "sfx.c09.click",
       "kind": "click",
       "source": "custom",
-      "t": 37.75,
-      "frame": 2265,
+      "t": 45.75,
+      "frame": 2745,
       "gain_db": -12
     },
     {
@@ -1653,8 +1653,8 @@
       "parent": "sfx.c09.pulse",
       "kind": "chime_ping",
       "source": "custom",
-      "t": 38,
-      "frame": 2280,
+      "t": 46,
+      "frame": 2760,
       "gain_db": -16
     },
     {
@@ -1662,8 +1662,8 @@
       "parent": "sfx.c09.outro",
       "kind": "whoosh_up",
       "source": "custom",
-      "t": 38.5,
-      "frame": 2310,
+      "t": 46.5,
+      "frame": 2790,
       "gain_db": -8
     },
     {
@@ -1671,8 +1671,8 @@
       "parent": "sfx.end.ding",
       "kind": "chime_ping",
       "source": "custom",
-      "t": 39.2,
-      "frame": 2352,
+      "t": 47.2,
+      "frame": 2832,
       "gain_db": -12,
       "dur": 1.5
     }

@@ -23,6 +23,6 @@ export const PACING = {
 	C05: 5, //   O estádio: lista de setores + mapa, 2 cliques                (padrão 5)
 	C06: 6, //   Quantidade e total                                           (padrão 3)
 	C07: 4, //   Checkout: 2 portadores, um campo digitado por vez            (padrão 3)
-	C08: 7.5, // Organizador: editor de setores + quadro, 2 aprovações        (padrão 7.5)
+	C08: 7.5, // Organizador: editor de setores + quadro, 2 aprovações        (padrão 8)
 	C09: 4.5, // Fecho: frase + CTA, pop-out e logo final centralizado        (padrão 4.5)
 } as const;

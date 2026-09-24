@@ -10,7 +10,7 @@
     "lint:motion": "node scripts/lint-motion.mjs",
     "verify": "node scripts/verify.mjs",
     "audio": "node scripts/audio/cues.mjs && node scripts/audio/synth.mjs && node scripts/audio/sfx.mjs && node scripts/audio/mix.mjs && node scripts/audio/analyze.mjs",
-    "render": "remotion render GoTicketShowcase out/goticket-showcase-2160p60.mp4 --scale=2 --codec=h264 --crf=16 --audio-codec=aac --audio-bitrate=320k --image-format=png"
+    "render": "remotion render GoTicketShowcase out/goticket-showcase-2160p60.mp4 --scale=2 --codec=h264 --crf=16 --audio-codec=aac --audio-bitrate=320k --image-format=png --concurrency=3 --timeout=120000"
   },
   "dependencies": {
     "@remotion/cli": "4.0.527",

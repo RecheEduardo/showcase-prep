@@ -1,4 +1,3 @@
-import {CameraMotionBlur} from '@remotion/motion-blur';
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {FPS, SCENE, type SceneId} from '../timeline';
@@ -96,17 +95,9 @@ const StageTransform: React.FC<{id: SceneId; children: React.ReactNode}> = ({id,
 	return <AbsoluteFill style={stageStyle(id, t)}>{children}</AbsoluteFill>;
 };
 
-/** Applies the scene's in/out transition; the SnapZoom dive also gets camera motion blur. */
-export const SceneStage: React.FC<{id: SceneId; children: React.ReactNode}> = ({id, children}) => {
-	const t = useSceneRealTime();
-	const tout = outTransition(id);
-	const inner = <StageTransform id={id}>{children}</StageTransform>;
-	if (tout?.kind === 'snapZoom' && t >= SCENE[id].duration - halfOf(tout) && t < SCENE[id].duration) {
-		return (
-			<CameraMotionBlur samples={8} shutterAngle={180}>
-				{inner}
-			</CameraMotionBlur>
-		);
-	}
-	return inner;
-};
+/**
+ * Applies the scene's in/out transition. The SnapZoom dive gets its softness from the depth-of-field
+ * blur in stageStyle only: a CameraMotionBlur here rendered the whole scene 8× per frame, which at 4K
+ * took ~30 s per frame and crashed the renderer.
+ */
+export const SceneStage: React.FC<{id: SceneId; children: React.ReactNode}> = ({id, children}) => <StageTransform id={id}>{children}</StageTransform>;

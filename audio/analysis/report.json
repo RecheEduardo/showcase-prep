@@ -1,8 +1,8 @@
 {
   "generated_by": "scripts/audio/analyze.mjs",
-  "measured_at": "2026-09-24T04:27:25.876Z",
+  "measured_at": "2026-09-24T05:00:01.291Z",
   "measurement_note": "Loudness/true peak measured with our own ITU-R BS.1770-4 implementation (scripts/audio/loudness.mjs), not ffmpeg ebur128; the Remotion ffmpeg build lacks ebur128. Cross-checked with Remotion ffmpeg loudnorm (and system ffmpeg ebur128 when available).",
-  "all_pass": true,
+  "all_pass": false,
   "results": {
     "meter_selftest": {
       "pass": true,
@@ -26,16 +26,16 @@
         "sample_rate": 48000,
         "channels": 2,
         "bits": 24,
-        "frames": 1968000,
-        "expected_frames": 1968000
+        "frames": 2352000,
+        "expected_frames": 2352000
       },
       "remotion_ffprobe": {
         "codec_name": "pcm_s24le",
         "sample_rate": "48000",
         "channels": 2,
         "bits_per_sample": 24,
-        "duration_ts": 1968000,
-        "duration": "41.000000"
+        "duration_ts": 2352000,
+        "duration": "49.000000"
       }
     },
     "a_loudness_truepeak": {
@@ -43,78 +43,78 @@
       "criterion": "integrated -14 LUFS ±1 LU and true peak <= -1.0 dBTP (every available meter must agree)",
       "primary_node_bs1770": {
         "integrated_lufs": -14,
-        "lra_lu": 4.57,
+        "lra_lu": 6.41,
         "true_peak_dbtp": -1.6,
         "sample_peak_dbfs": -1.6,
-        "momentary_max_lufs": -9.53,
-        "short_term_max_lufs": -11.3
+        "momentary_max_lufs": -9.04,
+        "short_term_max_lufs": -10.5
       },
       "crosscheck_remotion_loudnorm": {
-        "integrated_lufs": -14.1,
-        "true_peak_dbtp": -1.51,
-        "lra_lu": 3.9
+        "integrated_lufs": -14.06,
+        "true_peak_dbtp": -1.53,
+        "lra_lu": 5
       },
       "crosscheck_system_ebur128": "not available (only the minimal Remotion ffmpeg is guaranteed)"
     },
     "b_silence_5p9_6p0": {
       "pass": true,
-      "criterion": "silencedetect(noise=-60dB:d=0.05) reports an interval covering 4.9–5 (±5 ms)",
+      "criterion": "silencedetect(noise=-60dB:d=0.05) reports an interval covering 6.866666666666666–7.006667 (±5 ms)",
       "remotion_silencedetect_intervals": [
         {
-          "start": 4.89975,
-          "end": 5
+          "start": 6.866437,
+          "end": 7.125062
         }
       ],
       "covering_interval": {
-        "start": 4.89975,
-        "end": 5
+        "start": 6.866437,
+        "end": 7.125062
       },
       "node_max_abs_sample_in_gap_dbfs": "-inf (digital zero)",
-      "first_nonzero_after_gap_sample": 240000
+      "first_nonzero_after_gap_sample": 342000
     },
     "c_stoptime_drop": {
       "pass": true,
       "criterion": "RMS over the stop-time at least 12 dB below the second before it",
-      "rms_before_dbfs": -19.76,
-      "rms_stoptime_dbfs": -36.09,
-      "drop_db": 16.33
+      "rms_before_dbfs": -19.41,
+      "rms_stoptime_dbfs": -35.47,
+      "drop_db": 16.06
     },
     "d_drops": {
-      "pass": true,
+      "pass": false,
       "criterion": "RMS[t,t+0.25] - RMS[t-0.6,t-0.1] >= +6 dB at each drop; strongest onset within ±100 ms at <= 16.7 ms (1 frame) from t",
       "onset_method": "energy (L²+R²)/2 on 1 ms hops; onset = argmax over [t-0.1,t+0.1] of dB(mean next 5 ms) - dB(mean of [-50,-5] ms)",
       "drops": [
         {
-          "t": 5,
+          "t": 7,
           "required_db": 6,
-          "rms_post_dbfs": -8.93,
-          "rms_pre_dbfs": -17.31,
-          "jump_db": 8.38,
-          "onset_s": 5.001,
+          "rms_post_dbfs": -42.16,
+          "rms_pre_dbfs": -16.26,
+          "jump_db": -25.9,
+          "onset_s": 6.917,
+          "onset_error_ms": -83,
+          "onset_rise_db": 0,
+          "pass": false
+        },
+        {
+          "t": 22,
+          "required_db": 6,
+          "rms_post_dbfs": -9.91,
+          "rms_pre_dbfs": -27.46,
+          "jump_db": 17.55,
+          "onset_s": 22.001,
           "onset_error_ms": 1,
-          "onset_rise_db": 114.3,
+          "onset_rise_db": 41.7,
           "pass": true
         },
         {
-          "t": 17.5,
+          "t": 44.5,
           "required_db": 6,
-          "rms_post_dbfs": -10.09,
-          "rms_pre_dbfs": -27.8,
-          "jump_db": 17.71,
-          "onset_s": 17.501,
+          "rms_post_dbfs": -9.97,
+          "rms_pre_dbfs": -21.48,
+          "jump_db": 11.5,
+          "onset_s": 44.501,
           "onset_error_ms": 1,
-          "onset_rise_db": 41.9,
-          "pass": true
-        },
-        {
-          "t": 36.5,
-          "required_db": 6,
-          "rms_post_dbfs": -10.45,
-          "rms_pre_dbfs": -22.98,
-          "jump_db": 12.52,
-          "onset_s": 36.501,
-          "onset_error_ms": 1,
-          "onset_rise_db": 8.2,
+          "onset_rise_db": 7.3,
           "pass": true
         }
       ]
@@ -124,51 +124,51 @@
       "note": "informational: sample-level onset of the click on the SFX stem vs cue frame*800 (tolerance ±96 samples = 2 ms; overlapping cues blur the onset detector)",
       "clicks": [
         {
-          "t": 1.5,
-          "onset_sample": 72000,
-          "expected_sample": 72000,
+          "t": 2.1,
+          "onset_sample": 100800,
+          "expected_sample": 100800,
           "offset_samples": 0,
           "rise_db": 15.5
         },
         {
-          "t": 12.5,
-          "onset_sample": 600000,
-          "expected_sample": 600000,
+          "t": 16,
+          "onset_sample": 768000,
+          "expected_sample": 768000,
           "offset_samples": 0,
-          "rise_db": 197.6
+          "rise_db": 198.4
         },
         {
-          "t": 18.5,
-          "onset_sample": 888032,
-          "expected_sample": 888000,
+          "t": 23,
+          "onset_sample": 1104032,
+          "expected_sample": 1104000,
           "offset_samples": 32,
           "rise_db": 10
         },
         {
-          "t": 20.5,
-          "onset_sample": 984000,
-          "expected_sample": 984000,
+          "t": 25,
+          "onset_sample": 1200000,
+          "expected_sample": 1200000,
           "offset_samples": 0,
           "rise_db": 67.5
         },
         {
-          "t": 23,
-          "onset_sample": 1104000,
-          "expected_sample": 1104000,
+          "t": 28,
+          "onset_sample": 1344000,
+          "expected_sample": 1344000,
           "offset_samples": 0,
-          "rise_db": 198.7
+          "rise_db": 199.5
         },
         {
-          "t": 23.5,
-          "onset_sample": 1128000,
-          "expected_sample": 1128000,
+          "t": 29,
+          "onset_sample": 1392000,
+          "expected_sample": 1392000,
           "offset_samples": 0,
-          "rise_db": 198.7
+          "rise_db": 199.5
         },
         {
-          "t": 37.75,
-          "onset_sample": 1812055,
-          "expected_sample": 1812000,
+          "t": 45.75,
+          "onset_sample": 2196055,
+          "expected_sample": 2196000,
           "offset_samples": 55,
           "rise_db": 8.2
         }
@@ -181,82 +181,82 @@
         {
           "id": "intro",
           "start": 0,
-          "end": 5,
+          "end": 7,
           "intensity": 2,
-          "lufs": -18.8,
-          "rms_dbfs": -22.14
+          "lufs": -18.48,
+          "rms_dbfs": -21.84
         },
         {
           "id": "drop1",
-          "start": 5,
-          "end": 11,
+          "start": 7,
+          "end": 13,
           "intensity": 4,
-          "lufs": -13.94,
-          "rms_dbfs": -14.71
+          "lufs": -14.46,
+          "rms_dbfs": -15.88
         },
         {
           "id": "groove_lift",
-          "start": 11,
-          "end": 13.5,
+          "start": 13,
+          "end": 18,
           "intensity": 3,
-          "lufs": -14.91,
-          "rms_dbfs": -16.54
+          "lufs": -14.78,
+          "rms_dbfs": -15.93
         },
         {
           "id": "breakdown",
-          "start": 13.5,
-          "end": 17.5,
+          "start": 18,
+          "end": 22,
           "intensity": 1,
-          "lufs": -17.28,
-          "rms_dbfs": -16.63
+          "lufs": -16.8,
+          "rms_dbfs": -16.14
         },
         {
           "id": "drop2",
-          "start": 17.5,
-          "end": 22.5,
+          "start": 22,
+          "end": 27,
           "intensity": 5,
-          "lufs": -12.39,
-          "rms_dbfs": -13.61
+          "lufs": -12.17,
+          "rms_dbfs": -13.4
         },
         {
           "id": "groove_rise",
-          "start": 22.5,
-          "end": 25.5,
+          "start": 27,
+          "end": 33,
           "intensity": 4,
-          "lufs": -14.22,
-          "rms_dbfs": -17.21
+          "lufs": -14.57,
+          "rms_dbfs": -16.56
         },
         {
           "id": "microdrop",
-          "start": 25.5,
-          "end": 28.5,
+          "start": 33,
+          "end": 37,
           "intensity": 4,
-          "lufs": -14.76,
-          "rms_dbfs": -16.13
+          "lufs": -14.43,
+          "rms_dbfs": -15.77
         },
         {
           "id": "swap",
-          "start": 28.5,
-          "end": 36.5,
+          "start": 37,
+          "end": 44.5,
           "intensity": 4,
-          "lufs": -13.22,
-          "rms_dbfs": -15.61
+          "lufs": -12.48,
+          "rms_dbfs": -15
         },
         {
           "id": "finale",
-          "start": 36.5,
-          "end": 40,
+          "start": 44.5,
+          "end": 48,
           "intensity": 5,
-          "lufs": -12.39,
-          "rms_dbfs": -14.17
+          "lufs": -12.1,
+          "rms_dbfs": -13.88
         },
         {
           "id": "tail",
-          "start": 40,
-          "end": 41,
+          "start": 48,
+          "end": 49,
           "intensity": 1,
-          "lufs": -22.66,
-          "rms_dbfs": -25.2
+          "lufs": -22.45,
+          "rms_dbfs": -24.96
         }
       ]
     },
@@ -265,99 +265,99 @@
       "note": "informational: jumps > 0.2 FS between consecutive samples (top 10, 50 ms apart). Jumps at cue onsets / on-beat kicks are intended transients.",
       "top_jumps": [
         {
-          "t": 4.8805,
-          "jump": 0.799,
-          "nearest_cue": "sfx.drop1.impact",
-          "cue_dist_ms": -119.5,
-          "beat_dist_ms": 119.5
-        },
-        {
-          "t": 34.0838,
-          "jump": 0.779,
+          "t": 42.2338,
+          "jump": 0.83,
           "nearest_cue": "sfx.c08.approved1",
           "cue_dist_ms": 0.4,
-          "beat_dist_ms": 83.8
+          "beat_dist_ms": 233.8
         },
         {
-          "t": 34.9338,
-          "jump": 0.754,
-          "nearest_cue": "sfx.c08.approved2",
-          "cue_dist_ms": 0.4,
-          "beat_dist_ms": 66.2
+          "t": 6.7857,
+          "jump": 0.809,
+          "nearest_cue": "sfx.c00.errors#9",
+          "cue_dist_ms": 135.7,
+          "beat_dist_ms": 214.3
         },
         {
-          "t": 12.5002,
-          "jump": 0.726,
-          "nearest_cue": "sfx.c03.click",
-          "cue_dist_ms": 0.2,
-          "beat_dist_ms": 0.2
-        },
-        {
-          "t": 36.4692,
-          "jump": 0.693,
+          "t": 44.4692,
+          "jump": 0.755,
           "nearest_cue": "sfx.c09.impact",
           "cue_dist_ms": -30.8,
           "beat_dist_ms": 30.8
         },
         {
-          "t": 18.5003,
-          "jump": 0.692,
+          "t": 43.0338,
+          "jump": 0.743,
+          "nearest_cue": "sfx.c08.approved2",
+          "cue_dist_ms": 0.4,
+          "beat_dist_ms": 33.8
+        },
+        {
+          "t": 23.0003,
+          "jump": 0.737,
           "nearest_cue": "sfx.c05.click1",
           "cue_dist_ms": 0.3,
           "beat_dist_ms": 0.3
         },
         {
-          "t": 23.5003,
-          "jump": 0.685,
-          "nearest_cue": "sfx.c06.plus2",
+          "t": 16.0003,
+          "jump": 0.727,
+          "nearest_cue": "sfx.c03.click",
           "cue_dist_ms": 0.3,
           "beat_dist_ms": 0.3
         },
         {
-          "t": 20.5003,
-          "jump": 0.671,
+          "t": 25.0003,
+          "jump": 0.71,
           "nearest_cue": "sfx.c05.click2",
           "cue_dist_ms": 0.3,
           "beat_dist_ms": 0.3
         },
         {
-          "t": 4.7503,
-          "jump": 0.666,
-          "nearest_cue": "sfx.c00.errors#9",
-          "cue_dist_ms": 0.3,
-          "beat_dist_ms": 249.7
+          "t": 29.0004,
+          "jump": 0.672,
+          "nearest_cue": "sfx.c06.plus2",
+          "cue_dist_ms": 0.4,
+          "beat_dist_ms": 0.4
         },
         {
-          "t": 23.0004,
-          "jump": 0.663,
+          "t": 28.0004,
+          "jump": 0.67,
           "nearest_cue": "sfx.c06.plus1",
           "cue_dist_ms": 0.4,
           "beat_dist_ms": 0.4
+        },
+        {
+          "t": 6.7335,
+          "jump": 0.656,
+          "nearest_cue": "sfx.c00.errors#9",
+          "cue_dist_ms": 83.5,
+          "beat_dist_ms": 233.5
         }
       ],
       "gap_edges": [
         {
-          "t": 4.9,
-          "max_jump_pm3ms": 0.2395
+          "t": 6.866666666666666,
+          "max_jump_pm3ms": 0.2473
         },
         {
-          "t": 5,
-          "max_jump_pm3ms": 0.2182
+          "t": 7.006667,
+          "max_jump_pm3ms": 0
         },
         {
-          "t": 17,
-          "max_jump_pm3ms": 0.1677
+          "t": 21.5,
+          "max_jump_pm3ms": 0.1839
         },
         {
-          "t": 17.5,
-          "max_jump_pm3ms": 0.2648
+          "t": 22,
+          "max_jump_pm3ms": 0.2718
         },
         {
-          "t": 40.96,
-          "max_jump_pm3ms": 0.0119
+          "t": 48.96,
+          "max_jump_pm3ms": 0.0081
         }
       ],
-      "count_over_0p2": 19139
+      "count_over_0p2": 25799
     },
     "i_spectral_balance_info": {
       "pass": true,
@@ -365,73 +365,73 @@
       "sections": [
         {
           "id": "intro",
-          "low": -26.1,
-          "mid": -30.7,
+          "low": -26,
+          "mid": -30.3,
           "presence": -36.3,
-          "air": -34.2
+          "air": -33.7
         },
         {
           "id": "drop1",
-          "low": -16.5,
-          "mid": -22.1,
-          "presence": -37.5,
-          "air": -33.8
-        },
-        {
-          "id": "groove_lift",
-          "low": -19,
-          "mid": -23.5,
-          "presence": -35.2,
-          "air": -35.3
-        },
-        {
-          "id": "breakdown",
-          "low": -17.2,
-          "mid": -31.6,
-          "presence": -36.6,
-          "air": -40.4
-        },
-        {
-          "id": "drop2",
-          "low": -15.8,
-          "mid": -20.4,
-          "presence": -33.3,
-          "air": -31
-        },
-        {
-          "id": "groove_rise",
-          "low": -20.9,
-          "mid": -23.4,
-          "presence": -30,
-          "air": -33.4
-        },
-        {
-          "id": "microdrop",
-          "low": -18.6,
-          "mid": -22.8,
-          "presence": -35.7,
-          "air": -36.5
-        },
-        {
-          "id": "swap",
-          "low": -19.7,
-          "mid": -21.2,
-          "presence": -33.3,
+          "low": -18.4,
+          "mid": -21.7,
+          "presence": -37.1,
           "air": -34.9
         },
         {
+          "id": "groove_lift",
+          "low": -17.9,
+          "mid": -24.1,
+          "presence": -37.1,
+          "air": -35
+        },
+        {
+          "id": "breakdown",
+          "low": -16.7,
+          "mid": -31.2,
+          "presence": -35.8,
+          "air": -39.7
+        },
+        {
+          "id": "drop2",
+          "low": -15.6,
+          "mid": -20.1,
+          "presence": -33.1,
+          "air": -30.7
+        },
+        {
+          "id": "groove_rise",
+          "low": -19,
+          "mid": -24.2,
+          "presence": -31.9,
+          "air": -34
+        },
+        {
+          "id": "microdrop",
+          "low": -18.2,
+          "mid": -22.9,
+          "presence": -35.6,
+          "air": -36.3
+        },
+        {
+          "id": "swap",
+          "low": -19.4,
+          "mid": -20.4,
+          "presence": -32.3,
+          "air": -34.2
+        },
+        {
           "id": "finale",
-          "low": -16.4,
-          "mid": -22,
-          "presence": -29.6,
-          "air": -29.7
+          "low": -16,
+          "mid": -22.2,
+          "presence": -29.2,
+          "air": -29.2
         },
         {
           "id": "tail",
-          "low": -33,
+          "low": -32.7,
           "mid": -28.5,
-          "presence": -46.1,
-          "air": -50.2
+          "presence": -46,
+          "air": -50
         }
       ]
     },
@@ -451,29 +451,29 @@
     }
   },
   "tail": {
-    "rms_last_0p4s_dbfs": -30.3,
-    "rms_2s_before_end_dbfs": -17.5,
+    "rms_last_0p4s_dbfs": -30.6,
+    "rms_2s_before_end_dbfs": -17.4,
     "last_sample_abs": 0
   },
   "mix": {
     "music": {
-      "median_short_term_lufs_6_62_before": -16.31,
-      "gain_db": -1.69,
+      "median_short_term_lufs_6_62_before": -15.96,
+      "gain_db": -2.04,
       "median_short_term_after": -18
     },
     "sfx": {
-      "trim_db": 2.62,
+      "trim_db": 2.93,
       "hit_cues_definition": "cues with gain_db >= -14 (impacts, whooshes, clicks, chimes, pops, blips, plucks, risers, rolls, shine, swells)",
       "hit_cues_median_delta_db": 4.5,
-      "hit_cues_within_3_6_db": "17/72",
+      "hit_cues_within_3_6_db": "17/71",
       "hit_cues_p25_p75": [
-        1.58,
-        7.32
+        2.03,
+        8.19
       ],
-      "hit_cues_within_0_10_db": "54/72",
+      "hit_cues_within_0_10_db": "51/71",
       "hit_cues_min_max": [
-        -6.1,
-        18.88
+        -5.63,
+        19.8
       ],
       "method": "K-weighted level over the 100 ms window at the SFX peak (SFX alone, after gain) minus ducked music in the same window"
     },
@@ -492,16 +492,16 @@
           "gain_db": 1.5
         }
       ],
-      "gain_db": 2.963,
+      "gain_db": 3.439,
       "limiter_ceiling_dbtp_estimate": -1.6,
       "lookahead_ms": 5,
       "release_ms": 120,
       "oversampling": "4x polyphase Kaiser windowed-sinc, 32 taps/phase",
       "gain_reduction": {
-        "max_db": 7.38,
-        "pct_time_over_1db": 6.24,
-        "pct_time_over_3db": 1.34,
-        "pct_time_over_6db": 0.08
+        "max_db": 8.15,
+        "pct_time_over_1db": 5.99,
+        "pct_time_over_3db": 1.57,
+        "pct_time_over_6db": 0.1
       }
     }
   }
