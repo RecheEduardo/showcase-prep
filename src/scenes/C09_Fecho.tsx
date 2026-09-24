@@ -26,7 +26,7 @@ const PULSES = [LABELS['C09.cta.pulse1']];
 const OUTRO = LABELS['C09.outro.pop'];
 const HERO = Math.max(LABELS['C09.logo.hero'], OUTRO + 0.55);
 /** Final lockup move: a bouncier spring than the UI pops (≈25 % overshoot, a couple of wobbles). */
-const HERO_SPRING = {stiffness: 150, damping: 9, mass: 1};
+const HERO_SPRING = {stiffness: 50, damping: 150, mass: 1};
 const CTA_AT = REVEAL + 0.35;
 const LOCKUP_Y = 300;
 const CTA = {cx: 960, cy: 790, w: 430, h: 108};

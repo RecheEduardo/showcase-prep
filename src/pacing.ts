@@ -15,14 +15,14 @@
 // ─────────────────────────────────────────────────────────────────────────────────────────────
 
 export const PACING = {
-	C00: 5, //   Caos: sistema antigo travando e erros empilhando            (padrão 5)
+	C00: 7, //   Caos: sistema antigo travando e erros empilhando            (padrão 5)
 	C01: 3, //   Marca: logo + "Seu ingresso aqui. Em 1 clique."              (padrão 3)
 	C02: 3, //   Vitrine: categorias + "Tudo num só lugar."                   (padrão 3)
-	C03: 2.5, // O evento: página do evento, clique na data                   (padrão 2.5)
+	C03: 5, // O evento: página do evento, clique na data                   (padrão 2.5)
 	C04: 4, //   A fila: contagem 301 → 1                                     (padrão 4)
 	C05: 5, //   O estádio: lista de setores + mapa, 2 cliques                (padrão 5)
-	C06: 3, //   Quantidade e total                                           (padrão 3)
-	C07: 3, //   Checkout: 2 portadores, um campo digitado por vez            (padrão 3)
+	C06: 6, //   Quantidade e total                                           (padrão 3)
+	C07: 4, //   Checkout: 2 portadores, um campo digitado por vez            (padrão 3)
 	C08: 7.5, // Organizador: editor de setores + quadro, 2 aprovações        (padrão 7.5)
 	C09: 4.5, // Fecho: frase + CTA, pop-out e logo final centralizado        (padrão 4.5)
 } as const;
