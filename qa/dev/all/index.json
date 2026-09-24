@@ -1,0 +1,416 @@
+[
+  {
+    "frame": 0,
+    "t": 0,
+    "tags": [
+      "C01-first"
+    ]
+  },
+  {
+    "frame": 48,
+    "t": 0.8,
+    "tags": [
+      "C01.title.enter"
+    ]
+  },
+  {
+    "frame": 180,
+    "t": 3,
+    "tags": [
+      "C01.type.start"
+    ]
+  },
+  {
+    "frame": 246,
+    "t": 4.1,
+    "tags": [
+      "C01.type.end"
+    ]
+  },
+  {
+    "frame": 276,
+    "t": 4.6,
+    "tags": [
+      "C01.type.confirm"
+    ]
+  },
+  {
+    "frame": 359,
+    "t": 5.983,
+    "tags": [
+      "C01-last"
+    ]
+  },
+  {
+    "frame": 360,
+    "t": 6,
+    "tags": [
+      "C01.logo.slam",
+      "C02-first",
+      "transition-mid",
+      "drop-6"
+    ]
+  },
+  {
+    "frame": 480,
+    "t": 8,
+    "tags": [
+      "C02.banner.swipe1"
+    ]
+  },
+  {
+    "frame": 600,
+    "t": 10,
+    "tags": [
+      "C02.banner.swipe2"
+    ]
+  },
+  {
+    "frame": 660,
+    "t": 11,
+    "tags": [
+      "C02.tiles.cascade.start"
+    ]
+  },
+  {
+    "frame": 795,
+    "t": 13.25,
+    "tags": [
+      "C02.tiles.cascade.end"
+    ]
+  },
+  {
+    "frame": 839,
+    "t": 13.983,
+    "tags": [
+      "C02-last"
+    ]
+  },
+  {
+    "frame": 840,
+    "t": 14,
+    "tags": [
+      "C03-first",
+      "transition-mid"
+    ]
+  },
+  {
+    "frame": 900,
+    "t": 15,
+    "tags": [
+      "C03.camera.push"
+    ]
+  },
+  {
+    "frame": 1080,
+    "t": 18,
+    "tags": [
+      "C03.datecard.pulse"
+    ]
+  },
+  {
+    "frame": 1155,
+    "t": 19.25,
+    "tags": [
+      "C03.datecard.click"
+    ]
+  },
+  {
+    "frame": 1199,
+    "t": 19.983,
+    "tags": [
+      "C03-last"
+    ]
+  },
+  {
+    "frame": 1200,
+    "t": 20,
+    "tags": [
+      "C04-first",
+      "C04.dark.enter",
+      "transition-mid"
+    ]
+  },
+  {
+    "frame": 1260,
+    "t": 21,
+    "tags": [
+      "C04.counter.start"
+    ]
+  },
+  {
+    "frame": 1650,
+    "t": 27.5,
+    "tags": [
+      "C04.counter.hit1",
+      "C04.stoptime"
+    ]
+  },
+  {
+    "frame": 1679,
+    "t": 27.983,
+    "tags": [
+      "C04-last"
+    ]
+  },
+  {
+    "frame": 1680,
+    "t": 28,
+    "tags": [
+      "C04.admitted.reveal",
+      "C05-first",
+      "transition-mid",
+      "drop-28"
+    ]
+  },
+  {
+    "frame": 1740,
+    "t": 29,
+    "tags": [
+      "C05.sector1.click"
+    ]
+  },
+  {
+    "frame": 1746,
+    "t": 29.1,
+    "tags": [
+      "C05.sector1.fill"
+    ]
+  },
+  {
+    "frame": 1776,
+    "t": 29.6,
+    "tags": [
+      "C05.tooltip1"
+    ]
+  },
+  {
+    "frame": 1980,
+    "t": 33,
+    "tags": [
+      "C05.sector2.click"
+    ]
+  },
+  {
+    "frame": 1986,
+    "t": 33.1,
+    "tags": [
+      "C05.sector2.fill"
+    ]
+  },
+  {
+    "frame": 2016,
+    "t": 33.6,
+    "tags": [
+      "C05.tooltip2"
+    ]
+  },
+  {
+    "frame": 2160,
+    "t": 36,
+    "tags": [
+      "C05.price.swap"
+    ]
+  },
+  {
+    "frame": 2279,
+    "t": 37.983,
+    "tags": [
+      "C05-last"
+    ]
+  },
+  {
+    "frame": 2280,
+    "t": 38,
+    "tags": [
+      "C06-first",
+      "C06.counter.appear",
+      "transition-mid"
+    ]
+  },
+  {
+    "frame": 2340,
+    "t": 39,
+    "tags": [
+      "C06.plus1"
+    ]
+  },
+  {
+    "frame": 2400,
+    "t": 40,
+    "tags": [
+      "C06.plus2"
+    ]
+  },
+  {
+    "frame": 2442,
+    "t": 40.7,
+    "tags": [
+      "C06.total.card"
+    ]
+  },
+  {
+    "frame": 2550,
+    "t": 42.5,
+    "tags": [
+      "C06.cta.shine"
+    ]
+  },
+  {
+    "frame": 2639,
+    "t": 43.983,
+    "tags": [
+      "C06-last"
+    ]
+  },
+  {
+    "frame": 2640,
+    "t": 44,
+    "tags": [
+      "C07-first",
+      "transition-mid",
+      "drop-44"
+    ]
+  },
+  {
+    "frame": 2655,
+    "t": 44.25,
+    "tags": [
+      "C07.card.slide"
+    ]
+  },
+  {
+    "frame": 2760,
+    "t": 46,
+    "tags": [
+      "C07.tagline"
+    ]
+  },
+  {
+    "frame": 2879,
+    "t": 47.983,
+    "tags": [
+      "C07-last"
+    ]
+  },
+  {
+    "frame": 2880,
+    "t": 48,
+    "tags": [
+      "C08-first",
+      "transition-mid",
+      "drop-48"
+    ]
+  },
+  {
+    "frame": 2910,
+    "t": 48.5,
+    "tags": [
+      "C08.polygons.start"
+    ]
+  },
+  {
+    "frame": 3120,
+    "t": 52,
+    "tags": [
+      "C08.polygons.end",
+      "C08.turn"
+    ]
+  },
+  {
+    "frame": 3150,
+    "t": 52.5,
+    "tags": [
+      "C08.card1.slide"
+    ]
+  },
+  {
+    "frame": 3210,
+    "t": 53.5,
+    "tags": [
+      "C08.card2.slide"
+    ]
+  },
+  {
+    "frame": 3240,
+    "t": 54,
+    "tags": [
+      "C08.approved"
+    ]
+  },
+  {
+    "frame": 3359,
+    "t": 55.983,
+    "tags": [
+      "C08-last"
+    ]
+  },
+  {
+    "frame": 3360,
+    "t": 56,
+    "tags": [
+      "C09-first",
+      "C09.logo.slam",
+      "transition-mid",
+      "drop-56"
+    ]
+  },
+  {
+    "frame": 3390,
+    "t": 56.5,
+    "tags": [
+      "C09.copy.reveal"
+    ]
+  },
+  {
+    "frame": 3480,
+    "t": 58,
+    "tags": [
+      "C09.cta.shine"
+    ]
+  },
+  {
+    "frame": 3540,
+    "t": 59,
+    "tags": [
+      "C09.footnote"
+    ]
+  },
+  {
+    "frame": 3600,
+    "t": 60,
+    "tags": [
+      "C09.cta.pulse1"
+    ]
+  },
+  {
+    "frame": 3660,
+    "t": 61,
+    "tags": [
+      "C09.cta.pulse2"
+    ]
+  },
+  {
+    "frame": 3719,
+    "t": 61.983,
+    "tags": [
+      "C09-last"
+    ]
+  },
+  {
+    "frame": 3720,
+    "t": 62,
+    "tags": [
+      "TAIL-first",
+      "TAIL.ding",
+      "transition-mid"
+    ]
+  },
+  {
+    "frame": 3839,
+    "t": 63.983,
+    "tags": [
+      "TAIL-last"
+    ]
+  }
+]

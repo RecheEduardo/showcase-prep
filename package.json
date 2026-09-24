@@ -1,0 +1,37 @@
+{
+  "name": "goticket-showcase-video",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GoTicket demo product video (Remotion + GSAP), 38s @ 60fps, 4K output",
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio",
+    "sync": "node scripts/sync-timeline.mjs",
+    "lint:copy": "node scripts/lint-copy.mjs",
+    "lint:motion": "node scripts/lint-motion.mjs",
+    "verify": "node scripts/verify.mjs",
+    "audio": "node scripts/audio/synth.mjs && node scripts/audio/sfx.mjs && node scripts/audio/mix.mjs && node scripts/audio/analyze.mjs",
+    "render": "remotion render GoTicketShowcase out/goticket-showcase-2160p60.mp4 --scale=2 --codec=h264 --crf=16 --audio-codec=aac --audio-bitrate=320k --image-format=png"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.527",
+    "@remotion/fonts": "4.0.527",
+    "@remotion/gsap": "4.0.527",
+    "@remotion/layout-utils": "4.0.527",
+    "@remotion/media": "4.0.527",
+    "@remotion/motion-blur": "4.0.527",
+    "@remotion/noise": "4.0.527",
+    "@remotion/sfx": "4.0.527",
+    "@remotion/shapes": "4.0.527",
+    "@remotion/transitions": "4.0.527",
+    "gsap": "3.15.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "remotion": "4.0.527"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "typescript": "7.0.2"
+  }
+}

@@ -1,0 +1,514 @@
+{
+  "generated_by": "scripts/audio/analyze.mjs",
+  "measured_at": "2026-09-23T19:11:42.791Z",
+  "measurement_note": "Loudness/true peak measured with our own ITU-R BS.1770-4 implementation (scripts/audio/loudness.mjs), not ffmpeg ebur128; the Remotion ffmpeg build lacks ebur128. Cross-checked with Remotion ffmpeg loudnorm (and system ffmpeg ebur128 when available).",
+  "all_pass": true,
+  "results": {
+    "meter_selftest": {
+      "pass": true,
+      "sine_997hz_minus20dbfs_both_channels": {
+        "lufs": -20,
+        "expected": -20
+      },
+      "sine_997hz_minus20dbfs_one_channel": {
+        "lufs": -23.01,
+        "expected": -23.01
+      },
+      "sine_997hz_0dbfs_one_channel": {
+        "lufs": -3.01,
+        "expected": -3.01,
+        "true_peak_dbtp": 0
+      }
+    },
+    "format": {
+      "pass": true,
+      "node": {
+        "sample_rate": 48000,
+        "channels": 2,
+        "bits": 24,
+        "frames": 3072000,
+        "expected_frames": 3072000
+      },
+      "remotion_ffprobe": {
+        "codec_name": "pcm_s24le",
+        "sample_rate": "48000",
+        "channels": 2,
+        "bits_per_sample": 24,
+        "duration_ts": 3072000,
+        "duration": "64.000000"
+      }
+    },
+    "a_loudness_truepeak": {
+      "pass": true,
+      "criterion": "integrated -14 LUFS ±1 LU and true peak <= -1.0 dBTP (every available meter must agree)",
+      "primary_node_bs1770": {
+        "integrated_lufs": -14.02,
+        "lra_lu": 6.71,
+        "true_peak_dbtp": -1.6,
+        "sample_peak_dbfs": -1.6,
+        "momentary_max_lufs": -9.22,
+        "short_term_max_lufs": -11.29
+      },
+      "crosscheck_remotion_loudnorm": {
+        "integrated_lufs": -14.12,
+        "true_peak_dbtp": -1.39,
+        "lra_lu": 7.6
+      },
+      "crosscheck_system_ebur128": {
+        "tool": "system ffmpeg (optional, auto-detected on PATH)",
+        "integrated_lufs": -14,
+        "lra_lu": 6.7,
+        "true_peak_dbtp": -1.4
+      }
+    },
+    "b_silence_5p9_6p0": {
+      "pass": true,
+      "criterion": "silencedetect(noise=-60dB:d=0.05) reports an interval covering 5.9–6.0 (±5 ms)",
+      "remotion_silencedetect_intervals": [
+        {
+          "start": 5.899729,
+          "end": 6
+        }
+      ],
+      "covering_interval": {
+        "start": 5.899729,
+        "end": 6
+      },
+      "node_max_abs_sample_in_gap_dbfs": "-inf (digital zero)",
+      "first_nonzero_after_gap_sample": 288000
+    },
+    "c_stoptime_drop": {
+      "pass": true,
+      "criterion": "RMS[27.5,27.95] at least 12 dB below RMS[26.5,27.4]",
+      "rms_26p5_27p4_dbfs": -16.69,
+      "rms_27p5_27p95_dbfs": -32,
+      "drop_db": 15.31
+    },
+    "d_drops": {
+      "pass": true,
+      "criterion": "RMS[t,t+0.25] - RMS[t-0.6,t-0.1] >= +6 dB (6/28/56) or +3 dB (44/48); strongest onset within ±100 ms at <= 16.7 ms (1 frame) from t",
+      "onset_method": "energy (L²+R²)/2 on 1 ms hops; onset = argmax over [t-0.1,t+0.1] of dB(mean next 5 ms) - dB(mean of [-50,-5] ms)",
+      "drops": [
+        {
+          "t": 6,
+          "required_db": 6,
+          "rms_post_dbfs": -8.54,
+          "rms_pre_dbfs": -16.03,
+          "jump_db": 7.49,
+          "onset_s": 6.001,
+          "onset_error_ms": 1,
+          "onset_rise_db": 114.3,
+          "pass": true
+        },
+        {
+          "t": 28,
+          "required_db": 6,
+          "rms_post_dbfs": -9.8,
+          "rms_pre_dbfs": -22.37,
+          "jump_db": 12.58,
+          "onset_s": 28.001,
+          "onset_error_ms": 1,
+          "onset_rise_db": 36.9,
+          "pass": true
+        },
+        {
+          "t": 44,
+          "required_db": 3,
+          "rms_post_dbfs": -10.53,
+          "rms_pre_dbfs": -19.6,
+          "jump_db": 9.06,
+          "onset_s": 44.001,
+          "onset_error_ms": 1,
+          "onset_rise_db": 19.9,
+          "pass": true
+        },
+        {
+          "t": 48,
+          "required_db": 3,
+          "rms_post_dbfs": -9.87,
+          "rms_pre_dbfs": -18.92,
+          "jump_db": 9.05,
+          "onset_s": 48.001,
+          "onset_error_ms": 1,
+          "onset_rise_db": 17.3,
+          "pass": true
+        },
+        {
+          "t": 56,
+          "required_db": 6,
+          "rms_post_dbfs": -9.82,
+          "rms_pre_dbfs": -18.38,
+          "jump_db": 8.55,
+          "onset_s": 56.001,
+          "onset_error_ms": 1,
+          "onset_rise_db": 8.3,
+          "pass": true
+        }
+      ]
+    },
+    "f_click_sync_info": {
+      "pass": true,
+      "note": "informational: sample-level onset of the click on the SFX stem vs cue frame*800 (tolerance ±48 samples = 1 ms)",
+      "clicks": [
+        {
+          "t": 29,
+          "onset_sample": 1392032,
+          "expected_sample": 1392000,
+          "offset_samples": 32,
+          "rise_db": 10
+        },
+        {
+          "t": 33,
+          "onset_sample": 1584000,
+          "expected_sample": 1584000,
+          "offset_samples": 0,
+          "rise_db": 198.6
+        },
+        {
+          "t": 39,
+          "onset_sample": 1872000,
+          "expected_sample": 1872000,
+          "offset_samples": 0,
+          "rise_db": 199.6
+        },
+        {
+          "t": 40,
+          "onset_sample": 1920000,
+          "expected_sample": 1920000,
+          "offset_samples": 0,
+          "rise_db": 199.6
+        }
+      ]
+    },
+    "g_section_energy": {
+      "pass": true,
+      "criterion": "drop2 (peak of the video) has the highest section loudness",
+      "sections": [
+        {
+          "id": "intro",
+          "start": 0,
+          "end": 6,
+          "intensity": 2,
+          "lufs": -17.04,
+          "rms_dbfs": -20.36
+        },
+        {
+          "id": "drop1",
+          "start": 6,
+          "end": 14,
+          "intensity": 3,
+          "lufs": -14.41,
+          "rms_dbfs": -15.07
+        },
+        {
+          "id": "groove_lift",
+          "start": 14,
+          "end": 20,
+          "intensity": 3,
+          "lufs": -14.84,
+          "rms_dbfs": -15.99
+        },
+        {
+          "id": "breakdown",
+          "start": 20,
+          "end": 28,
+          "intensity": 1,
+          "lufs": -16.81,
+          "rms_dbfs": -17.31
+        },
+        {
+          "id": "drop2",
+          "start": 28,
+          "end": 38,
+          "intensity": 5,
+          "lufs": -12.17,
+          "rms_dbfs": -13.41
+        },
+        {
+          "id": "groove_rise",
+          "start": 38,
+          "end": 44,
+          "intensity": 4,
+          "lufs": -14.67,
+          "rms_dbfs": -16.61
+        },
+        {
+          "id": "microdrop",
+          "start": 44,
+          "end": 48,
+          "intensity": 3,
+          "lufs": -14.44,
+          "rms_dbfs": -15.62
+        },
+        {
+          "id": "swap",
+          "start": 48,
+          "end": 56,
+          "intensity": 4,
+          "lufs": -12.83,
+          "rms_dbfs": -15.36
+        },
+        {
+          "id": "finale",
+          "start": 56,
+          "end": 62,
+          "intensity": 5,
+          "lufs": -13.07,
+          "rms_dbfs": -14.29
+        },
+        {
+          "id": "tail",
+          "start": 62,
+          "end": 64,
+          "intensity": 1,
+          "lufs": -20.66,
+          "rms_dbfs": -23.62
+        }
+      ]
+    },
+    "h_discontinuities_info": {
+      "pass": true,
+      "note": "informational: jumps > 0.2 FS between consecutive samples (top 10, 50 ms apart). Jumps at cue onsets / on-beat kicks are intended transients.",
+      "top_jumps": [
+        {
+          "t": 4.6013,
+          "jump": 0.789,
+          "nearest_cue": "sfx.c01.confirm",
+          "cue_dist_ms": 1.3,
+          "beat_dist_ms": 101.3
+        },
+        {
+          "t": 19.2504,
+          "jump": 0.783,
+          "nearest_cue": "sfx.c03.click",
+          "cue_dist_ms": 0.4,
+          "beat_dist_ms": 249.6
+        },
+        {
+          "t": 5.8876,
+          "jump": 0.766,
+          "nearest_cue": "sfx.drop1.impact",
+          "cue_dist_ms": -112.4,
+          "beat_dist_ms": 112.4
+        },
+        {
+          "t": 58.1003,
+          "jump": 0.725,
+          "nearest_cue": "sfx.c09.click",
+          "cue_dist_ms": 0.3,
+          "beat_dist_ms": 100.3
+        },
+        {
+          "t": 29.0004,
+          "jump": 0.709,
+          "nearest_cue": "sfx.c05.click1",
+          "cue_dist_ms": 0.4,
+          "beat_dist_ms": 0.4
+        },
+        {
+          "t": 18.0002,
+          "jump": 0.703,
+          "nearest_cue": "sfx.c03.ping",
+          "cue_dist_ms": 0.2,
+          "beat_dist_ms": 0.2
+        },
+        {
+          "t": 33.0003,
+          "jump": 0.703,
+          "nearest_cue": "sfx.c05.click2",
+          "cue_dist_ms": 0.3,
+          "beat_dist_ms": 0.3
+        },
+        {
+          "t": 5.8314,
+          "jump": 0.683,
+          "nearest_cue": "sfx.drop1.impact",
+          "cue_dist_ms": -168.6,
+          "beat_dist_ms": 168.6
+        },
+        {
+          "t": 40.0004,
+          "jump": 0.676,
+          "nearest_cue": "sfx.c06.plus2",
+          "cue_dist_ms": 0.4,
+          "beat_dist_ms": 0.4
+        },
+        {
+          "t": 55.9795,
+          "jump": 0.675,
+          "nearest_cue": "sfx.c09.impact",
+          "cue_dist_ms": -20.5,
+          "beat_dist_ms": 20.5
+        }
+      ],
+      "gap_edges": [
+        {
+          "t": 5.9,
+          "max_jump_pm3ms": 0.6453
+        },
+        {
+          "t": 6,
+          "max_jump_pm3ms": 0.2159
+        },
+        {
+          "t": 27.5,
+          "max_jump_pm3ms": 0.3111
+        },
+        {
+          "t": 28,
+          "max_jump_pm3ms": 0.2703
+        },
+        {
+          "t": 63.96,
+          "max_jump_pm3ms": 0.001
+        }
+      ],
+      "count_over_0p2": 29670
+    },
+    "i_spectral_balance_info": {
+      "pass": true,
+      "note": "informational: band RMS in dBFS of (L+R)/2",
+      "sections": [
+        {
+          "id": "intro",
+          "low": -24.9,
+          "mid": -27.1,
+          "presence": -35.3,
+          "air": -32.7
+        },
+        {
+          "id": "drop1",
+          "low": -16.8,
+          "mid": -22.5,
+          "presence": -38.8,
+          "air": -34.4
+        },
+        {
+          "id": "groove_lift",
+          "low": -18,
+          "mid": -23.8,
+          "presence": -37.2,
+          "air": -35.1
+        },
+        {
+          "id": "breakdown",
+          "low": -18.4,
+          "mid": -30.3,
+          "presence": -34.2,
+          "air": -33.9
+        },
+        {
+          "id": "drop2",
+          "low": -15.6,
+          "mid": -20.5,
+          "presence": -33.2,
+          "air": -30.7
+        },
+        {
+          "id": "groove_rise",
+          "low": -19,
+          "mid": -24.6,
+          "presence": -32.1,
+          "air": -34
+        },
+        {
+          "id": "microdrop",
+          "low": -17.6,
+          "mid": -24.2,
+          "presence": -35.8,
+          "air": -36.2
+        },
+        {
+          "id": "swap",
+          "low": -19.5,
+          "mid": -21.4,
+          "presence": -32.3,
+          "air": -32.6
+        },
+        {
+          "id": "finale",
+          "low": -16.3,
+          "mid": -22.3,
+          "presence": -31.9,
+          "air": -31.2
+        },
+        {
+          "id": "tail",
+          "low": -38.2,
+          "mid": -24.6,
+          "presence": -42.4,
+          "air": -46.8
+        }
+      ]
+    },
+    "e_pngs": {
+      "pass": true,
+      "files": {
+        "master_waveform": "analysis/master_waveform.png",
+        "music_waveform": "analysis/music_waveform.png",
+        "master_spectrogram": "analysis/master_spectrogram.png",
+        "music_spectrogram": "analysis/music_spectrogram.png",
+        "envelope_rms": "analysis/envelope_rms.png",
+        "sfx_contact_sheet": "analysis/sfx_contact_sheet.png",
+        "zoom_gap_5p9": "analysis/zoom_5p5-6p5.png",
+        "zoom_stoptime": "analysis/zoom_27p0-28p5.png"
+      },
+      "note": "drawn in Node (zlib PNG); must be opened and inspected visually"
+    }
+  },
+  "tail": {
+    "rms_63p5_63p9_dbfs": -43.1,
+    "rms_62p0_62p5_dbfs": -18.3,
+    "last_sample_abs": 0
+  },
+  "mix": {
+    "music": {
+      "median_short_term_lufs_6_62_before": -16.66,
+      "gain_db": -1.34,
+      "median_short_term_after": -18
+    },
+    "sfx": {
+      "trim_db": 2.84,
+      "hit_cues_definition": "cues with gain_db >= -14 (impacts, whooshes, clicks, chimes, pops, blips, plucks, risers, rolls, shine, swells)",
+      "hit_cues_median_delta_db": 4.5,
+      "hit_cues_within_3_6_db": "18/64",
+      "hit_cues_p25_p75": [
+        2.37,
+        6.6
+      ],
+      "hit_cues_within_0_10_db": "49/64",
+      "hit_cues_min_max": [
+        -0.71,
+        19.68
+      ],
+      "method": "K-weighted level over the 100 ms window at the SFX peak (SFX alone, after gain) minus ducked music in the same window"
+    },
+    "master_chain": {
+      "eq": [
+        {
+          "type": "lowshelf",
+          "hz": 120,
+          "q": 0.7,
+          "gain_db": -1.5
+        },
+        {
+          "type": "highshelf",
+          "hz": 5000,
+          "q": 0.7,
+          "gain_db": 1.5
+        }
+      ],
+      "gain_db": 3.673,
+      "limiter_ceiling_dbtp_estimate": -1.6,
+      "lookahead_ms": 5,
+      "release_ms": 120,
+      "oversampling": "4x polyphase Kaiser windowed-sinc, 32 taps/phase",
+      "gain_reduction": {
+        "max_db": 7.89,
+        "pct_time_over_1db": 5.72,
+        "pct_time_over_3db": 1.13,
+        "pct_time_over_6db": 0.08
+      }
+    }
+  }
+}

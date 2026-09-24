@@ -1,0 +1,227 @@
+{
+  "file": "public/audio/music.wav",
+  "frames": 3072000,
+  "sample_rate": 48000,
+  "bpm": 120,
+  "key": "A minor",
+  "progression": {
+    "intro": [
+      "Am",
+      "F",
+      "G"
+    ],
+    "drop1": [
+      "Am",
+      "F",
+      "C",
+      "G"
+    ],
+    "groove_lift": [
+      "Am",
+      "F",
+      "C"
+    ],
+    "breakdown": [
+      "Fs11",
+      "Gsus",
+      "Am9",
+      "Esus|E"
+    ],
+    "drop2": [
+      "Am",
+      "F",
+      "C",
+      "G",
+      "Am"
+    ],
+    "groove_rise": [
+      "F",
+      "C",
+      "G"
+    ],
+    "microdrop": [
+      "Am",
+      "G"
+    ],
+    "swap": [
+      "Am",
+      "F",
+      "C",
+      "G"
+    ],
+    "finale": [
+      "Am",
+      "F|G",
+      "AmAdd9"
+    ],
+    "tail": [
+      "AmAdd9"
+    ]
+  },
+  "integrated_lufs": -16.26,
+  "lra": 6.49,
+  "normalization_gain_db": -8.33,
+  "sections": [
+    {
+      "id": "intro",
+      "start": 0,
+      "end": 6,
+      "intensity": 2,
+      "lufs": -22.37,
+      "low_db": -28.6,
+      "mid_db": -32.2,
+      "high_db": -35.9
+    },
+    {
+      "id": "drop1",
+      "start": 6,
+      "end": 14,
+      "intensity": 3,
+      "lufs": -17,
+      "low_db": -18.2,
+      "mid_db": -28.6,
+      "high_db": -37.9
+    },
+    {
+      "id": "groove_lift",
+      "start": 14,
+      "end": 20,
+      "intensity": 3,
+      "lufs": -16.3,
+      "low_db": -17.8,
+      "mid_db": -27.3,
+      "high_db": -36.6
+    },
+    {
+      "id": "breakdown",
+      "start": 20,
+      "end": 28,
+      "intensity": 1,
+      "lufs": -19.35,
+      "low_db": -19.9,
+      "mid_db": -32.5,
+      "high_db": -37.5
+    },
+    {
+      "id": "drop2",
+      "start": 28,
+      "end": 38,
+      "intensity": 5,
+      "lufs": -13.51,
+      "low_db": -16,
+      "mid_db": -22.8,
+      "high_db": -31
+    },
+    {
+      "id": "groove_rise",
+      "start": 38,
+      "end": 44,
+      "intensity": 4,
+      "lufs": -16.81,
+      "low_db": -18.1,
+      "mid_db": -28.1,
+      "high_db": -38.2
+    },
+    {
+      "id": "microdrop",
+      "start": 44,
+      "end": 48,
+      "intensity": 3,
+      "lufs": -16.73,
+      "low_db": -19.4,
+      "mid_db": -26.9,
+      "high_db": -37
+    },
+    {
+      "id": "swap",
+      "start": 48,
+      "end": 56,
+      "intensity": 4,
+      "lufs": -17.4,
+      "low_db": -19.7,
+      "mid_db": -27.6,
+      "high_db": -35
+    },
+    {
+      "id": "finale",
+      "start": 56,
+      "end": 62,
+      "intensity": 5,
+      "lufs": -14.83,
+      "low_db": -17.8,
+      "mid_db": -23.6,
+      "high_db": -32.7
+    },
+    {
+      "id": "tail",
+      "start": 62,
+      "end": 64,
+      "intensity": 1,
+      "lufs": -27.08,
+      "low_db": -36.3,
+      "mid_db": -33.4,
+      "high_db": -50.1
+    }
+  ],
+  "snare_rolls": [
+    {
+      "id": "sfx.c04.roll",
+      "t": 26,
+      "dur": 1.5,
+      "hits": [
+        26,
+        26.5,
+        26.75,
+        27,
+        27.125,
+        27.25,
+        27.375
+      ]
+    },
+    {
+      "id": "sfx.c08.roll",
+      "t": 55,
+      "dur": 0.9,
+      "hits": [
+        55,
+        55.25,
+        55.5,
+        55.625,
+        55.75,
+        55.8125,
+        55.875
+      ]
+    }
+  ],
+  "risers": [
+    {
+      "t": 2,
+      "dur": 4,
+      "dry_cut_at": 5.9
+    },
+    {
+      "t": 24,
+      "dur": 4,
+      "dry_cut_at": 27.5
+    },
+    {
+      "t": 54,
+      "dur": 2,
+      "dry_cut_at": 56
+    }
+  ],
+  "gaps": [
+    {
+      "t0": 5.9,
+      "t1": 6,
+      "s0": 283200,
+      "s1": 288000
+    },
+    {
+      "t0": 27.5,
+      "t1": 28,
+      "s0": 1320000,
+      "s1": 1344000
+    }
+  ]
+}

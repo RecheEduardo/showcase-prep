@@ -1,0 +1,268 @@
+{
+  "_meta": {
+    "video": "out/goticket-showcase-2160p60.mp4",
+    "generated": "2026-09-23",
+    "revision": "38s-pas",
+    "legend": {
+      "real": "Imagem de captura real do produto usada como textura (fotos de eventos das telas); nunca apresentada como gravação de tela.",
+      "recreated": "Tela real do produto redesenhada em vetor/React a partir das capturas (textos, cores e valores observados).",
+      "illustrative": "Recriação SEM captura correspondente (tela nunca observada no navegador).",
+      "stock": "Foto de banco de imagens (Unsplash License: uso comercial livre, sem marca d'água, atribuição não exigida). Usada só como foto de evento FICTÍCIO; nenhum texto, logo ou marca legível na imagem."
+    },
+    "on_screen_disclosure": [
+      "Nota de rodapé 'Imagens ilustrativas. Eventos e valores fictícios de demonstração.' de 35,0 s até 38,0 s.",
+      "O chip de cena com 'Representação ilustrativa' foi removido junto com o chrome de apresentação (pedido de limpeza visual); a divulgação na tela fica a cargo da nota de rodapé final."
+    ],
+    "fictitious_events": "Todos os eventos, locais, datas, preços e portadores são dados de demonstração (src/copy.ts, COPY.events); cada cena usa um evento e uma foto diferentes."
+  },
+  "scenes": [
+    {
+      "id": "C00",
+      "start": 0,
+      "end": 5,
+      "provenance": "illustrative",
+      "elements": [
+        {
+          "what": "Site de ingressos antigo e genérico (spinner, barra travada, diálogos de erro, cursores perdidos)",
+          "provenance": "illustrative",
+          "source": "Mockup genérico sem marca; não reproduz nenhum produto real."
+        }
+      ]
+    },
+    {
+      "id": "C01",
+      "start": 5,
+      "end": 8,
+      "provenance": "recreated",
+      "elements": [
+        {
+          "what": "Slogan 'Seu ingresso aqui. Em 1 clique.'",
+          "provenance": "recreated",
+          "source": "Copy real da landing"
+        },
+        {
+          "what": "Símbolo GoTicket",
+          "provenance": "real",
+          "source": "goticket-frontend/public/goticket_logo.svg (public/brand/logo-app.svg)"
+        },
+        {
+          "what": "Fotos de eventos ao fundo (desfocadas)",
+          "provenance": "stock",
+          "source": "public/photos: stage, food, art, comedy"
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "start": 8,
+      "end": 11,
+      "provenance": "recreated",
+      "elements": [
+        {
+          "what": "10 categorias",
+          "provenance": "recreated",
+          "source": "screenshots/01-public-home/03 (nomes e gradientes reais)"
+        },
+        {
+          "what": "Fotos de eventos ao fundo (desfocadas)",
+          "provenance": "stock",
+          "source": "public/photos: openair, festival, samba, run"
+        }
+      ]
+    },
+    {
+      "id": "C03",
+      "start": 11,
+      "end": 13,
+      "provenance": "recreated",
+      "elements": [
+        {
+          "what": "Página do evento fictício 'Mega Arena Game Show 2026' (banner com degradê do ParallaxBanner, info, 'Sobre o Evento', ingressos)",
+          "provenance": "recreated",
+          "source": "features/event-details (EventDescription.tsx, ParallaxBanner.tsx); screenshots/06-queue-and-purchase/01"
+        },
+        {
+          "what": "Foto do banner",
+          "provenance": "stock",
+          "source": "public/photos/arena.jpg"
+        }
+      ]
+    },
+    {
+      "id": "C04",
+      "start": 13,
+      "end": 17,
+      "provenance": "illustrative",
+      "elements": [
+        {
+          "what": "Sala de espera (posição 301→1, pessoas na fila, espera estimada)",
+          "provenance": "illustrative",
+          "source": "Texto do componente WaitingRoomCard.tsx; tela nunca capturada (H11 BLOCKED). Números fictícios."
+        }
+      ]
+    },
+    {
+      "id": "C05",
+      "start": 17,
+      "end": 23,
+      "provenance": "recreated",
+      "elements": [
+        {
+          "what": "Seleção de setores + mapa",
+          "provenance": "recreated",
+          "source": "screenshots/06-queue-and-purchase/02, 03, 06; geometria dos polígonos de GET /venues/2/sector-map (leitura)"
+        },
+        {
+          "what": "Bloco de tipos com troca de preço",
+          "provenance": "recreated",
+          "source": "06/03 (Nível 1: R$ 180 / R$ 90) e 06/06 (Pista Premium: R$ 350 / R$ 175)"
+        }
+      ]
+    },
+    {
+      "id": "C06",
+      "start": 23,
+      "end": 26,
+      "provenance": "recreated",
+      "elements": [
+        {
+          "what": "Contador e TOTAL R$ 360,00 · 2 ingressos",
+          "provenance": "recreated",
+          "source": "screenshots/06-queue-and-purchase/04"
+        }
+      ]
+    },
+    {
+      "id": "C07",
+      "start": 26,
+      "end": 28,
+      "provenance": "recreated",
+      "elements": [
+        {
+          "what": "Checkout do evento fictício 'Pulse Open Air': portadores + resumo (sem totais)",
+          "provenance": "recreated",
+          "source": "screenshots/06-queue-and-purchase/05; nomes fictícios, documentos mascarados"
+        },
+        {
+          "what": "Foto do evento",
+          "provenance": "stock",
+          "source": "public/photos/electro.jpg"
+        }
+      ]
+    },
+    {
+      "id": "C08",
+      "start": 28,
+      "end": 34,
+      "provenance": "recreated+illustrative",
+      "illustrative_window": [
+        31,
+        34
+      ],
+      "elements": [
+        {
+          "what": "Editor de mapa de setores com alças",
+          "provenance": "recreated",
+          "source": "screenshots/04-admin/06, 07, 08; vértices reais da Cadeira Nível 1"
+        },
+        {
+          "what": "Quadro de status 'Aguardando aprovação → Aprovado'",
+          "provenance": "illustrative",
+          "source": "Status e cores do produto (04-admin/02, 03); área do organizador nunca verificada (H12 BLOCKED); miniaturas: public/photos festival, art, tech"
+        }
+      ]
+    },
+    {
+      "id": "C09",
+      "start": 34,
+      "end": 38,
+      "provenance": "recreated",
+      "elements": [
+        {
+          "what": "Lockup, frase final, botão 'Criar conta' e nota de rodapé",
+          "provenance": "recreated",
+          "source": "Copy real da landing (sem 'gratuita'); símbolo de goticket-frontend/public/goticket_logo.svg"
+        }
+      ]
+    }
+  ],
+  "stock_photos": [
+    {
+      "file": "public/photos/arena.jpg",
+      "source": "https://unsplash.com/photos/8RqnvsWItuM",
+      "author": "Kai Kuczera",
+      "author_url": "https://unsplash.com/@kaikuczera",
+      "license": "Unsplash License"
+    },
+    {
+      "file": "public/photos/festival.jpg",
+      "source": "https://unsplash.com/photos/bn-D2bCvpik",
+      "author": "Danny Howe",
+      "author_url": "https://unsplash.com/@dannyhowe",
+      "license": "Unsplash License"
+    },
+    {
+      "file": "public/photos/openair.jpg",
+      "source": "https://unsplash.com/photos/qZyZmfAQyTQ",
+      "author": "Negley Stockman",
+      "author_url": "https://unsplash.com/@negley",
+      "license": "Unsplash License"
+    },
+    {
+      "file": "public/photos/stage.jpg",
+      "source": "https://unsplash.com/photos/Ke6Pr-9A2ac",
+      "author": "A J.",
+      "author_url": "https://unsplash.com/@antoinejulien",
+      "license": "Unsplash License"
+    },
+    {
+      "file": "public/photos/comedy.jpg",
+      "source": "https://unsplash.com/photos/DG8kp9B-eRA",
+      "author": "Joshua Hoehne",
+      "author_url": "https://unsplash.com/@joshua_hoehne",
+      "license": "Unsplash License"
+    },
+    {
+      "file": "public/photos/food.jpg",
+      "source": "https://unsplash.com/photos/6QNkA7P3EhI",
+      "author": "Adil Murshed",
+      "author_url": "https://unsplash.com/@adz_mush",
+      "license": "Unsplash License"
+    },
+    {
+      "file": "public/photos/tech.jpg",
+      "source": "https://unsplash.com/photos/yjlTDZdsvak",
+      "author": "Danny Pérez",
+      "author_url": "https://unsplash.com/@daniprz11",
+      "license": "Unsplash License"
+    },
+    {
+      "file": "public/photos/art.jpg",
+      "source": "https://unsplash.com/photos/A6Dofq5rVac",
+      "author": "Aditya Candra",
+      "author_url": "https://unsplash.com/@aditkarya",
+      "license": "Unsplash License"
+    },
+    {
+      "file": "public/photos/electro.jpg",
+      "source": "https://unsplash.com/photos/A_0C42zmz1Q",
+      "author": "A J.",
+      "author_url": "https://unsplash.com/@antoinejulien",
+      "license": "Unsplash License"
+    },
+    {
+      "file": "public/photos/samba.jpg",
+      "source": "https://unsplash.com/photos/KB0Ipylp7dc",
+      "author": "Quinten de Graaf",
+      "author_url": "https://unsplash.com/@quinten149",
+      "license": "Unsplash License"
+    },
+    {
+      "file": "public/photos/run.jpg",
+      "source": "https://unsplash.com/photos/J4XpGYk_o9k",
+      "author": "Kenneth Schipper",
+      "author_url": "https://unsplash.com/@kennethsv",
+      "license": "Unsplash License"
+    }
+  ]
+}
