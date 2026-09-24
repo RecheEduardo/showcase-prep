@@ -224,7 +224,8 @@ const realOf = (scene: SceneId, local: number) => SCENE[scene].start + local * S
 const cue = (scene: SceneId, id: string, kind: string, local: number, gain_db: number, o: CueOpts = {}): SfxCue => {
 	const tReal = o.real ? SCENE[scene].start + local : realOf(scene, local);
 	const frame = sec(tReal);
-	const dur = o.dur === undefined ? undefined : +((o.real ? o.dur : o.dur * SCENE[scene].stretch)).toFixed(2);
+	// The end is quantized to a frame too, so a silence gap ends exactly on the cut (never past it).
+	const dur = o.dur === undefined ? undefined : +((sec(tReal + (o.real ? o.dur : o.dur * SCENE[scene].stretch)) - frame) / FPS).toFixed(6);
 	return {
 		id: o.index === undefined ? id : `${id}#${o.index}`,
 		parent: id,

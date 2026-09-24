@@ -1,8 +1,8 @@
 {
   "generated_by": "scripts/audio/analyze.mjs",
-  "measured_at": "2026-09-24T05:00:01.291Z",
+  "measured_at": "2026-09-24T05:01:20.402Z",
   "measurement_note": "Loudness/true peak measured with our own ITU-R BS.1770-4 implementation (scripts/audio/loudness.mjs), not ffmpeg ebur128; the Remotion ffmpeg build lacks ebur128. Cross-checked with Remotion ffmpeg loudnorm (and system ffmpeg ebur128 when available).",
-  "all_pass": false,
+  "all_pass": true,
   "results": {
     "meter_selftest": {
       "pass": true,
@@ -43,78 +43,78 @@
       "criterion": "integrated -14 LUFS ±1 LU and true peak <= -1.0 dBTP (every available meter must agree)",
       "primary_node_bs1770": {
         "integrated_lufs": -14,
-        "lra_lu": 6.41,
+        "lra_lu": 6.47,
         "true_peak_dbtp": -1.6,
         "sample_peak_dbfs": -1.6,
-        "momentary_max_lufs": -9.04,
-        "short_term_max_lufs": -10.5
+        "momentary_max_lufs": -9.22,
+        "short_term_max_lufs": -10.67
       },
       "crosscheck_remotion_loudnorm": {
-        "integrated_lufs": -14.06,
-        "true_peak_dbtp": -1.53,
+        "integrated_lufs": -14.08,
+        "true_peak_dbtp": -1.51,
         "lra_lu": 5
       },
       "crosscheck_system_ebur128": "not available (only the minimal Remotion ffmpeg is guaranteed)"
     },
     "b_silence_5p9_6p0": {
       "pass": true,
-      "criterion": "silencedetect(noise=-60dB:d=0.05) reports an interval covering 6.866666666666666–7.006667 (±5 ms)",
+      "criterion": "silencedetect(noise=-60dB:d=0.05) reports an interval covering 6.866666666666666–7 (±5 ms)",
       "remotion_silencedetect_intervals": [
         {
-          "start": 6.866437,
-          "end": 7.125062
+          "start": 6.866458,
+          "end": 7
         }
       ],
       "covering_interval": {
-        "start": 6.866437,
-        "end": 7.125062
+        "start": 6.866458,
+        "end": 7
       },
       "node_max_abs_sample_in_gap_dbfs": "-inf (digital zero)",
-      "first_nonzero_after_gap_sample": 342000
+      "first_nonzero_after_gap_sample": 336000
     },
     "c_stoptime_drop": {
       "pass": true,
       "criterion": "RMS over the stop-time at least 12 dB below the second before it",
-      "rms_before_dbfs": -19.41,
-      "rms_stoptime_dbfs": -35.47,
-      "drop_db": 16.06
+      "rms_before_dbfs": -19.57,
+      "rms_stoptime_dbfs": -35.65,
+      "drop_db": 16.08
     },
     "d_drops": {
-      "pass": false,
+      "pass": true,
       "criterion": "RMS[t,t+0.25] - RMS[t-0.6,t-0.1] >= +6 dB at each drop; strongest onset within ±100 ms at <= 16.7 ms (1 frame) from t",
       "onset_method": "energy (L²+R²)/2 on 1 ms hops; onset = argmax over [t-0.1,t+0.1] of dB(mean next 5 ms) - dB(mean of [-50,-5] ms)",
       "drops": [
         {
           "t": 7,
           "required_db": 6,
-          "rms_post_dbfs": -42.16,
-          "rms_pre_dbfs": -16.26,
-          "jump_db": -25.9,
-          "onset_s": 6.917,
-          "onset_error_ms": -83,
-          "onset_rise_db": 0,
-          "pass": false
+          "rms_post_dbfs": -8.77,
+          "rms_pre_dbfs": -16.08,
+          "jump_db": 7.31,
+          "onset_s": 7.001,
+          "onset_error_ms": 1,
+          "onset_rise_db": 114.3,
+          "pass": true
         },
         {
           "t": 22,
           "required_db": 6,
-          "rms_post_dbfs": -9.91,
-          "rms_pre_dbfs": -27.46,
-          "jump_db": 17.55,
+          "rms_post_dbfs": -9.95,
+          "rms_pre_dbfs": -27.63,
+          "jump_db": 17.68,
           "onset_s": 22.001,
           "onset_error_ms": 1,
-          "onset_rise_db": 41.7,
+          "onset_rise_db": 41.8,
           "pass": true
         },
         {
           "t": 44.5,
           "required_db": 6,
-          "rms_post_dbfs": -9.97,
-          "rms_pre_dbfs": -21.48,
-          "jump_db": 11.5,
+          "rms_post_dbfs": -10.02,
+          "rms_pre_dbfs": -21.64,
+          "jump_db": 11.62,
           "onset_s": 44.501,
           "onset_error_ms": 1,
-          "onset_rise_db": 7.3,
+          "onset_rise_db": 7.5,
           "pass": true
         }
       ]
@@ -135,7 +135,7 @@
           "onset_sample": 768000,
           "expected_sample": 768000,
           "offset_samples": 0,
-          "rise_db": 198.4
+          "rise_db": 198.2
         },
         {
           "t": 23,
@@ -156,14 +156,14 @@
           "onset_sample": 1344000,
           "expected_sample": 1344000,
           "offset_samples": 0,
-          "rise_db": 199.5
+          "rise_db": 199.3
         },
         {
           "t": 29,
           "onset_sample": 1392000,
           "expected_sample": 1392000,
           "offset_samples": 0,
-          "rise_db": 199.5
+          "rise_db": 199.3
         },
         {
           "t": 45.75,
@@ -183,80 +183,80 @@
           "start": 0,
           "end": 7,
           "intensity": 2,
-          "lufs": -18.48,
-          "rms_dbfs": -21.84
+          "lufs": -18.43,
+          "rms_dbfs": -21.89
         },
         {
           "id": "drop1",
           "start": 7,
           "end": 13,
           "intensity": 4,
-          "lufs": -14.46,
-          "rms_dbfs": -15.88
+          "lufs": -13.66,
+          "rms_dbfs": -14.47
         },
         {
           "id": "groove_lift",
           "start": 13,
           "end": 18,
           "intensity": 3,
-          "lufs": -14.78,
-          "rms_dbfs": -15.93
+          "lufs": -14.91,
+          "rms_dbfs": -16.07
         },
         {
           "id": "breakdown",
           "start": 18,
           "end": 22,
           "intensity": 1,
-          "lufs": -16.8,
-          "rms_dbfs": -16.14
+          "lufs": -16.93,
+          "rms_dbfs": -16.27
         },
         {
           "id": "drop2",
           "start": 22,
           "end": 27,
           "intensity": 5,
-          "lufs": -12.17,
-          "rms_dbfs": -13.4
+          "lufs": -12.27,
+          "rms_dbfs": -13.49
         },
         {
           "id": "groove_rise",
           "start": 27,
           "end": 33,
           "intensity": 4,
-          "lufs": -14.57,
-          "rms_dbfs": -16.56
+          "lufs": -14.71,
+          "rms_dbfs": -16.7
         },
         {
           "id": "microdrop",
           "start": 33,
           "end": 37,
           "intensity": 4,
-          "lufs": -14.43,
-          "rms_dbfs": -15.77
+          "lufs": -14.56,
+          "rms_dbfs": -15.89
         },
         {
           "id": "swap",
           "start": 37,
           "end": 44.5,
           "intensity": 4,
-          "lufs": -12.48,
-          "rms_dbfs": -15
+          "lufs": -12.64,
+          "rms_dbfs": -15.16
         },
         {
           "id": "finale",
           "start": 44.5,
           "end": 48,
           "intensity": 5,
-          "lufs": -12.1,
-          "rms_dbfs": -13.88
+          "lufs": -12.2,
+          "rms_dbfs": -13.98
         },
         {
           "id": "tail",
           "start": 48,
           "end": 49,
           "intensity": 1,
-          "lufs": -22.45,
-          "rms_dbfs": -24.96
+          "lufs": -22.6,
+          "rms_dbfs": -25.11
         }
       ]
     },
@@ -266,70 +266,70 @@
       "top_jumps": [
         {
           "t": 42.2338,
-          "jump": 0.83,
+          "jump": 0.812,
           "nearest_cue": "sfx.c08.approved1",
           "cue_dist_ms": 0.4,
           "beat_dist_ms": 233.8
         },
         {
           "t": 6.7857,
-          "jump": 0.809,
+          "jump": 0.789,
           "nearest_cue": "sfx.c00.errors#9",
           "cue_dist_ms": 135.7,
           "beat_dist_ms": 214.3
         },
         {
-          "t": 44.4692,
-          "jump": 0.755,
-          "nearest_cue": "sfx.c09.impact",
-          "cue_dist_ms": -30.8,
-          "beat_dist_ms": 30.8
-        },
-        {
           "t": 43.0338,
-          "jump": 0.743,
+          "jump": 0.742,
           "nearest_cue": "sfx.c08.approved2",
           "cue_dist_ms": 0.4,
           "beat_dist_ms": 33.8
         },
         {
+          "t": 44.4692,
+          "jump": 0.739,
+          "nearest_cue": "sfx.c09.impact",
+          "cue_dist_ms": -30.8,
+          "beat_dist_ms": 30.8
+        },
+        {
           "t": 23.0003,
-          "jump": 0.737,
+          "jump": 0.736,
           "nearest_cue": "sfx.c05.click1",
           "cue_dist_ms": 0.3,
           "beat_dist_ms": 0.3
         },
         {
           "t": 16.0003,
-          "jump": 0.727,
+          "jump": 0.726,
           "nearest_cue": "sfx.c03.click",
           "cue_dist_ms": 0.3,
           "beat_dist_ms": 0.3
         },
         {
           "t": 25.0003,
-          "jump": 0.71,
+          "jump": 0.709,
           "nearest_cue": "sfx.c05.click2",
           "cue_dist_ms": 0.3,
           "beat_dist_ms": 0.3
         },
         {
           "t": 29.0004,
-          "jump": 0.672,
+          "jump": 0.671,
           "nearest_cue": "sfx.c06.plus2",
           "cue_dist_ms": 0.4,
           "beat_dist_ms": 0.4
         },
         {
           "t": 28.0004,
-          "jump": 0.67,
+          "jump": 0.669,
           "nearest_cue": "sfx.c06.plus1",
           "cue_dist_ms": 0.4,
           "beat_dist_ms": 0.4
         },
         {
           "t": 6.7335,
-          "jump": 0.656,
+          "jump": 0.666,
           "nearest_cue": "sfx.c00.errors#9",
           "cue_dist_ms": 83.5,
           "beat_dist_ms": 233.5
@@ -338,26 +338,26 @@
       "gap_edges": [
         {
           "t": 6.866666666666666,
-          "max_jump_pm3ms": 0.2473
+          "max_jump_pm3ms": 0.297
         },
         {
-          "t": 7.006667,
-          "max_jump_pm3ms": 0
+          "t": 7,
+          "max_jump_pm3ms": 0.216
         },
         {
           "t": 21.5,
-          "max_jump_pm3ms": 0.1839
+          "max_jump_pm3ms": 0.1799
         },
         {
           "t": 22,
-          "max_jump_pm3ms": 0.2718
+          "max_jump_pm3ms": 0.2714
         },
         {
           "t": 48.96,
-          "max_jump_pm3ms": 0.0081
+          "max_jump_pm3ms": 0.008
         }
       ],
-      "count_over_0p2": 25799
+      "count_over_0p2": 25718
     },
     "i_spectral_balance_info": {
       "pass": true,
@@ -365,73 +365,73 @@
       "sections": [
         {
           "id": "intro",
-          "low": -26,
-          "mid": -30.3,
-          "presence": -36.3,
-          "air": -33.7
+          "low": -26.2,
+          "mid": -30.4,
+          "presence": -36.2,
+          "air": -33.4
         },
         {
           "id": "drop1",
-          "low": -18.4,
+          "low": -16.2,
           "mid": -21.7,
           "presence": -37.1,
-          "air": -34.9
+          "air": -33.6
         },
         {
           "id": "groove_lift",
-          "low": -17.9,
-          "mid": -24.1,
-          "presence": -37.1,
-          "air": -35
+          "low": -18.1,
+          "mid": -24.2,
+          "presence": -37.2,
+          "air": -35.1
         },
         {
           "id": "breakdown",
-          "low": -16.7,
-          "mid": -31.2,
-          "presence": -35.8,
-          "air": -39.7
+          "low": -16.8,
+          "mid": -31.4,
+          "presence": -36,
+          "air": -39.8
         },
         {
           "id": "drop2",
-          "low": -15.6,
-          "mid": -20.1,
-          "presence": -33.1,
-          "air": -30.7
+          "low": -15.7,
+          "mid": -20.2,
+          "presence": -33.2,
+          "air": -30.8
         },
         {
           "id": "groove_rise",
-          "low": -19,
-          "mid": -24.2,
-          "presence": -31.9,
-          "air": -34
-        },
-        {
-          "id": "microdrop",
-          "low": -18.2,
-          "mid": -22.9,
-          "presence": -35.6,
-          "air": -36.3
-        },
-        {
-          "id": "swap",
-          "low": -19.4,
-          "mid": -20.4,
-          "presence": -32.3,
+          "low": -19.2,
+          "mid": -24.3,
+          "presence": -32.1,
           "air": -34.2
         },
         {
+          "id": "microdrop",
+          "low": -18.3,
+          "mid": -23,
+          "presence": -35.7,
+          "air": -36.5
+        },
+        {
+          "id": "swap",
+          "low": -19.5,
+          "mid": -20.5,
+          "presence": -32.5,
+          "air": -34.4
+        },
+        {
           "id": "finale",
-          "low": -16,
-          "mid": -22.2,
-          "presence": -29.2,
-          "air": -29.2
+          "low": -16.1,
+          "mid": -22.3,
+          "presence": -29.3,
+          "air": -29.3
         },
         {
           "id": "tail",
-          "low": -32.7,
-          "mid": -28.5,
-          "presence": -46,
-          "air": -50
+          "low": -32.9,
+          "mid": -28.7,
+          "presence": -46.1,
+          "air": -50.2
         }
       ]
     },
@@ -451,8 +451,8 @@
     }
   },
   "tail": {
-    "rms_last_0p4s_dbfs": -30.6,
-    "rms_2s_before_end_dbfs": -17.4,
+    "rms_last_0p4s_dbfs": -30.7,
+    "rms_2s_before_end_dbfs": -17.5,
     "last_sample_abs": 0
   },
   "mix": {
@@ -462,18 +462,18 @@
       "median_short_term_after": -18
     },
     "sfx": {
-      "trim_db": 2.93,
+      "trim_db": 2.9,
       "hit_cues_definition": "cues with gain_db >= -14 (impacts, whooshes, clicks, chimes, pops, blips, plucks, risers, rolls, shine, swells)",
       "hit_cues_median_delta_db": 4.5,
-      "hit_cues_within_3_6_db": "17/71",
+      "hit_cues_within_3_6_db": "16/72",
       "hit_cues_p25_p75": [
-        2.03,
-        8.19
+        2.16,
+        8.42
       ],
-      "hit_cues_within_0_10_db": "51/71",
+      "hit_cues_within_0_10_db": "52/72",
       "hit_cues_min_max": [
-        -5.63,
-        19.8
+        -5.62,
+        19.77
       ],
       "method": "K-weighted level over the 100 ms window at the SFX peak (SFX alone, after gain) minus ducked music in the same window"
     },
@@ -492,16 +492,16 @@
           "gain_db": 1.5
         }
       ],
-      "gain_db": 3.439,
+      "gain_db": 3.285,
       "limiter_ceiling_dbtp_estimate": -1.6,
       "lookahead_ms": 5,
       "release_ms": 120,
       "oversampling": "4x polyphase Kaiser windowed-sinc, 32 taps/phase",
       "gain_reduction": {
-        "max_db": 8.15,
-        "pct_time_over_1db": 5.99,
-        "pct_time_over_3db": 1.57,
-        "pct_time_over_6db": 0.1
+        "max_db": 7.97,
+        "pct_time_over_1db": 6.12,
+        "pct_time_over_3db": 1.48,
+        "pct_time_over_6db": 0.09
       }
     }
   }

@@ -540,3 +540,10 @@ console.log(`[sfx] ${Object.keys(files).length} files for ${manifestCues.length}
 console.table(Object.entries(files).map(([k, v]) => ({ key: k, sec: v.seconds, onset: v.onset_sample_minus40db, lr_db: v.lr_balance_db, layer: v.layer || '' })));
 const unbalanced = Object.entries(files).filter(([, v]) => Math.abs(v.lr_balance_db) > 1.5);
 if (unbalanced.length) console.warn('[sfx] L/R imbalance > 1.5 dB:', unbalanced.map(([k, v]) => `${k} ${v.lr_balance_db}`).join(', '));
+
+// Prune generated files no cue uses any more (durations follow src/pacing.ts, so file names change).
+// The CC0 layers and the key ticks (played by the Remotion SFX layer, src/audio.tsx) are kept.
+const usedFiles = new Set(Object.values(files).map((f) => path.basename(f.file)));
+const stale = fs.readdirSync(PATHS.sfxDir).filter((f) => f.endsWith('.wav') && !usedFiles.has(f) && !/^(remotion-|key_tick_)/.test(f));
+for (const f of stale) fs.unlinkSync(path.join(PATHS.sfxDir, f));
+if (stale.length) console.log(`[sfx] removed ${stale.length} unused file(s): ${stale.join(', ')}`);

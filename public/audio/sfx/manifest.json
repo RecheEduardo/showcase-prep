@@ -49,14 +49,14 @@
       "peak_at_s": null,
       "lr_balance_db": 0
     },
-    "riser_3p36s": {
-      "file": "sfx/riser_3p36s.wav",
+    "riser_3p366667s": {
+      "file": "sfx/riser_3p366667s.wav",
       "kind": "riser",
-      "frames": 185280,
-      "seconds": 3.86,
-      "onset_sample_minus40db": 34810,
+      "frames": 185600,
+      "seconds": 3.8667,
+      "onset_sample_minus40db": 30464,
       "layer": null,
-      "peak_at_s": 3.36,
+      "peak_at_s": 3.366667,
       "lr_balance_db": 0
     },
     "tick_v1": {
@@ -566,11 +566,11 @@
       "t": 3.5,
       "frame": 210,
       "sample": 168000,
-      "file": "sfx/riser_3p36s.wav",
-      "key": "riser_3p36s",
+      "file": "sfx/riser_3p366667s.wav",
+      "key": "riser_3p366667s",
       "gain_db": -12,
       "extra_gain_db": 0,
-      "dur": 3.36,
+      "dur": 3.366667,
       "midi": null
     },
     {
