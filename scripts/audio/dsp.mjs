@@ -24,8 +24,9 @@ export const PATHS = {
 };
 
 export const SR = 48000;
-export const TOTAL_SECONDS = 64;
-export const TOTAL = SR * TOTAL_SECONDS; // 3,072,000
+// Video length comes from the cut (src/pacing.ts → scripts/audio/cues.mjs → src/data/cues.json).
+export const TOTAL_SECONDS = JSON.parse(fs.readFileSync(PATHS.cues, 'utf8')).total_seconds;
+export const TOTAL = Math.round(SR * TOTAL_SECONDS);
 export const SAMPLES_PER_FRAME = 800;
 export const BPM = 120;
 export const BEAT_S = 60 / BPM; // 0.5 s

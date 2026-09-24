@@ -1,2299 +1,1680 @@
 {
-  "_generated_by": "scripts/sync-timeline.mjs from ../data/scene-timeline.json",
+  "_generated_by": "scripts/audio/cues.mjs from src/timeline.ts (src/pacing.ts)",
+  "pacing": {
+    "C00": 5,
+    "C01": 3,
+    "C02": 3,
+    "C03": 2.5,
+    "C04": 4,
+    "C05": 5,
+    "C06": 3,
+    "C07": 3,
+    "C08": 8,
+    "C09": 4.5
+  },
   "fps": 60,
   "sample_rate_hz": 48000,
   "samples_per_frame": 800,
-  "total_seconds": 38,
-  "music_sections": [
+  "total_seconds": 41,
+  "total_frames": 2460,
+  "scenes": [
     {
-      "id": "chaos",
+      "id": "C00",
       "start": 0,
       "end": 5,
-      "bars": "pré-grade",
-      "intensity": 2,
-      "kick": "none",
-      "elements": [
-        "drone desafinado",
-        "glitches e 'erros' em aceleração 2.5–4.75",
-        "riser 2.5->4.9"
-      ],
-      "notes": "Arrítmico de propósito (a dor). Silêncio total 4.9–5.0 antes do HARD CUT."
+      "stretch": 1
+    },
+    {
+      "id": "C01",
+      "start": 5,
+      "end": 8,
+      "stretch": 1
+    },
+    {
+      "id": "C02",
+      "start": 8,
+      "end": 11,
+      "stretch": 1
+    },
+    {
+      "id": "C03",
+      "start": 11,
+      "end": 13.5,
+      "stretch": 1
+    },
+    {
+      "id": "C04",
+      "start": 13.5,
+      "end": 17.5,
+      "stretch": 1
+    },
+    {
+      "id": "C05",
+      "start": 17.5,
+      "end": 22.5,
+      "stretch": 1
+    },
+    {
+      "id": "C06",
+      "start": 22.5,
+      "end": 25.5,
+      "stretch": 1
+    },
+    {
+      "id": "C07",
+      "start": 25.5,
+      "end": 28.5,
+      "stretch": 1
+    },
+    {
+      "id": "C08",
+      "start": 28.5,
+      "end": 36.5,
+      "stretch": 1
+    },
+    {
+      "id": "C09",
+      "start": 36.5,
+      "end": 41,
+      "stretch": 1
+    }
+  ],
+  "music_sections": [
+    {
+      "id": "intro",
+      "start": 0,
+      "end": 5,
+      "intensity": 2
     },
     {
       "id": "drop1",
       "start": 5,
       "end": 11,
-      "bars": "1-3",
-      "intensity": 4,
-      "kick": "four",
-      "elements": [
-        "impacto no HARD CUT",
-        "kick four-on-the-floor",
-        "hats 1/8",
-        "baixo sidechain"
-      ],
-      "notes": "Solução: a grade nasce no downbeat de 5.0."
+      "intensity": 4
     },
     {
-      "id": "lift",
+      "id": "groove_lift",
       "start": 11,
-      "end": 13,
-      "bars": "4",
-      "intensity": 3,
-      "kick": "four",
-      "elements": [
-        "kick + hats",
-        "pad abrindo",
-        "pluck curto"
-      ],
-      "notes": "Emoção do evento."
+      "end": 13.5,
+      "intensity": 3
     },
     {
       "id": "breakdown",
-      "start": 13,
-      "end": 17,
-      "bars": "5-6",
-      "intensity": 1,
-      "kick": "half",
-      "elements": [
-        "kick 'batimento' nos tempos 1 e 3",
-        "low-pass ~800Hz",
-        "riser 15->17",
-        "snare roll 15.5-16.5"
-      ],
-      "notes": "STOP-TIME: 16.5-17.0 sem música (só cauda do riser)."
+      "start": 13.5,
+      "end": 17.5,
+      "intensity": 1
     },
     {
       "id": "drop2",
-      "start": 17,
-      "end": 23,
-      "bars": "7-9",
-      "intensity": 5,
-      "kick": "four",
-      "elements": [
-        "kick",
-        "clap 2 e 4",
-        "baixo principal",
-        "lead",
-        "arpejo"
-      ],
-      "notes": "DROP PRINCIPAL. 'Chegou a sua vez' + mapa acendendo."
+      "start": 17.5,
+      "end": 22.5,
+      "intensity": 5
     },
     {
-      "id": "groove",
-      "start": 23,
-      "end": 27,
-      "bars": "10-11",
-      "intensity": 4,
-      "kick": "four",
-      "elements": [
-        "kick",
-        "hats",
-        "baixo"
-      ],
-      "notes": "Contador e portadores."
+      "id": "groove_rise",
+      "start": 22.5,
+      "end": 25.5,
+      "intensity": 4
+    },
+    {
+      "id": "microdrop",
+      "start": 25.5,
+      "end": 28.5,
+      "intensity": 4
     },
     {
       "id": "swap",
-      "start": 27,
-      "end": 33,
-      "bars": "12-14",
-      "intensity": 4,
-      "kick": "four",
-      "elements": [
-        "bass swap no corte da C08 (28.0)",
-        "plucks pentatônicos em colcheia 28.75-30.5",
-        "riser 33->34",
-        "snare roll 33.5"
-      ],
-      "notes": "C08 estendida: editor, virada em 31.0 e aprovação em 32.0 com respiro."
+      "start": 28.5,
+      "end": 36.5,
+      "intensity": 4
     },
     {
       "id": "finale",
-      "start": 33,
-      "end": 37,
-      "bars": "15-16",
-      "intensity": 5,
-      "kick": "four",
-      "kick_until": 36,
-      "elements": [
-        "impacto final em 34.0",
-        "pop-out/pop-in em 36.0",
-        "acorde final sustentado a partir de 36.0"
-      ],
-      "notes": "Clímax do CTA e logo final."
+      "start": 36.5,
+      "end": 40,
+      "intensity": 5
     },
     {
       "id": "tail",
-      "start": 37,
-      "end": 38,
-      "bars": "17 (meio)",
-      "intensity": 1,
-      "kick": "none",
-      "elements": [
-        "cauda do acorde final com reverb"
-      ],
-      "notes": "Fade natural até 38.0 (sem corte seco)."
+      "start": 40,
+      "end": 41,
+      "intensity": 1
     }
   ],
+  "music_anchors": {
+    "finaleHold": 38.5
+  },
   "mix_targets": {
     "integrated_lufs": -14,
-    "integrated_tolerance_lu": 1,
     "true_peak_dbtp_max": -1,
-    "music_bed_lufs_short_term_typical": -18,
-    "sfx_over_music_db": "+3 a +6 nos picos de cue",
-    "sidechain_duck_music_on_sfx_db": -3,
     "sample_rate_hz": 48000,
-    "channels": 2,
-    "final_fade": "cauda natural (reverb) até 38.0; sem corte seco"
+    "channels": 2
   },
   "cues": [
     {
+      "id": "sfx.c00.drone",
       "parent": "sfx.c00.drone",
       "kind": "sub_swell",
       "source": "custom",
-      "gain_db": -20,
-      "dur": 2.5,
-      "id": "sfx.c00.drone",
       "t": 0,
-      "frame": 0
+      "frame": 0,
+      "gain_db": -20,
+      "dur": 2.5
     },
     {
+      "id": "sfx.c00.deadclick",
       "parent": "sfx.c00.deadclick",
       "kind": "click",
       "source": "custom",
-      "gain_db": -14,
-      "id": "sfx.c00.deadclick",
       "t": 1.5,
-      "frame": 90
+      "frame": 90,
+      "gain_db": -14
     },
     {
+      "id": "sfx.c00.errors#0",
       "parent": "sfx.c00.errors",
       "kind": "tick",
       "source": "custom",
-      "gain_db": -14,
-      "id": "sfx.c00.errors#0",
-      "index": 0,
-      "count": 10,
       "t": 2.5,
-      "frame": 150
+      "frame": 150,
+      "gain_db": -14,
+      "index": 0,
+      "count": 10
     },
     {
+      "id": "sfx.c00.riser",
       "parent": "sfx.c00.riser",
       "kind": "riser",
       "source": "custom",
-      "gain_db": -12,
-      "dur": 2.4,
-      "id": "sfx.c00.riser",
       "t": 2.5,
-      "frame": 150
+      "frame": 150,
+      "gain_db": -12,
+      "dur": 2.4
     },
     {
-      "parent": "sfx.c00.errors",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -14,
       "id": "sfx.c00.errors#1",
-      "index": 1,
-      "count": 10,
+      "parent": "sfx.c00.errors",
+      "kind": "tick",
+      "source": "custom",
       "t": 2.9833333333333334,
-      "frame": 179
+      "frame": 179,
+      "gain_db": -14,
+      "index": 1,
+      "count": 10
     },
     {
-      "parent": "sfx.c00.errors",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -14,
       "id": "sfx.c00.errors#2",
-      "index": 2,
-      "count": 10,
+      "parent": "sfx.c00.errors",
+      "kind": "tick",
+      "source": "custom",
       "t": 3.3833333333333333,
-      "frame": 203
+      "frame": 203,
+      "gain_db": -14,
+      "index": 2,
+      "count": 10
     },
     {
-      "parent": "sfx.c00.errors",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -14,
       "id": "sfx.c00.errors#3",
-      "index": 3,
-      "count": 10,
+      "parent": "sfx.c00.errors",
+      "kind": "tick",
+      "source": "custom",
       "t": 3.716666666666667,
-      "frame": 223
+      "frame": 223,
+      "gain_db": -14,
+      "index": 3,
+      "count": 10
     },
     {
-      "parent": "sfx.c00.errors",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -14,
       "id": "sfx.c00.errors#4",
-      "index": 4,
-      "count": 10,
+      "parent": "sfx.c00.errors",
+      "kind": "tick",
+      "source": "custom",
       "t": 3.9833333333333334,
-      "frame": 239
+      "frame": 239,
+      "gain_db": -14,
+      "index": 4,
+      "count": 10
     },
     {
-      "parent": "sfx.c00.errors",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -14,
       "id": "sfx.c00.errors#5",
-      "index": 5,
-      "count": 10,
+      "parent": "sfx.c00.errors",
+      "kind": "tick",
+      "source": "custom",
       "t": 4.2,
-      "frame": 252
+      "frame": 252,
+      "gain_db": -14,
+      "index": 5,
+      "count": 10
     },
     {
-      "parent": "sfx.c00.errors",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -14,
       "id": "sfx.c00.errors#6",
-      "index": 6,
-      "count": 10,
+      "parent": "sfx.c00.errors",
+      "kind": "tick",
+      "source": "custom",
       "t": 4.383333333333334,
-      "frame": 263
+      "frame": 263,
+      "gain_db": -14,
+      "index": 6,
+      "count": 10
     },
     {
-      "parent": "sfx.c00.errors",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -14,
       "id": "sfx.c00.errors#7",
-      "index": 7,
-      "count": 10,
+      "parent": "sfx.c00.errors",
+      "kind": "tick",
+      "source": "custom",
       "t": 4.533333333333333,
-      "frame": 272
+      "frame": 272,
+      "gain_db": -14,
+      "index": 7,
+      "count": 10
     },
     {
-      "parent": "sfx.c00.errors",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -14,
       "id": "sfx.c00.errors#8",
-      "index": 8,
-      "count": 10,
-      "t": 4.65,
-      "frame": 279
-    },
-    {
       "parent": "sfx.c00.errors",
       "kind": "tick",
       "source": "custom",
+      "t": 4.65,
+      "frame": 279,
       "gain_db": -14,
-      "id": "sfx.c00.errors#9",
-      "index": 9,
-      "count": 10,
-      "t": 4.75,
-      "frame": 285
+      "index": 8,
+      "count": 10
     },
     {
+      "id": "sfx.c00.errors#9",
+      "parent": "sfx.c00.errors",
+      "kind": "tick",
+      "source": "custom",
+      "t": 4.75,
+      "frame": 285,
+      "gain_db": -14,
+      "index": 9,
+      "count": 10
+    },
+    {
+      "id": "sfx.c00.gap",
       "parent": "sfx.c00.gap",
       "kind": "silence_gap",
-      "source": "mix",
-      "dur": 0.1,
-      "id": "sfx.c00.gap",
+      "source": "custom",
       "t": 4.9,
-      "frame": 294
+      "frame": 294,
+      "gain_db": 0,
+      "dur": 0.1
     },
     {
+      "id": "sfx.drop1.impact",
       "parent": "sfx.drop1.impact",
       "kind": "impact_big",
       "source": "custom",
-      "gain_db": -4,
-      "id": "sfx.drop1.impact",
       "t": 5,
-      "frame": 300
+      "frame": 300,
+      "gain_db": -4
     },
     {
+      "id": "sfx.c01.float",
       "parent": "sfx.c01.float",
       "kind": "whoosh_up",
       "source": "custom",
-      "gain_db": -14,
-      "id": "sfx.c01.float",
       "t": 5.25,
-      "frame": 315
+      "frame": 315,
+      "gain_db": -14
     },
     {
-      "parent": "sfx.c01.tagline",
-      "kind": "tick_soft",
-      "source": "custom",
-      "gain_db": -18,
       "id": "sfx.c01.tagline#0",
-      "index": 0,
-      "count": 6,
+      "parent": "sfx.c01.tagline",
+      "kind": "tick_soft",
+      "source": "custom",
       "t": 5.5,
-      "frame": 330
+      "frame": 330,
+      "gain_db": -18,
+      "index": 0,
+      "count": 6
     },
     {
-      "parent": "sfx.c01.tagline",
-      "kind": "tick_soft",
-      "source": "custom",
-      "gain_db": -18,
       "id": "sfx.c01.tagline#1",
-      "index": 1,
-      "count": 6,
+      "parent": "sfx.c01.tagline",
+      "kind": "tick_soft",
+      "source": "custom",
       "t": 5.55,
-      "frame": 333
+      "frame": 333,
+      "gain_db": -18,
+      "index": 1,
+      "count": 6
     },
     {
-      "parent": "sfx.c01.tagline",
-      "kind": "tick_soft",
-      "source": "custom",
-      "gain_db": -18,
       "id": "sfx.c01.tagline#2",
-      "index": 2,
-      "count": 6,
+      "parent": "sfx.c01.tagline",
+      "kind": "tick_soft",
+      "source": "custom",
       "t": 5.6,
-      "frame": 336
+      "frame": 336,
+      "gain_db": -18,
+      "index": 2,
+      "count": 6
     },
     {
-      "parent": "sfx.c01.tagline",
-      "kind": "tick_soft",
-      "source": "custom",
-      "gain_db": -18,
       "id": "sfx.c01.tagline#3",
-      "index": 3,
-      "count": 6,
+      "parent": "sfx.c01.tagline",
+      "kind": "tick_soft",
+      "source": "custom",
       "t": 5.65,
-      "frame": 339
+      "frame": 339,
+      "gain_db": -18,
+      "index": 3,
+      "count": 6
     },
     {
-      "parent": "sfx.c01.tagline",
-      "kind": "tick_soft",
-      "source": "custom",
-      "gain_db": -18,
       "id": "sfx.c01.tagline#4",
-      "index": 4,
-      "count": 6,
-      "t": 5.7,
-      "frame": 342
-    },
-    {
       "parent": "sfx.c01.tagline",
       "kind": "tick_soft",
       "source": "custom",
+      "t": 5.7,
+      "frame": 342,
       "gain_db": -18,
-      "id": "sfx.c01.tagline#5",
-      "index": 5,
-      "count": 6,
-      "t": 5.75,
-      "frame": 345
+      "index": 4,
+      "count": 6
     },
     {
+      "id": "sfx.c01.tagline#5",
+      "parent": "sfx.c01.tagline",
+      "kind": "tick_soft",
+      "source": "custom",
+      "t": 5.75,
+      "frame": 345,
+      "gain_db": -18,
+      "index": 5,
+      "count": 6
+    },
+    {
+      "id": "sfx.c01.out",
       "parent": "sfx.c01.out",
       "kind": "whoosh",
       "source": "remotion-sfx:whip|whoosh",
-      "gain_db": -8,
-      "id": "sfx.c01.out",
       "t": 7.833333333333333,
-      "frame": 470
+      "frame": 470,
+      "gain_db": -8
     },
     {
+      "id": "sfx.c02.in",
       "parent": "sfx.c02.in",
       "kind": "impact_soft",
       "source": "custom",
-      "gain_db": -12,
-      "id": "sfx.c02.in",
       "t": 8,
-      "frame": 480
+      "frame": 480,
+      "gain_db": -12
     },
     {
+      "id": "sfx.c02.tiles#0",
       "parent": "sfx.c02.tiles",
       "kind": "blip_pop",
       "source": "custom",
+      "t": 8.25,
+      "frame": 495,
       "gain_db": -14,
-      "midi": 64,
-      "note": "E4",
-      "id": "sfx.c02.tiles#0",
       "index": 0,
       "count": 10,
-      "t": 8.25,
-      "frame": 495
+      "midi": 64
     },
     {
+      "id": "sfx.c02.tiles#1",
       "parent": "sfx.c02.tiles",
       "kind": "blip_pop",
       "source": "custom",
+      "t": 8.3,
+      "frame": 498,
       "gain_db": -14,
-      "midi": 67,
-      "note": "G4",
-      "id": "sfx.c02.tiles#1",
       "index": 1,
       "count": 10,
-      "t": 8.3,
-      "frame": 498
+      "midi": 67
     },
     {
+      "id": "sfx.c02.tiles#2",
       "parent": "sfx.c02.tiles",
       "kind": "blip_pop",
       "source": "custom",
+      "t": 8.35,
+      "frame": 501,
       "gain_db": -14,
-      "midi": 69,
-      "note": "A4",
-      "id": "sfx.c02.tiles#2",
       "index": 2,
       "count": 10,
-      "t": 8.35,
-      "frame": 501
+      "midi": 69
     },
     {
+      "id": "sfx.c02.tiles#3",
       "parent": "sfx.c02.tiles",
       "kind": "blip_pop",
       "source": "custom",
+      "t": 8.4,
+      "frame": 504,
       "gain_db": -14,
-      "midi": 72,
-      "note": "C5",
-      "id": "sfx.c02.tiles#3",
       "index": 3,
       "count": 10,
-      "t": 8.4,
-      "frame": 504
+      "midi": 72
     },
     {
+      "id": "sfx.c02.tiles#4",
       "parent": "sfx.c02.tiles",
       "kind": "blip_pop",
       "source": "custom",
+      "t": 8.45,
+      "frame": 507,
       "gain_db": -14,
-      "midi": 74,
-      "note": "D5",
-      "id": "sfx.c02.tiles#4",
       "index": 4,
       "count": 10,
-      "t": 8.45,
-      "frame": 507
+      "midi": 74
     },
     {
+      "id": "sfx.c02.tiles#5",
       "parent": "sfx.c02.tiles",
       "kind": "blip_pop",
       "source": "custom",
+      "t": 8.5,
+      "frame": 510,
       "gain_db": -14,
-      "midi": 76,
-      "note": "E5",
-      "id": "sfx.c02.tiles#5",
       "index": 5,
       "count": 10,
-      "t": 8.5,
-      "frame": 510
+      "midi": 76
     },
     {
+      "id": "sfx.c02.tiles#6",
       "parent": "sfx.c02.tiles",
       "kind": "blip_pop",
       "source": "custom",
+      "t": 8.55,
+      "frame": 513,
       "gain_db": -14,
-      "midi": 79,
-      "note": "G5",
-      "id": "sfx.c02.tiles#6",
       "index": 6,
       "count": 10,
-      "t": 8.55,
-      "frame": 513
+      "midi": 79
     },
     {
+      "id": "sfx.c02.tiles#7",
       "parent": "sfx.c02.tiles",
       "kind": "blip_pop",
       "source": "custom",
+      "t": 8.6,
+      "frame": 516,
       "gain_db": -14,
-      "midi": 81,
-      "note": "A5",
-      "id": "sfx.c02.tiles#7",
       "index": 7,
       "count": 10,
-      "t": 8.6,
-      "frame": 516
+      "midi": 81
     },
     {
+      "id": "sfx.c02.tiles#8",
       "parent": "sfx.c02.tiles",
       "kind": "blip_pop",
       "source": "custom",
+      "t": 8.65,
+      "frame": 519,
       "gain_db": -14,
-      "midi": 84,
-      "note": "C6",
-      "id": "sfx.c02.tiles#8",
       "index": 8,
       "count": 10,
-      "t": 8.65,
-      "frame": 519
+      "midi": 84
     },
     {
+      "id": "sfx.c02.tiles#9",
       "parent": "sfx.c02.tiles",
       "kind": "blip_pop",
       "source": "custom",
+      "t": 8.7,
+      "frame": 522,
       "gain_db": -14,
-      "midi": 86,
-      "note": "D6",
-      "id": "sfx.c02.tiles#9",
       "index": 9,
       "count": 10,
-      "t": 8.7,
-      "frame": 522
+      "midi": 86
     },
     {
+      "id": "sfx.c02.out",
       "parent": "sfx.c02.out",
       "kind": "whoosh",
       "source": "remotion-sfx:whip|whoosh",
-      "gain_db": -8,
-      "id": "sfx.c02.out",
       "t": 10.833333333333334,
-      "frame": 650
+      "frame": 650,
+      "gain_db": -8
     },
     {
+      "id": "sfx.c03.in",
       "parent": "sfx.c03.in",
       "kind": "impact_soft",
       "source": "custom",
-      "gain_db": -12,
-      "id": "sfx.c03.in",
       "t": 11,
-      "frame": 660
+      "frame": 660,
+      "gain_db": -12
     },
     {
+      "id": "sfx.c03.panel",
       "parent": "sfx.c03.panel",
       "kind": "whoosh_soft",
       "source": "custom",
-      "gain_db": -14,
-      "id": "sfx.c03.panel",
       "t": 11.25,
-      "frame": 675
+      "frame": 675,
+      "gain_db": -14
     },
     {
-      "parent": "sfx.c03.ping",
-      "kind": "chime_ping",
-      "source": "custom",
-      "gain_db": -12,
-      "id": "sfx.c03.ping",
-      "t": 12,
-      "frame": 720
-    },
-    {
+      "id": "sfx.c03.click",
       "parent": "sfx.c03.click",
       "kind": "click",
       "source": "custom",
-      "gain_db": -8,
-      "id": "sfx.c03.click",
       "t": 12.5,
-      "frame": 750
+      "frame": 750,
+      "gain_db": -8
     },
     {
+      "id": "sfx.c03.ping",
+      "parent": "sfx.c03.ping",
+      "kind": "chime_ping",
+      "source": "custom",
+      "t": 12.566666666666666,
+      "frame": 754,
+      "gain_db": -14
+    },
+    {
+      "id": "sfx.c03.out",
       "parent": "sfx.c03.out",
       "kind": "whoosh",
       "source": "remotion-sfx:whoosh|custom",
-      "gain_db": -6,
-      "id": "sfx.c03.out",
-      "t": 12.75,
-      "frame": 765
+      "t": 13.05,
+      "frame": 783,
+      "gain_db": -6
     },
     {
+      "id": "sfx.c04.thud",
       "parent": "sfx.c04.thud",
       "kind": "sub_hit",
       "source": "custom",
-      "gain_db": -8,
-      "id": "sfx.c04.thud",
-      "t": 13,
-      "frame": 780
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#0",
-      "index": 0,
-      "count": 40,
       "t": 13.5,
-      "frame": 810
+      "frame": 810,
+      "gain_db": -8
     },
     {
+      "id": "sfx.c04.countdown#0",
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
+      "t": 14,
+      "frame": 840,
       "gain_db": -18,
+      "index": 0,
+      "count": 40
+    },
+    {
       "id": "sfx.c04.countdown#1",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 14.15,
+      "frame": 849,
+      "gain_db": -18,
       "index": 1,
-      "count": 40,
-      "t": 13.65,
-      "frame": 819
+      "count": 40
     },
     {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
       "id": "sfx.c04.countdown#2",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 14.3,
+      "frame": 858,
+      "gain_db": -18,
       "index": 2,
-      "count": 40,
-      "t": 13.8,
-      "frame": 828
+      "count": 40
     },
     {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
       "id": "sfx.c04.countdown#3",
-      "index": 3,
-      "count": 40,
-      "t": 13.95,
-      "frame": 837
-    },
-    {
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#4",
-      "index": 4,
-      "count": 40,
-      "t": 14.083333333333334,
-      "frame": 845
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#5",
-      "index": 5,
-      "count": 40,
-      "t": 14.216666666666667,
-      "frame": 853
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#6",
-      "index": 6,
-      "count": 40,
-      "t": 14.333333333333334,
-      "frame": 860
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#7",
-      "index": 7,
-      "count": 40,
       "t": 14.45,
-      "frame": 867
+      "frame": 867,
+      "gain_db": -18,
+      "index": 3,
+      "count": 40
     },
     {
+      "id": "sfx.c04.countdown#4",
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
+      "t": 14.583333333333334,
+      "frame": 875,
       "gain_db": -18,
+      "index": 4,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.countdown#5",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 14.716666666666667,
+      "frame": 883,
+      "gain_db": -18,
+      "index": 5,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.countdown#6",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 14.833333333333334,
+      "frame": 890,
+      "gain_db": -18,
+      "index": 6,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.countdown#7",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 14.95,
+      "frame": 897,
+      "gain_db": -18,
+      "index": 7,
+      "count": 40
+    },
+    {
       "id": "sfx.c04.countdown#8",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 15.066666666666666,
+      "frame": 904,
+      "gain_db": -18,
       "index": 8,
-      "count": 40,
-      "t": 14.566666666666666,
-      "frame": 874
+      "count": 40
     },
     {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
       "id": "sfx.c04.countdown#9",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 15.183333333333334,
+      "frame": 911,
+      "gain_db": -18,
       "index": 9,
-      "count": 40,
-      "t": 14.683333333333334,
-      "frame": 881
+      "count": 40
     },
     {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
       "id": "sfx.c04.countdown#10",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 15.283333333333333,
+      "frame": 917,
+      "gain_db": -18,
       "index": 10,
-      "count": 40,
-      "t": 14.783333333333333,
-      "frame": 887
+      "count": 40
     },
     {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
       "id": "sfx.c04.countdown#11",
-      "index": 11,
-      "count": 40,
-      "t": 14.883333333333333,
-      "frame": 893
-    },
-    {
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
+      "t": 15.383333333333333,
+      "frame": 923,
       "gain_db": -18,
-      "id": "sfx.c04.countdown#12",
-      "index": 12,
-      "count": 40,
-      "t": 14.983333333333333,
-      "frame": 899
+      "index": 11,
+      "count": 40
     },
     {
+      "id": "sfx.c04.countdown#12",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 15.483333333333333,
+      "frame": 929,
+      "gain_db": -18,
+      "index": 12,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.riser",
       "parent": "sfx.c04.riser",
       "kind": "riser",
       "source": "custom",
+      "t": 15.5,
+      "frame": 930,
       "gain_db": -12,
-      "dur": 2,
-      "id": "sfx.c04.riser",
-      "t": 15,
-      "frame": 900
+      "dur": 2
     },
     {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
       "id": "sfx.c04.countdown#13",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 15.566666666666666,
+      "frame": 934,
+      "gain_db": -18,
       "index": 13,
-      "count": 40,
-      "t": 15.066666666666666,
-      "frame": 904
+      "count": 40
     },
     {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
       "id": "sfx.c04.countdown#14",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 15.666666666666666,
+      "frame": 940,
+      "gain_db": -18,
       "index": 14,
-      "count": 40,
-      "t": 15.166666666666666,
-      "frame": 910
+      "count": 40
     },
     {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
       "id": "sfx.c04.countdown#15",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 15.75,
+      "frame": 945,
+      "gain_db": -18,
       "index": 15,
-      "count": 40,
-      "t": 15.25,
-      "frame": 915
+      "count": 40
     },
     {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
       "id": "sfx.c04.countdown#16",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 15.833333333333334,
+      "frame": 950,
+      "gain_db": -18,
       "index": 16,
-      "count": 40,
-      "t": 15.333333333333334,
-      "frame": 920
+      "count": 40
     },
     {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
       "id": "sfx.c04.countdown#17",
-      "index": 17,
-      "count": 40,
-      "t": 15.4,
-      "frame": 924
-    },
-    {
       "parent": "sfx.c04.countdown",
       "kind": "tick",
       "source": "custom",
+      "t": 15.9,
+      "frame": 954,
       "gain_db": -18,
-      "id": "sfx.c04.countdown#18",
-      "index": 18,
-      "count": 40,
-      "t": 15.483333333333333,
-      "frame": 929
+      "index": 17,
+      "count": 40
     },
     {
+      "id": "sfx.c04.countdown#18",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 15.983333333333333,
+      "frame": 959,
+      "gain_db": -18,
+      "index": 18,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.countdown#19",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 16.05,
+      "frame": 963,
+      "gain_db": -18,
+      "index": 19,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.countdown#20",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 16.116666666666667,
+      "frame": 967,
+      "gain_db": -18,
+      "index": 20,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.countdown#21",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 16.183333333333334,
+      "frame": 971,
+      "gain_db": -18,
+      "index": 21,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.countdown#22",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 16.25,
+      "frame": 975,
+      "gain_db": -18,
+      "index": 22,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.countdown#23",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 16.316666666666666,
+      "frame": 979,
+      "gain_db": -18,
+      "index": 23,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.countdown#24",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 16.366666666666667,
+      "frame": 982,
+      "gain_db": -18,
+      "index": 24,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.countdown#25",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 16.416666666666668,
+      "frame": 985,
+      "gain_db": -18,
+      "index": 25,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.countdown#26",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 16.483333333333334,
+      "frame": 989,
+      "gain_db": -18,
+      "index": 26,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.roll",
       "parent": "sfx.c04.roll",
       "kind": "snare_roll",
       "source": "custom",
-      "gain_db": -12,
-      "dur": 1,
-      "id": "sfx.c04.roll",
-      "t": 15.5,
-      "frame": 930
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#19",
-      "index": 19,
-      "count": 40,
-      "t": 15.55,
-      "frame": 933
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#20",
-      "index": 20,
-      "count": 40,
-      "t": 15.616666666666667,
-      "frame": 937
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#21",
-      "index": 21,
-      "count": 40,
-      "t": 15.683333333333334,
-      "frame": 941
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#22",
-      "index": 22,
-      "count": 40,
-      "t": 15.75,
-      "frame": 945
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#23",
-      "index": 23,
-      "count": 40,
-      "t": 15.816666666666666,
-      "frame": 949
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#24",
-      "index": 24,
-      "count": 40,
-      "t": 15.866666666666667,
-      "frame": 952
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#25",
-      "index": 25,
-      "count": 40,
-      "t": 15.916666666666666,
-      "frame": 955
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#26",
-      "index": 26,
-      "count": 40,
-      "t": 15.983333333333333,
-      "frame": 959
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#27",
-      "index": 27,
-      "count": 40,
-      "t": 16.033333333333335,
-      "frame": 962
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#28",
-      "index": 28,
-      "count": 40,
-      "t": 16.083333333333332,
-      "frame": 965
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#29",
-      "index": 29,
-      "count": 40,
-      "t": 16.116666666666667,
-      "frame": 967
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#30",
-      "index": 30,
-      "count": 40,
-      "t": 16.166666666666668,
-      "frame": 970
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#31",
-      "index": 31,
-      "count": 40,
-      "t": 16.216666666666665,
-      "frame": 973
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#32",
-      "index": 32,
-      "count": 40,
-      "t": 16.25,
-      "frame": 975
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#33",
-      "index": 33,
-      "count": 40,
-      "t": 16.3,
-      "frame": 978
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#34",
-      "index": 34,
-      "count": 40,
-      "t": 16.333333333333332,
-      "frame": 980
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#35",
-      "index": 35,
-      "count": 40,
-      "t": 16.366666666666667,
-      "frame": 982
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#36",
-      "index": 36,
-      "count": 40,
-      "t": 16.4,
-      "frame": 984
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#37",
-      "index": 37,
-      "count": 40,
-      "t": 16.433333333333334,
-      "frame": 986
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#38",
-      "index": 38,
-      "count": 40,
-      "t": 16.466666666666665,
-      "frame": 988
-    },
-    {
-      "parent": "sfx.c04.countdown",
-      "kind": "tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c04.countdown#39",
-      "index": 39,
-      "count": 40,
       "t": 16.5,
-      "frame": 990
+      "frame": 990,
+      "gain_db": -12,
+      "dur": 0.5
     },
     {
+      "id": "sfx.c04.countdown#27",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 16.533333333333335,
+      "frame": 992,
+      "gain_db": -18,
+      "index": 27,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.countdown#28",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 16.583333333333332,
+      "frame": 995,
+      "gain_db": -18,
+      "index": 28,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.countdown#29",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 16.616666666666667,
+      "frame": 997,
+      "gain_db": -18,
+      "index": 29,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.countdown#30",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 16.666666666666668,
+      "frame": 1000,
+      "gain_db": -18,
+      "index": 30,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.countdown#31",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 16.716666666666665,
+      "frame": 1003,
+      "gain_db": -18,
+      "index": 31,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.countdown#32",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 16.75,
+      "frame": 1005,
+      "gain_db": -18,
+      "index": 32,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.countdown#33",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 16.8,
+      "frame": 1008,
+      "gain_db": -18,
+      "index": 33,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.countdown#34",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 16.833333333333332,
+      "frame": 1010,
+      "gain_db": -18,
+      "index": 34,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.countdown#35",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 16.866666666666667,
+      "frame": 1012,
+      "gain_db": -18,
+      "index": 35,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.countdown#36",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 16.9,
+      "frame": 1014,
+      "gain_db": -18,
+      "index": 36,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.countdown#37",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 16.933333333333334,
+      "frame": 1016,
+      "gain_db": -18,
+      "index": 37,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.countdown#38",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 16.966666666666665,
+      "frame": 1018,
+      "gain_db": -18,
+      "index": 38,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.countdown#39",
+      "parent": "sfx.c04.countdown",
+      "kind": "tick",
+      "source": "custom",
+      "t": 17,
+      "frame": 1020,
+      "gain_db": -18,
+      "index": 39,
+      "count": 40
+    },
+    {
+      "id": "sfx.c04.stoptime",
       "parent": "sfx.c04.stoptime",
       "kind": "silence_gap",
-      "source": "mix",
-      "dur": 0.5,
-      "id": "sfx.c04.stoptime",
-      "t": 16.5,
-      "frame": 990
+      "source": "custom",
+      "t": 17,
+      "frame": 1020,
+      "gain_db": 0,
+      "dur": 0.5
     },
     {
+      "id": "sfx.drop2.chime",
       "parent": "sfx.drop2.chime",
       "kind": "chime_success",
       "source": "custom",
-      "gain_db": -10,
-      "id": "sfx.drop2.chime",
-      "t": 17,
-      "frame": 1020
+      "t": 17.5,
+      "frame": 1050,
+      "gain_db": -10
     },
     {
+      "id": "sfx.drop2.impact",
       "parent": "sfx.drop2.impact",
       "kind": "impact_huge",
       "source": "custom",
-      "gain_db": -3,
-      "id": "sfx.drop2.impact",
-      "t": 17,
-      "frame": 1020
+      "t": 17.5,
+      "frame": 1050,
+      "gain_db": -3
     },
     {
+      "id": "sfx.c05.rows#0",
       "parent": "sfx.c05.rows",
       "kind": "blip_pop",
       "source": "custom",
+      "t": 17.75,
+      "frame": 1065,
       "gain_db": -16,
-      "midi": 64,
-      "note": "E4",
-      "id": "sfx.c05.rows#0",
       "index": 0,
       "count": 4,
-      "t": 17.25,
-      "frame": 1035
+      "midi": 64
     },
     {
+      "id": "sfx.c05.rows#1",
       "parent": "sfx.c05.rows",
       "kind": "blip_pop",
       "source": "custom",
+      "t": 17.8,
+      "frame": 1068,
       "gain_db": -16,
-      "midi": 67,
-      "note": "G4",
-      "id": "sfx.c05.rows#1",
       "index": 1,
       "count": 4,
-      "t": 17.3,
-      "frame": 1038
+      "midi": 67
     },
     {
+      "id": "sfx.c05.rows#2",
       "parent": "sfx.c05.rows",
       "kind": "blip_pop",
       "source": "custom",
+      "t": 17.85,
+      "frame": 1071,
       "gain_db": -16,
-      "midi": 69,
-      "note": "A4",
-      "id": "sfx.c05.rows#2",
       "index": 2,
       "count": 4,
-      "t": 17.35,
-      "frame": 1041
+      "midi": 69
     },
     {
+      "id": "sfx.c05.rows#3",
       "parent": "sfx.c05.rows",
       "kind": "blip_pop",
       "source": "custom",
+      "t": 17.9,
+      "frame": 1074,
       "gain_db": -16,
-      "midi": 72,
-      "note": "C5",
-      "id": "sfx.c05.rows#3",
       "index": 3,
       "count": 4,
-      "t": 17.4,
-      "frame": 1044
+      "midi": 72
     },
     {
+      "id": "sfx.c05.click1",
       "parent": "sfx.c05.click1",
       "kind": "click",
       "source": "custom",
-      "gain_db": -8,
-      "id": "sfx.c05.click1",
-      "t": 18,
-      "frame": 1080
+      "t": 18.5,
+      "frame": 1110,
+      "gain_db": -8
     },
     {
+      "id": "sfx.c05.fill1",
       "parent": "sfx.c05.fill1",
       "kind": "swell_fill",
       "source": "custom",
+      "t": 18.6,
+      "frame": 1116,
       "gain_db": -12,
       "dur": 0.6,
-      "pitch_semitones": 0,
-      "id": "sfx.c05.fill1",
-      "t": 18.1,
-      "frame": 1086
+      "pitch_semitones": 0
     },
     {
+      "id": "sfx.c05.tip1",
       "parent": "sfx.c05.tip1",
       "kind": "pop",
       "source": "custom",
-      "gain_db": -14,
-      "id": "sfx.c05.tip1",
-      "t": 18.5,
-      "frame": 1110
+      "t": 19,
+      "frame": 1140,
+      "gain_db": -14
     },
     {
+      "id": "sfx.c05.click2",
       "parent": "sfx.c05.click2",
       "kind": "click",
       "source": "custom",
-      "gain_db": -8,
-      "id": "sfx.c05.click2",
-      "t": 20,
-      "frame": 1200
+      "t": 20.5,
+      "frame": 1230,
+      "gain_db": -8
     },
     {
+      "id": "sfx.c05.fill2",
       "parent": "sfx.c05.fill2",
       "kind": "swell_fill",
       "source": "custom",
+      "t": 20.6,
+      "frame": 1236,
       "gain_db": -12,
       "dur": 0.6,
-      "pitch_semitones": 3,
-      "id": "sfx.c05.fill2",
-      "t": 20.1,
-      "frame": 1206
+      "pitch_semitones": 3
     },
     {
+      "id": "sfx.c05.tip2",
       "parent": "sfx.c05.tip2",
       "kind": "pop",
       "source": "custom",
-      "gain_db": -14,
-      "id": "sfx.c05.tip2",
-      "t": 20.5,
-      "frame": 1230
+      "t": 21,
+      "frame": 1260,
+      "gain_db": -14
     },
     {
-      "parent": "sfx.c05.priceswap",
+      "id": "sfx.c05.out",
+      "parent": "sfx.c05.out",
       "kind": "whoosh_soft",
       "source": "custom",
-      "gain_db": -14,
-      "id": "sfx.c05.priceswap",
-      "t": 21.5,
-      "frame": 1290
+      "t": 22.2,
+      "frame": 1332,
+      "gain_db": -12
     },
     {
-      "parent": "sfx.c05.out",
-      "kind": "whoosh",
-      "source": "remotion-sfx:whip|whoosh",
-      "gain_db": -8,
-      "id": "sfx.c05.out",
-      "t": 22.833333333333332,
-      "frame": 1370
-    },
-    {
+      "id": "sfx.c06.appear",
       "parent": "sfx.c06.appear",
       "kind": "pop",
       "source": "custom",
-      "gain_db": -12,
-      "id": "sfx.c06.appear",
-      "t": 23,
-      "frame": 1380
+      "t": 22.5,
+      "frame": 1350,
+      "gain_db": -12
     },
     {
+      "id": "sfx.c06.plus1",
       "parent": "sfx.c06.plus1",
       "kind": "click",
       "source": "custom",
-      "gain_db": -8,
-      "id": "sfx.c06.plus1",
-      "t": 23.5,
-      "frame": 1410
+      "t": 23,
+      "frame": 1380,
+      "gain_db": -8
     },
     {
+      "id": "sfx.c06.roll1",
       "parent": "sfx.c06.roll1",
       "kind": "counter_roll",
       "source": "custom",
+      "t": 23,
+      "frame": 1380,
       "gain_db": -18,
-      "dur": 0.4,
-      "id": "sfx.c06.roll1",
-      "t": 23.5,
-      "frame": 1410
+      "dur": 0.4
     },
     {
+      "id": "sfx.c06.plus2",
       "parent": "sfx.c06.plus2",
       "kind": "click",
       "source": "custom",
-      "gain_db": -8,
-      "id": "sfx.c06.plus2",
-      "t": 24,
-      "frame": 1440
+      "t": 23.5,
+      "frame": 1410,
+      "gain_db": -8
     },
     {
+      "id": "sfx.c06.roll2",
       "parent": "sfx.c06.roll2",
       "kind": "counter_roll",
       "source": "custom",
+      "t": 23.5,
+      "frame": 1410,
       "gain_db": -18,
-      "dur": 0.4,
-      "id": "sfx.c06.roll2",
-      "t": 24,
-      "frame": 1440
+      "dur": 0.4
     },
     {
+      "id": "sfx.c06.total",
       "parent": "sfx.c06.total",
       "kind": "whoosh_up",
       "source": "custom",
-      "gain_db": -10,
-      "id": "sfx.c06.total",
-      "t": 24.25,
-      "frame": 1455
+      "t": 23.75,
+      "frame": 1425,
+      "gain_db": -10
     },
     {
+      "id": "sfx.c06.shine",
       "parent": "sfx.c06.shine",
       "kind": "shine",
       "source": "custom",
-      "gain_db": -12,
-      "id": "sfx.c06.shine",
-      "t": 25,
-      "frame": 1500
+      "t": 24.5,
+      "frame": 1470,
+      "gain_db": -12
     },
     {
+      "id": "sfx.c06.out",
       "parent": "sfx.c06.out",
       "kind": "whoosh",
       "source": "remotion-sfx:whip|whoosh",
-      "gain_db": -8,
-      "id": "sfx.c06.out",
-      "t": 25.833333333333332,
-      "frame": 1550
+      "t": 25.333333333333332,
+      "frame": 1520,
+      "gain_db": -8
     },
     {
+      "id": "sfx.c07.in",
       "parent": "sfx.c07.in",
       "kind": "impact_small",
       "source": "custom",
-      "gain_db": -8,
-      "id": "sfx.c07.in",
-      "t": 26,
-      "frame": 1560
+      "t": 25.5,
+      "frame": 1530,
+      "gain_db": -8
     },
     {
+      "id": "sfx.c07.slide",
       "parent": "sfx.c07.slide",
       "kind": "whoosh",
       "source": "remotion-sfx:whip|whoosh",
-      "gain_db": -10,
-      "id": "sfx.c07.slide",
-      "t": 26.25,
-      "frame": 1575
+      "t": 25.75,
+      "frame": 1545,
+      "gain_db": -10
     },
     {
-      "parent": "sfx.c07.type",
-      "kind": "key_tick",
+      "id": "sfx.c07.done#0",
+      "parent": "sfx.c07.done",
+      "kind": "pop",
       "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c07.type#0",
-      "index": 0,
-      "count": 8,
-      "t": 26.5,
-      "frame": 1590
-    },
-    {
-      "parent": "sfx.c07.type",
-      "kind": "key_tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c07.type#1",
-      "index": 1,
-      "count": 8,
-      "t": 26.55,
-      "frame": 1593
-    },
-    {
-      "parent": "sfx.c07.type",
-      "kind": "key_tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c07.type#2",
-      "index": 2,
-      "count": 8,
-      "t": 26.6,
-      "frame": 1596
-    },
-    {
-      "parent": "sfx.c07.type",
-      "kind": "key_tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c07.type#3",
-      "index": 3,
-      "count": 8,
-      "t": 26.65,
-      "frame": 1599
-    },
-    {
-      "parent": "sfx.c07.type",
-      "kind": "key_tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c07.type#4",
-      "index": 4,
-      "count": 8,
-      "t": 26.7,
-      "frame": 1602
-    },
-    {
-      "parent": "sfx.c07.type",
-      "kind": "key_tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c07.type#5",
-      "index": 5,
-      "count": 8,
-      "t": 26.75,
-      "frame": 1605
-    },
-    {
-      "parent": "sfx.c07.type",
-      "kind": "key_tick",
-      "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c07.type#6",
-      "index": 6,
-      "count": 8,
       "t": 26.8,
-      "frame": 1608
+      "frame": 1608,
+      "gain_db": -16,
+      "index": 0,
+      "count": 2
     },
     {
-      "parent": "sfx.c07.type",
-      "kind": "key_tick",
+      "id": "sfx.c07.done#1",
+      "parent": "sfx.c07.done",
+      "kind": "pop",
       "source": "custom",
-      "gain_db": -18,
-      "id": "sfx.c07.type#7",
-      "index": 7,
-      "count": 8,
-      "t": 26.85,
-      "frame": 1611
+      "t": 27.466666666666665,
+      "frame": 1648,
+      "gain_db": -16,
+      "index": 1,
+      "count": 2
     },
     {
+      "id": "sfx.c07.out",
       "parent": "sfx.c07.out",
       "kind": "whoosh",
       "source": "remotion-sfx:whip|whoosh",
-      "gain_db": -8,
-      "id": "sfx.c07.out",
-      "t": 27.833333333333332,
-      "frame": 1670
+      "t": 28.333333333333332,
+      "frame": 1700,
+      "gain_db": -8
     },
     {
+      "id": "sfx.c08.swap",
       "parent": "sfx.c08.swap",
       "kind": "impact_small",
       "source": "custom",
-      "gain_db": -6,
-      "id": "sfx.c08.swap",
-      "t": 28,
-      "frame": 1680
-    },
-    {
-      "parent": "sfx.c08.list",
-      "kind": "blip_pop",
-      "source": "custom",
-      "gain_db": -16,
-      "midi": 69,
-      "note": "A4",
-      "id": "sfx.c08.list#0",
-      "index": 0,
-      "count": 4,
       "t": 28.5,
-      "frame": 1710
+      "frame": 1710,
+      "gain_db": -6
     },
     {
+      "id": "sfx.c08.list#0",
       "parent": "sfx.c08.list",
       "kind": "blip_pop",
       "source": "custom",
+      "t": 29.05,
+      "frame": 1743,
       "gain_db": -16,
-      "midi": 72,
-      "note": "C5",
+      "index": 0,
+      "count": 4,
+      "midi": 64
+    },
+    {
       "id": "sfx.c08.list#1",
+      "parent": "sfx.c08.list",
+      "kind": "blip_pop",
+      "source": "custom",
+      "t": 29.1,
+      "frame": 1746,
+      "gain_db": -16,
       "index": 1,
       "count": 4,
-      "t": 28.55,
-      "frame": 1713
+      "midi": 67
     },
     {
+      "id": "sfx.c08.list#2",
       "parent": "sfx.c08.list",
       "kind": "blip_pop",
       "source": "custom",
+      "t": 29.15,
+      "frame": 1749,
       "gain_db": -16,
-      "midi": 74,
-      "note": "D5",
-      "id": "sfx.c08.list#2",
       "index": 2,
       "count": 4,
-      "t": 28.6,
-      "frame": 1716
+      "midi": 69
     },
     {
+      "id": "sfx.c08.list#3",
       "parent": "sfx.c08.list",
       "kind": "blip_pop",
       "source": "custom",
+      "t": 29.2,
+      "frame": 1752,
       "gain_db": -16,
-      "midi": 76,
-      "note": "E5",
-      "id": "sfx.c08.list#3",
       "index": 3,
       "count": 4,
-      "t": 28.65,
-      "frame": 1719
+      "midi": 72
     },
     {
+      "id": "sfx.c08.poly#0",
       "parent": "sfx.c08.poly",
       "kind": "pluck_note",
       "source": "custom",
+      "t": 29.3,
+      "frame": 1758,
       "gain_db": -14,
-      "midi": 57,
-      "note": "A3",
-      "id": "sfx.c08.poly#0",
       "index": 0,
       "count": 8,
-      "t": 28.75,
-      "frame": 1725
+      "midi": 57
     },
     {
+      "id": "sfx.c08.poly#1",
       "parent": "sfx.c08.poly",
       "kind": "pluck_note",
       "source": "custom",
+      "t": 29.666666666666668,
+      "frame": 1780,
       "gain_db": -14,
-      "midi": 60,
-      "note": "C4",
-      "id": "sfx.c08.poly#1",
       "index": 1,
       "count": 8,
-      "t": 29,
-      "frame": 1740
+      "midi": 60
     },
     {
+      "id": "sfx.c08.poly#2",
       "parent": "sfx.c08.poly",
       "kind": "pluck_note",
       "source": "custom",
+      "t": 30.05,
+      "frame": 1803,
       "gain_db": -14,
-      "midi": 62,
-      "note": "D4",
-      "id": "sfx.c08.poly#2",
       "index": 2,
       "count": 8,
-      "t": 29.25,
-      "frame": 1755
+      "midi": 62
     },
     {
+      "id": "sfx.c08.poly#3",
       "parent": "sfx.c08.poly",
       "kind": "pluck_note",
       "source": "custom",
+      "t": 30.416666666666668,
+      "frame": 1825,
       "gain_db": -14,
-      "midi": 64,
-      "note": "E4",
-      "id": "sfx.c08.poly#3",
       "index": 3,
       "count": 8,
-      "t": 29.5,
-      "frame": 1770
+      "midi": 64
     },
     {
+      "id": "sfx.c08.poly#4",
       "parent": "sfx.c08.poly",
       "kind": "pluck_note",
       "source": "custom",
+      "t": 30.783333333333335,
+      "frame": 1847,
       "gain_db": -14,
-      "midi": 67,
-      "note": "G4",
-      "id": "sfx.c08.poly#4",
       "index": 4,
       "count": 8,
-      "t": 29.75,
-      "frame": 1785
+      "midi": 67
     },
     {
+      "id": "sfx.c08.poly#5",
       "parent": "sfx.c08.poly",
       "kind": "pluck_note",
       "source": "custom",
+      "t": 31.15,
+      "frame": 1869,
       "gain_db": -14,
-      "midi": 69,
-      "note": "A4",
-      "id": "sfx.c08.poly#5",
       "index": 5,
       "count": 8,
-      "t": 30,
-      "frame": 1800
+      "midi": 69
     },
     {
+      "id": "sfx.c08.poly#6",
       "parent": "sfx.c08.poly",
       "kind": "pluck_note",
       "source": "custom",
+      "t": 31.533333333333335,
+      "frame": 1892,
       "gain_db": -14,
-      "midi": 72,
-      "note": "C5",
-      "id": "sfx.c08.poly#6",
       "index": 6,
       "count": 8,
-      "t": 30.25,
-      "frame": 1815
+      "midi": 72
     },
     {
+      "id": "sfx.c08.poly#7",
       "parent": "sfx.c08.poly",
       "kind": "pluck_note",
       "source": "custom",
+      "t": 31.9,
+      "frame": 1914,
       "gain_db": -14,
-      "midi": 74,
-      "note": "D5",
-      "id": "sfx.c08.poly#7",
       "index": 7,
       "count": 8,
-      "t": 30.5,
-      "frame": 1830
+      "midi": 74
     },
     {
+      "id": "sfx.c08.turn",
       "parent": "sfx.c08.turn",
       "kind": "whoosh",
       "source": "remotion-sfx:whoosh|custom",
-      "gain_db": -8,
-      "id": "sfx.c08.turn",
-      "t": 31,
-      "frame": 1860
+      "t": 32.7,
+      "frame": 1962,
+      "gain_db": -8
     },
     {
-      "parent": "sfx.c08.card1",
+      "id": "sfx.c08.card#0",
+      "parent": "sfx.c08.card",
       "kind": "whoosh_soft",
       "source": "custom",
-      "gain_db": -14,
-      "id": "sfx.c08.card1",
-      "t": 31.25,
-      "frame": 1875
+      "t": 32.95,
+      "frame": 1977,
+      "gain_db": -16,
+      "index": 0,
+      "count": 4
     },
     {
-      "parent": "sfx.c08.card2",
+      "id": "sfx.c08.card#1",
+      "parent": "sfx.c08.card",
       "kind": "whoosh_soft",
       "source": "custom",
-      "gain_db": -14,
-      "id": "sfx.c08.card2",
-      "t": 31.5,
-      "frame": 1890
+      "t": 33.1,
+      "frame": 1986,
+      "gain_db": -16,
+      "index": 1,
+      "count": 4
     },
     {
-      "parent": "sfx.c08.approved",
+      "id": "sfx.c08.card#2",
+      "parent": "sfx.c08.card",
+      "kind": "whoosh_soft",
+      "source": "custom",
+      "t": 33.25,
+      "frame": 1995,
+      "gain_db": -16,
+      "index": 2,
+      "count": 4
+    },
+    {
+      "id": "sfx.c08.card#3",
+      "parent": "sfx.c08.card",
+      "kind": "whoosh_soft",
+      "source": "custom",
+      "t": 33.4,
+      "frame": 2004,
+      "gain_db": -16,
+      "index": 3,
+      "count": 4
+    },
+    {
+      "id": "sfx.c08.approved1",
+      "parent": "sfx.c08.approved1",
       "kind": "check_ding",
       "source": "custom",
-      "gain_db": -10,
-      "id": "sfx.c08.approved",
-      "t": 32,
-      "frame": 1920
+      "t": 34.083333333333336,
+      "frame": 2045,
+      "gain_db": -10
     },
     {
+      "id": "sfx.c08.approved2",
+      "parent": "sfx.c08.approved2",
+      "kind": "check_ding",
+      "source": "custom",
+      "t": 34.93333333333333,
+      "frame": 2096,
+      "gain_db": -10
+    },
+    {
+      "id": "sfx.c08.riser",
       "parent": "sfx.c08.riser",
       "kind": "riser",
       "source": "custom",
+      "t": 35.5,
+      "frame": 2130,
       "gain_db": -12,
-      "dur": 1,
-      "id": "sfx.c08.riser",
-      "t": 33,
-      "frame": 1980
+      "dur": 1
     },
     {
+      "id": "sfx.c08.roll",
       "parent": "sfx.c08.roll",
       "kind": "snare_roll",
       "source": "custom",
+      "t": 36,
+      "frame": 2160,
       "gain_db": -14,
-      "dur": 0.45,
-      "id": "sfx.c08.roll",
-      "t": 33.5,
-      "frame": 2010
+      "dur": 0.45
     },
     {
+      "id": "sfx.c09.impact",
       "parent": "sfx.c09.impact",
       "kind": "impact_huge",
       "source": "custom",
-      "gain_db": -3,
-      "id": "sfx.c09.impact",
-      "t": 34,
-      "frame": 2040
+      "t": 36.5,
+      "frame": 2190,
+      "gain_db": -3
     },
     {
-      "parent": "sfx.c09.reveal",
-      "kind": "tick_soft",
-      "source": "custom",
-      "gain_db": -18,
       "id": "sfx.c09.reveal#0",
+      "parent": "sfx.c09.reveal",
+      "kind": "tick_soft",
+      "source": "custom",
+      "t": 36.75,
+      "frame": 2205,
+      "gain_db": -18,
       "index": 0,
-      "count": 6,
-      "t": 34.25,
-      "frame": 2055
+      "count": 6
     },
     {
-      "parent": "sfx.c09.reveal",
-      "kind": "tick_soft",
-      "source": "custom",
-      "gain_db": -18,
       "id": "sfx.c09.reveal#1",
+      "parent": "sfx.c09.reveal",
+      "kind": "tick_soft",
+      "source": "custom",
+      "t": 36.8,
+      "frame": 2208,
+      "gain_db": -18,
       "index": 1,
-      "count": 6,
-      "t": 34.3,
-      "frame": 2058
+      "count": 6
     },
     {
-      "parent": "sfx.c09.reveal",
-      "kind": "tick_soft",
-      "source": "custom",
-      "gain_db": -18,
       "id": "sfx.c09.reveal#2",
+      "parent": "sfx.c09.reveal",
+      "kind": "tick_soft",
+      "source": "custom",
+      "t": 36.85,
+      "frame": 2211,
+      "gain_db": -18,
       "index": 2,
-      "count": 6,
-      "t": 34.35,
-      "frame": 2061
+      "count": 6
     },
     {
-      "parent": "sfx.c09.reveal",
-      "kind": "tick_soft",
-      "source": "custom",
-      "gain_db": -18,
       "id": "sfx.c09.reveal#3",
+      "parent": "sfx.c09.reveal",
+      "kind": "tick_soft",
+      "source": "custom",
+      "t": 36.9,
+      "frame": 2214,
+      "gain_db": -18,
       "index": 3,
-      "count": 6,
-      "t": 34.4,
-      "frame": 2064
+      "count": 6
     },
     {
-      "parent": "sfx.c09.reveal",
-      "kind": "tick_soft",
-      "source": "custom",
-      "gain_db": -18,
       "id": "sfx.c09.reveal#4",
-      "index": 4,
-      "count": 6,
-      "t": 34.45,
-      "frame": 2067
-    },
-    {
       "parent": "sfx.c09.reveal",
       "kind": "tick_soft",
       "source": "custom",
+      "t": 36.95,
+      "frame": 2217,
       "gain_db": -18,
-      "id": "sfx.c09.reveal#5",
-      "index": 5,
-      "count": 6,
-      "t": 34.5,
-      "frame": 2070
+      "index": 4,
+      "count": 6
     },
     {
+      "id": "sfx.c09.reveal#5",
+      "parent": "sfx.c09.reveal",
+      "kind": "tick_soft",
+      "source": "custom",
+      "t": 37,
+      "frame": 2220,
+      "gain_db": -18,
+      "index": 5,
+      "count": 6
+    },
+    {
+      "id": "sfx.c09.shine",
       "parent": "sfx.c09.shine",
       "kind": "shine",
       "source": "custom",
-      "gain_db": -10,
-      "id": "sfx.c09.shine",
-      "t": 35,
-      "frame": 2100
+      "t": 37.5,
+      "frame": 2250,
+      "gain_db": -10
     },
     {
+      "id": "sfx.c09.click",
       "parent": "sfx.c09.click",
       "kind": "click",
       "source": "custom",
-      "gain_db": -12,
-      "id": "sfx.c09.click",
-      "t": 35.25,
-      "frame": 2115
+      "t": 37.75,
+      "frame": 2265,
+      "gain_db": -12
     },
     {
+      "id": "sfx.c09.pulse",
       "parent": "sfx.c09.pulse",
       "kind": "chime_ping",
       "source": "custom",
-      "gain_db": -16,
-      "id": "sfx.c09.pulse",
-      "t": 35.5,
-      "frame": 2130
+      "t": 38,
+      "frame": 2280,
+      "gain_db": -16
     },
     {
+      "id": "sfx.c09.outro",
       "parent": "sfx.c09.outro",
       "kind": "whoosh_up",
       "source": "custom",
-      "gain_db": -8,
-      "id": "sfx.c09.outro",
-      "t": 36,
-      "frame": 2160
+      "t": 38.5,
+      "frame": 2310,
+      "gain_db": -8
     },
     {
+      "id": "sfx.end.ding",
       "parent": "sfx.end.ding",
       "kind": "chime_ping",
       "source": "custom",
+      "t": 39.2,
+      "frame": 2352,
       "gain_db": -12,
-      "dur": 1.5,
-      "id": "sfx.end.ding",
-      "t": 36.5,
-      "frame": 2190
-    }
-  ],
-  "kicks": [
-    {
-      "t": 5,
-      "frame": 300,
-      "downbeat": true,
-      "section": "drop1"
-    },
-    {
-      "t": 5.5,
-      "frame": 330,
-      "downbeat": false,
-      "section": "drop1"
-    },
-    {
-      "t": 6,
-      "frame": 360,
-      "downbeat": false,
-      "section": "drop1"
-    },
-    {
-      "t": 6.5,
-      "frame": 390,
-      "downbeat": false,
-      "section": "drop1"
-    },
-    {
-      "t": 7,
-      "frame": 420,
-      "downbeat": true,
-      "section": "drop1"
-    },
-    {
-      "t": 7.5,
-      "frame": 450,
-      "downbeat": false,
-      "section": "drop1"
-    },
-    {
-      "t": 8,
-      "frame": 480,
-      "downbeat": false,
-      "section": "drop1"
-    },
-    {
-      "t": 8.5,
-      "frame": 510,
-      "downbeat": false,
-      "section": "drop1"
-    },
-    {
-      "t": 9,
-      "frame": 540,
-      "downbeat": true,
-      "section": "drop1"
-    },
-    {
-      "t": 9.5,
-      "frame": 570,
-      "downbeat": false,
-      "section": "drop1"
-    },
-    {
-      "t": 10,
-      "frame": 600,
-      "downbeat": false,
-      "section": "drop1"
-    },
-    {
-      "t": 10.5,
-      "frame": 630,
-      "downbeat": false,
-      "section": "drop1"
-    },
-    {
-      "t": 11,
-      "frame": 660,
-      "downbeat": true,
-      "section": "lift"
-    },
-    {
-      "t": 11.5,
-      "frame": 690,
-      "downbeat": false,
-      "section": "lift"
-    },
-    {
-      "t": 12,
-      "frame": 720,
-      "downbeat": false,
-      "section": "lift"
-    },
-    {
-      "t": 12.5,
-      "frame": 750,
-      "downbeat": false,
-      "section": "lift"
-    },
-    {
-      "t": 13,
-      "frame": 780,
-      "downbeat": true,
-      "section": "breakdown"
-    },
-    {
-      "t": 14,
-      "frame": 840,
-      "downbeat": false,
-      "section": "breakdown"
-    },
-    {
-      "t": 15,
-      "frame": 900,
-      "downbeat": true,
-      "section": "breakdown"
-    },
-    {
-      "t": 16,
-      "frame": 960,
-      "downbeat": false,
-      "section": "breakdown"
-    },
-    {
-      "t": 17,
-      "frame": 1020,
-      "downbeat": true,
-      "section": "drop2"
-    },
-    {
-      "t": 17.5,
-      "frame": 1050,
-      "downbeat": false,
-      "section": "drop2"
-    },
-    {
-      "t": 18,
-      "frame": 1080,
-      "downbeat": false,
-      "section": "drop2"
-    },
-    {
-      "t": 18.5,
-      "frame": 1110,
-      "downbeat": false,
-      "section": "drop2"
-    },
-    {
-      "t": 19,
-      "frame": 1140,
-      "downbeat": true,
-      "section": "drop2"
-    },
-    {
-      "t": 19.5,
-      "frame": 1170,
-      "downbeat": false,
-      "section": "drop2"
-    },
-    {
-      "t": 20,
-      "frame": 1200,
-      "downbeat": false,
-      "section": "drop2"
-    },
-    {
-      "t": 20.5,
-      "frame": 1230,
-      "downbeat": false,
-      "section": "drop2"
-    },
-    {
-      "t": 21,
-      "frame": 1260,
-      "downbeat": true,
-      "section": "drop2"
-    },
-    {
-      "t": 21.5,
-      "frame": 1290,
-      "downbeat": false,
-      "section": "drop2"
-    },
-    {
-      "t": 22,
-      "frame": 1320,
-      "downbeat": false,
-      "section": "drop2"
-    },
-    {
-      "t": 22.5,
-      "frame": 1350,
-      "downbeat": false,
-      "section": "drop2"
-    },
-    {
-      "t": 23,
-      "frame": 1380,
-      "downbeat": true,
-      "section": "groove"
-    },
-    {
-      "t": 23.5,
-      "frame": 1410,
-      "downbeat": false,
-      "section": "groove"
-    },
-    {
-      "t": 24,
-      "frame": 1440,
-      "downbeat": false,
-      "section": "groove"
-    },
-    {
-      "t": 24.5,
-      "frame": 1470,
-      "downbeat": false,
-      "section": "groove"
-    },
-    {
-      "t": 25,
-      "frame": 1500,
-      "downbeat": true,
-      "section": "groove"
-    },
-    {
-      "t": 25.5,
-      "frame": 1530,
-      "downbeat": false,
-      "section": "groove"
-    },
-    {
-      "t": 26,
-      "frame": 1560,
-      "downbeat": false,
-      "section": "groove"
-    },
-    {
-      "t": 26.5,
-      "frame": 1590,
-      "downbeat": false,
-      "section": "groove"
-    },
-    {
-      "t": 27,
-      "frame": 1620,
-      "downbeat": true,
-      "section": "swap"
-    },
-    {
-      "t": 27.5,
-      "frame": 1650,
-      "downbeat": false,
-      "section": "swap"
-    },
-    {
-      "t": 28,
-      "frame": 1680,
-      "downbeat": false,
-      "section": "swap"
-    },
-    {
-      "t": 28.5,
-      "frame": 1710,
-      "downbeat": false,
-      "section": "swap"
-    },
-    {
-      "t": 29,
-      "frame": 1740,
-      "downbeat": true,
-      "section": "swap"
-    },
-    {
-      "t": 29.5,
-      "frame": 1770,
-      "downbeat": false,
-      "section": "swap"
-    },
-    {
-      "t": 30,
-      "frame": 1800,
-      "downbeat": false,
-      "section": "swap"
-    },
-    {
-      "t": 30.5,
-      "frame": 1830,
-      "downbeat": false,
-      "section": "swap"
-    },
-    {
-      "t": 31,
-      "frame": 1860,
-      "downbeat": true,
-      "section": "swap"
-    },
-    {
-      "t": 31.5,
-      "frame": 1890,
-      "downbeat": false,
-      "section": "swap"
-    },
-    {
-      "t": 32,
-      "frame": 1920,
-      "downbeat": false,
-      "section": "swap"
-    },
-    {
-      "t": 32.5,
-      "frame": 1950,
-      "downbeat": false,
-      "section": "swap"
-    },
-    {
-      "t": 33,
-      "frame": 1980,
-      "downbeat": true,
-      "section": "finale"
-    },
-    {
-      "t": 33.5,
-      "frame": 2010,
-      "downbeat": false,
-      "section": "finale"
-    },
-    {
-      "t": 34,
-      "frame": 2040,
-      "downbeat": false,
-      "section": "finale"
-    },
-    {
-      "t": 34.5,
-      "frame": 2070,
-      "downbeat": false,
-      "section": "finale"
-    },
-    {
-      "t": 35,
-      "frame": 2100,
-      "downbeat": true,
-      "section": "finale"
-    },
-    {
-      "t": 35.5,
-      "frame": 2130,
-      "downbeat": false,
-      "section": "finale"
-    },
-    {
-      "t": 36,
-      "frame": 2160,
-      "downbeat": false,
-      "section": "finale"
-    }
-  ],
-  "countdown": [
-    {
-      "t": 13.5,
-      "frame": 810,
-      "value": 301
-    },
-    {
-      "t": 13.65,
-      "frame": 819,
-      "value": 293
-    },
-    {
-      "t": 13.8,
-      "frame": 828,
-      "value": 286
-    },
-    {
-      "t": 13.95,
-      "frame": 837,
-      "value": 278
-    },
-    {
-      "t": 14.083333333333334,
-      "frame": 845,
-      "value": 270
-    },
-    {
-      "t": 14.216666666666667,
-      "frame": 853,
-      "value": 263
-    },
-    {
-      "t": 14.333333333333334,
-      "frame": 860,
-      "value": 255
-    },
-    {
-      "t": 14.45,
-      "frame": 867,
-      "value": 247
-    },
-    {
-      "t": 14.566666666666666,
-      "frame": 874,
-      "value": 239
-    },
-    {
-      "t": 14.683333333333334,
-      "frame": 881,
-      "value": 232
-    },
-    {
-      "t": 14.783333333333333,
-      "frame": 887,
-      "value": 224
-    },
-    {
-      "t": 14.883333333333333,
-      "frame": 893,
-      "value": 216
-    },
-    {
-      "t": 14.983333333333333,
-      "frame": 899,
-      "value": 209
-    },
-    {
-      "t": 15.066666666666666,
-      "frame": 904,
-      "value": 201
-    },
-    {
-      "t": 15.166666666666666,
-      "frame": 910,
-      "value": 193
-    },
-    {
-      "t": 15.25,
-      "frame": 915,
-      "value": 186
-    },
-    {
-      "t": 15.333333333333334,
-      "frame": 920,
-      "value": 178
-    },
-    {
-      "t": 15.4,
-      "frame": 924,
-      "value": 170
-    },
-    {
-      "t": 15.483333333333333,
-      "frame": 929,
-      "value": 163
-    },
-    {
-      "t": 15.55,
-      "frame": 933,
-      "value": 155
-    },
-    {
-      "t": 15.616666666666667,
-      "frame": 937,
-      "value": 147
-    },
-    {
-      "t": 15.683333333333334,
-      "frame": 941,
-      "value": 139
-    },
-    {
-      "t": 15.75,
-      "frame": 945,
-      "value": 132
-    },
-    {
-      "t": 15.816666666666666,
-      "frame": 949,
-      "value": 124
-    },
-    {
-      "t": 15.866666666666667,
-      "frame": 952,
-      "value": 116
-    },
-    {
-      "t": 15.916666666666666,
-      "frame": 955,
-      "value": 109
-    },
-    {
-      "t": 15.983333333333333,
-      "frame": 959,
-      "value": 101
-    },
-    {
-      "t": 16.033333333333335,
-      "frame": 962,
-      "value": 93
-    },
-    {
-      "t": 16.083333333333332,
-      "frame": 965,
-      "value": 86
-    },
-    {
-      "t": 16.116666666666667,
-      "frame": 967,
-      "value": 78
-    },
-    {
-      "t": 16.166666666666668,
-      "frame": 970,
-      "value": 70
-    },
-    {
-      "t": 16.216666666666665,
-      "frame": 973,
-      "value": 63
-    },
-    {
-      "t": 16.25,
-      "frame": 975,
-      "value": 55
-    },
-    {
-      "t": 16.3,
-      "frame": 978,
-      "value": 47
-    },
-    {
-      "t": 16.333333333333332,
-      "frame": 980,
-      "value": 39
-    },
-    {
-      "t": 16.366666666666667,
-      "frame": 982,
-      "value": 32
-    },
-    {
-      "t": 16.4,
-      "frame": 984,
-      "value": 24
-    },
-    {
-      "t": 16.433333333333334,
-      "frame": 986,
-      "value": 16
-    },
-    {
-      "t": 16.466666666666665,
-      "frame": 988,
-      "value": 9
-    },
-    {
-      "t": 16.5,
-      "frame": 990,
-      "value": 1
+      "dur": 1.5
     }
   ]
 }

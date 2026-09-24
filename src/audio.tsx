@@ -1,14 +1,26 @@
 import {Audio} from '@remotion/media';
 import React from 'react';
 import {Sequence, staticFile} from 'remotion';
-import {SFX_CUES} from './timeline';
+import AUDIO_BUILD from './data/cues.json';
+import {PACING} from './pacing';
+import {SFX_CUES, TOTAL_SECONDS} from './timeline';
 
-// Offline master (music + SFX mixed by scripts/audio/mix.mjs). MUSIC_SOURCE records which music
-// bed the master was mixed from; switching to 'external' requires a licensed track registered in
-// audio/LICENSES.md and a re-run of the mix. The master is disabled: it predates the current cut.
+const PACING_KEYS = Object.keys(PACING) as (keyof typeof PACING)[];
+
+// Offline master (music + SFX, `npm run audio`: cues.mjs → synth.mjs → sfx.mjs → mix.mjs →
+// analyze.mjs). Everything is timed from src/timeline.ts, i.e. from src/pacing.ts. MUSIC_SOURCE
+// records which music bed the master was mixed from; switching to 'external' requires a licensed
+// track registered in audio/LICENSES.md and a re-run of the mix.
 export const MUSIC_SOURCE: 'procedural' | 'external' = 'procedural';
 export const MASTER_AUDIO = 'audio/master.wav';
-export const AUDIO_ENABLED = false;
+
+/** The master is only played when it was built for the current PACING (otherwise it would drift). */
+export const AUDIO_IN_SYNC =
+	PACING_KEYS.every((k) => (AUDIO_BUILD.pacing as Record<string, number>)[k] === PACING[k]) && AUDIO_BUILD.total_seconds === TOTAL_SECONDS;
+export const AUDIO_ENABLED = AUDIO_IN_SYNC;
+if (!AUDIO_IN_SYNC) {
+	console.warn('[audio] src/pacing.ts mudou desde o último áudio gerado: rode `npm run audio` para refazer música + SFX no novo tempo. Áudio desligado até lá.');
+}
 
 // Remotion-side SFX layer: short samples from public/audio/sfx placed on the frames of
 // SFX_CUES (src/timeline.ts), so they follow src/pacing.ts automatically. Only the kinds listed
@@ -24,7 +36,7 @@ export const SfxLayer: React.FC = () => (
 			const kind = SFX_KINDS[c.kind];
 			return (
 				<Sequence key={c.id} from={c.frame} durationInFrames={SFX_FRAMES} name={c.id} layout="none">
-					<Audio src={staticFile(kind.files[c.variant % kind.files.length])} volume={kind.volume} />
+					<Audio src={staticFile(kind.files[(c.index ?? 0) % kind.files.length])} volume={kind.volume} />
 				</Sequence>
 			);
 		})}
