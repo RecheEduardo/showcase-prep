@@ -151,15 +151,13 @@ export const COPY = {
 		holders: [
 			{name: 'Beatriz Lima', doc: '•••.•••.•••-••', type: 'Inteira'},
 			{name: 'Diego Martins', doc: '•••.•••.•••-••', type: 'Inteira'},
-			{name: 'Camila Rocha', doc: '•••.•••.•••-••', type: 'Meia entrada'},
-			{name: 'Lucas Ferreira', doc: '•••.•••.•••-••', type: 'Meia entrada'},
 		],
 		event: 'Pulse Open Air',
 		when: 'sábado, 9 de janeiro, 22:00',
 		where: 'Parque da Orla, Rio de Janeiro',
 		sector: 'PISTA',
-		items: ['Inteira × 2', 'Meia entrada × 2'],
-		count: '4 ingressos',
+		items: ['Inteira × 2'],
+		count: '2 ingressos',
 	},
 
 	C08: {

@@ -12,10 +12,9 @@ export const AUDIO_ENABLED = false;
 
 // Remotion-side SFX layer: short samples from public/audio/sfx placed on the frames of
 // SFX_CUES (src/timeline.ts), so they follow src/pacing.ts automatically. Only the kinds listed
-// here are audible; today that is the C07 typing (one key per typed character).
-export const SFX_KINDS: Record<string, {files: string[]; volume: number}> = {
-	key_tick: {files: Array.from({length: 12}, (_, i) => `audio/sfx/key_tick_${String(i).padStart(2, '0')}.wav`), volume: 0.55},
-};
+// here are audible. The C07 typing ticks are muted for now; to bring them back, add:
+//   key_tick: {files: Array.from({length: 12}, (_, i) => `audio/sfx/key_tick_${String(i).padStart(2, '0')}.wav`), volume: 0.55},
+export const SFX_KINDS: Record<string, {files: string[]; volume: number}> = {};
 
 const SFX_FRAMES = 12;
 

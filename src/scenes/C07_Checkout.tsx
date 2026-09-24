@@ -15,13 +15,12 @@ import {Pill} from '../ui/Pill';
 
 // C07 "Checkout" for a DIFFERENT fictitious event ("Pulse Open Air"): summary card
 // (06-queue-and-purchase/05) WITHOUT totals (the real checkout adds a platform fee), mirrored
-// layout (summary left, holders right), fictitious holder names and masked documents. The FOUR
-// holders are filled one after the other, name then document, character by character (each key
-// is a sound cue, src/timeline.ts C07_TYPING); the active field gets the focus ring and a caret, a
-// finished ticket gets a check. Business value on top: "Cada ingresso tem dono." (10-SCRIPTING-INPUT
+// layout (summary left, holders right), fictitious holder names and masked documents. The two
+// holders are filled quickly, one field at a time (name, then document, src/timeline.ts
+// C07_TYPING); the active field gets the focus ring and a caret, a finished ticket gets a check. Business value on top: "Cada ingresso tem dono." (10-SCRIPTING-INPUT
 // A: each ticket is linked to a holder) drops letter by letter into the top-right corner.
 
-const RIGHT = {x: 800, w: 1010, y: 290, cardH: 164, gap: 14};
+const RIGHT = {x: 800, w: 1010, y: 320, cardH: 164, gap: 26};
 const SUMMARY = {x: 110, y: 205, w: 600};
 const ENTER = LABELS['C07.holders.enter'];
 const SLIDE = LABELS['C07.card.slide'];

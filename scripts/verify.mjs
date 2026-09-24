@@ -21,18 +21,18 @@ let contiguous = SCENES[0].start === 0;
 for (let i = 1; i < SCENES.length; i++) if (SCENES[i].startFrame !== SCENES[i - 1].endFrame) contiguous = false;
 check(`(a2) scenes cover 0–${TOTAL_SECONDS} s contiguously (${TOTAL_FRAMES} frames @ ${FPS} fps)`, contiguous, SCENES.map((s) => `${s.id}[${s.start}-${s.end}]`).join(' '));
 
-// (b) no scene is shorter than its minimum, and every label lands inside its scene in its authored
-// order (a too-short duration would push an end-anchored beat before an earlier one).
-const tooShort = [];
+// (b) every label lands inside its scene's design clock in its authored order, and the stretch
+// factor (PACING / base) is sane.
+const bad = [];
 for (const s of SCENES) {
-	if (s.duration < s.min - 1e-9) tooShort.push(`${s.id} = ${s.duration}s < mínimo ${s.min}s`);
+	if (!(s.stretch > 0.2 && s.stretch < 5)) bad.push(`${s.id}: ${s.duration}s é ${s.stretch.toFixed(2)}× o padrão de ${s.base}s`);
 	let prev = -Infinity;
 	for (const [label, t] of Object.entries(s.labels)) {
-		if (t < prev - 1e-9 || t < 0 || t > s.duration + 1e-9) tooShort.push(`${label} = ${t.toFixed(2)}s fora de ordem/da cena`);
+		if (t < prev - 1e-9 || t < 0 || t > s.base + 1e-9) bad.push(`${label} = ${t.toFixed(2)}s fora de ordem/da cena`);
 		prev = t;
 	}
 }
-check('(b) PACING values respect each scene minimum; labels fit their scene in order', tooShort.length === 0, tooShort.join('; '));
+check('(b) labels fit their design clock in order; each PACING value is 0.2×–5× its default', bad.length === 0, SCENES.map((s) => `${s.id}×${s.stretch.toFixed(2)}`).join(' ') + (bad.length ? ` — ${bad.join('; ')}` : ''));
 
 // (b2) every label is used by the scene code
 const scenesDir = path.join(root, 'src', 'scenes');

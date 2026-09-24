@@ -1,13 +1,14 @@
 import {CameraMotionBlur} from '@remotion/motion-blur';
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
-import {DUR, FPS, SCENE, type SceneId} from '../timeline';
-import {useSceneTime} from './scene';
+import {FPS, SCENE, type SceneId} from '../timeline';
+import {useSceneRealTime} from './scene';
 import {blurFilter, dofBlur, tween} from './tokens';
 
 // Transition vocabulary: hard cut (chaos → brand), SnapZoom, card expand into navy, navy → ice
 // inversion, blurred cross-fade and flash cut. Every window is centred on the scene boundary, whose
-// time comes from src/pacing.ts, so changing a duration moves its transitions with it.
+// time comes from src/pacing.ts, so changing a duration moves its transitions with it. Transitions
+// run on REAL time (their length never stretches); scene content runs on the design clock.
 
 export type TransitionKind = 'hardCut' | 'snapZoom' | 'cardExpand' | 'invert' | 'fade' | 'flashCut';
 
@@ -46,7 +47,7 @@ export const sceneTail = (id: SceneId) => {
 /** SnapZoom: outgoing camera dives 1 → 3 into a neutral area on cubicHardSnap; incoming pulls 0.5 → 1. */
 export const SNAP_ZOOM = {outScale: 3, inScale: 0.5} as const;
 
-/** Inversion circle C04 -> C05, born at the queue number (times local to C05). */
+/** Inversion circle C04 -> C05, born at the queue number (real seconds local to C05). */
 export const INVERT = {start: 0, end: 0.5, cx: 960, cy: 590, maxR: 2300};
 
 /** Blurred cross-fade: opacity and blur (px) at local time t for the entering/leaving scene. */
@@ -55,7 +56,7 @@ const FADE_BLUR = 16;
 const stageStyle = (id: SceneId, t: number): React.CSSProperties => {
 	const tin = inTransition(id);
 	const tout = outTransition(id);
-	const end = DUR[id];
+	const end = SCENE[id].duration;
 	const style: React.CSSProperties = {};
 	let blur = 0;
 
@@ -91,16 +92,16 @@ const stageStyle = (id: SceneId, t: number): React.CSSProperties => {
 };
 
 const StageTransform: React.FC<{id: SceneId; children: React.ReactNode}> = ({id, children}) => {
-	const t = useSceneTime();
+	const t = useSceneRealTime();
 	return <AbsoluteFill style={stageStyle(id, t)}>{children}</AbsoluteFill>;
 };
 
 /** Applies the scene's in/out transition; the SnapZoom dive also gets camera motion blur. */
 export const SceneStage: React.FC<{id: SceneId; children: React.ReactNode}> = ({id, children}) => {
-	const t = useSceneTime();
+	const t = useSceneRealTime();
 	const tout = outTransition(id);
 	const inner = <StageTransform id={id}>{children}</StageTransform>;
-	if (tout?.kind === 'snapZoom' && t >= DUR[id] - halfOf(tout) && t < DUR[id]) {
+	if (tout?.kind === 'snapZoom' && t >= SCENE[id].duration - halfOf(tout) && t < SCENE[id].duration) {
 		return (
 			<CameraMotionBlur samples={8} shutterAngle={180}>
 				{inner}

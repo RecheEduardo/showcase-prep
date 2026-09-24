@@ -1,8 +1,12 @@
 // Timing of the whole video, DERIVED from src/pacing.ts (the only file to edit to change the
-// pace). Scene starts are the running sum of the durations; every label and sound cue below is in
-// seconds LOCAL to its scene (0 = first frame of the scene). `fromEnd(x)` anchors a beat x seconds
-// before the scene's end, so it follows the scene when its duration changes. `min` is the shortest
-// duration that still shows every beat of the scene (scripts/verify.mjs fails below it).
+// pace). Scene starts are the running sum of the durations.
+//
+// Every scene is authored on its own DESIGN clock of `base` seconds: labels, springs, tweens,
+// cursor paths and GSAP timelines are all written in design seconds LOCAL to the scene (0 = its
+// first frame). PACING[id] sets the real length, and the scene clock is stretched by
+// `stretch = PACING[id] / base` (motion/scene.tsx), so EVERY action point and animation of the
+// scene spreads out (or tightens) proportionally: no dead time at the end, nothing cut off.
+// `fromEnd(x)` anchors a beat x design seconds before the end of the design clock.
 import {COPY} from './copy.ts';
 import {PACING} from './pacing.ts';
 
@@ -20,19 +24,19 @@ const fromEnd = (seconds: number): FromEnd => ({fromEnd: seconds});
 type LabelTime = number | FromEnd;
 
 const SCENE_DEFS = {
-	C00: {name: 'Caos', min: 4.9, illustrative: true, labels: {'C00.problem.enter': 0, 'C00.stall.click': 1.5, 'C00.agitation.start': 2.5, 'C00.freeze': fromEnd(0.1)}},
-	C01: {name: 'Marca', min: 2, illustrative: false, labels: {'C01.logo.slam': 0, 'C01.tagline.cascade': 0.5}},
-	C02: {name: 'Vitrine', min: 1.8, illustrative: false, labels: {'C02.tiles.cascade.start': 0.25, 'C02.tiles.cascade.end': 0.7}},
-	C03: {name: 'O evento', min: 2.2, illustrative: false, labels: {'C03.panel.expand': 0.25, 'C03.datecard.click': 1.5, 'C03.card.open': fromEnd(0.45)}},
+	C00: {name: 'Caos', base: 5, illustrative: true, labels: {'C00.problem.enter': 0, 'C00.stall.click': 1.5, 'C00.agitation.start': 2.5, 'C00.freeze': fromEnd(0.1)}},
+	C01: {name: 'Marca', base: 3, illustrative: false, labels: {'C01.logo.slam': 0, 'C01.tagline.cascade': 0.5}},
+	C02: {name: 'Vitrine', base: 3, illustrative: false, labels: {'C02.tiles.cascade.start': 0.25, 'C02.tiles.cascade.end': 0.7}},
+	C03: {name: 'O evento', base: 2.5, illustrative: false, labels: {'C03.panel.expand': 0.25, 'C03.datecard.click': 1.5, 'C03.card.open': fromEnd(0.45)}},
 	C04: {
 		name: 'A fila',
-		min: 2.5,
+		base: 4,
 		illustrative: true,
 		labels: {'C04.dark.enter': 0, 'C04.counter.start': 0.5, 'C04.lean': fromEnd(2), 'C04.roll': fromEnd(1), 'C04.stoptime': fromEnd(0.5)},
 	},
 	C05: {
 		name: 'O estádio acende',
-		min: 4.2,
+		base: 5,
 		illustrative: false,
 		labels: {
 			'C05.rows.cascade': 0.25,
@@ -44,11 +48,11 @@ const SCENE_DEFS = {
 			'C05.tooltip2': 3.5,
 		},
 	},
-	C06: {name: 'Quantidade e total', min: 2.4, illustrative: false, labels: {'C06.counter.appear': 0, 'C06.plus1': 0.5, 'C06.plus2': 1, 'C06.total.card': 1.25, 'C06.cta.shine': 2}},
-	C07: {name: 'Checkout', min: 4.8, illustrative: false, labels: {'C07.holders.enter': 0, 'C07.card.slide': 0.25, 'C07.names.type': 0.7}},
+	C06: {name: 'Quantidade e total', base: 3, illustrative: false, labels: {'C06.counter.appear': 0, 'C06.plus1': 0.5, 'C06.plus2': 1, 'C06.total.card': 1.25, 'C06.cta.shine': 2}},
+	C07: {name: 'Checkout', base: 3, illustrative: false, labels: {'C07.holders.enter': 0, 'C07.card.slide': 0.25, 'C07.names.type': 0.7}},
 	C08: {
 		name: 'Quem organiza',
-		min: 6.4,
+		base: 7.5,
 		illustrative: true,
 		labels: {
 			'C08.title.hero': 0,
@@ -64,7 +68,7 @@ const SCENE_DEFS = {
 	},
 	C09: {
 		name: 'Fecho',
-		min: 3.6,
+		base: 4.5,
 		illustrative: false,
 		labels: {
 			'C09.logo.slam': 0,
@@ -78,7 +82,7 @@ const SCENE_DEFS = {
 			'C09.logo.hero': 2.7,
 		},
 	},
-} as const satisfies Record<SceneId, {name: string; min: number; illustrative: boolean; labels: Record<string, LabelTime>}>;
+} as const satisfies Record<SceneId, {name: string; base: number; illustrative: boolean; labels: Record<string, LabelTime>}>;
 
 type LabelsOf<S> = S extends {labels: infer L} ? keyof L : never;
 export type Label = {[K in SceneId]: LabelsOf<(typeof SCENE_DEFS)[K]>}[SceneId] & string;
@@ -89,15 +93,17 @@ export type Scene = {
 	/** Absolute start/end in the video (seconds). */
 	start: number;
 	end: number;
-	/** Scene length (seconds) = PACING[id]. */
+	/** Real scene length (seconds) = PACING[id]. */
 	duration: number;
-	/** Shortest duration that still shows every beat of the scene (checked by scripts/verify.mjs). */
-	min: number;
+	/** Length of the design clock the scene is authored on (seconds). */
+	base: number;
+	/** Real seconds per design second (PACING[id] / base). */
+	stretch: number;
 	startFrame: number;
 	endFrame: number;
 	durationInFrames: number;
 	illustrative: boolean;
-	/** Label times LOCAL to the scene (seconds). */
+	/** Label times LOCAL to the scene, in design seconds. */
 	labels: Record<string, number>;
 };
 
@@ -108,12 +114,12 @@ export const SCENES: Scene[] = (() => {
 		const duration = PACING[id];
 		const def = SCENE_DEFS[id];
 		const labels: Record<string, number> = {};
-		for (const [k, v] of Object.entries(def.labels as Record<string, LabelTime>)) labels[k] = typeof v === 'number' ? v : +(duration - v.fromEnd).toFixed(6);
+		for (const [k, v] of Object.entries(def.labels as Record<string, LabelTime>)) labels[k] = typeof v === 'number' ? v : +(def.base - v.fromEnd).toFixed(6);
 		const start = acc;
 		acc = +(acc + duration).toFixed(6);
 		const startFrame = sec(start);
 		const endFrame = sec(acc);
-		return {id, name: def.name, start, end: acc, duration, min: def.min, startFrame, endFrame, durationInFrames: endFrame - startFrame, illustrative: def.illustrative, labels};
+		return {id, name: def.name, start, end: acc, duration, base: def.base, stretch: duration / def.base, startFrame, endFrame, durationInFrames: endFrame - startFrame, illustrative: def.illustrative, labels};
 	});
 })();
 
@@ -121,10 +127,10 @@ export const SCENE: Record<SceneId, Scene> = Object.fromEntries(SCENES.map((s) =
 export const TOTAL_SECONDS = SCENES[SCENES.length - 1].end;
 export const TOTAL_FRAMES = SCENES[SCENES.length - 1].endFrame;
 
-/** Label -> seconds LOCAL to its scene. */
+/** Label -> design seconds LOCAL to its scene. */
 export const LABELS = Object.assign({}, ...SCENES.map((s) => s.labels)) as Record<Label, number>;
-/** Scene length in seconds (local time of its last frame boundary). */
-export const DUR = Object.fromEntries(SCENES.map((s) => [s.id, s.duration])) as Record<SceneId, number>;
+/** End of each scene's DESIGN clock (design seconds): what scene code anchors end-of-scene beats to. */
+export const DUR = Object.fromEntries(SCENES.map((s) => [s.id, s.base])) as Record<SceneId, number>;
 
 // ------------------------------------------------------------------------------------------------
 // Beat schedules derived from the labels (each one is also a sound cue).
@@ -159,10 +165,10 @@ export const COUNTDOWN = accelerating(LABELS['C04.counter.start'], LABELS['C04.s
 /** C08: one sector block lights per eighth note between polygons.start and polygons.end. */
 export const C08_POLYS = Array.from({length: 8}, (_, i) => +(LABELS['C08.polygons.start'] + i * 0.25).toFixed(6));
 
-/** C07: the four holders are typed one after the other, name then document, one key per char. */
-const KEY_STEP = 0.028;
-const FIELD_GAP = 0.1;
-const HOLDER_GAP = 0.14;
+/** C07: the holders are typed one field at a time (name, then document), one key per char. */
+const KEY_STEP = 0.018;
+const FIELD_GAP = 0.08;
+const HOLDER_GAP = 0.1;
 export type TypingField = {holder: number; field: 'name' | 'doc'; start: number; end: number; chars: number};
 export const C07_TYPING: TypingField[] = (() => {
 	const out: TypingField[] = [];
@@ -185,7 +191,8 @@ export const typedChars = (f: TypingField, t: number) => (t < f.start ? 0 : Math
 
 export type SfxCue = {id: string; kind: string; scene: SceneId; t: number; frame: number; variant: number};
 const cue = (scene: SceneId, id: string, kind: string, local: number, variant = 0): SfxCue => {
-	const t = +(SCENE[scene].start + local).toFixed(6);
+	// Design seconds -> real video seconds (the scene clock is stretched by PACING).
+	const t = +(SCENE[scene].start + local * SCENE[scene].stretch).toFixed(6);
 	return {id, kind, scene, t, frame: sec(t), variant};
 };
 export const SFX_CUES: SfxCue[] = [
