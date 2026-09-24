@@ -23,6 +23,8 @@ export type KineticMode = 'pop' | 'drop' | 'fly' | 'flip' | 'slam';
 export const PALETTE = {
 	brand: ['#5fb0e6', '#2a8fd4', '#1c6fb5'],
 	hero: ['#0078f4', '#0dbde4', '#57c5f4'],
+	/** Same hue as `hero`, several steps darker: for gradient words sitting on the ice background. */
+	heroDeep: ['#0057c7', '#0a78b8', '#0d4d9c'],
 	night: ['#bfe8ff', '#57c5f4', '#2a8fd4'],
 	/** Darker blue ramp for gradient text that sits directly on the light ice background. */
 	deep: ['#1a64c8', '#0f4a94', '#1c6fb5'],

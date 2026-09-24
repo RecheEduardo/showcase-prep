@@ -17,9 +17,9 @@ import {BoardCard} from '../ui/StatusBoard';
 // C08 "Quem organiza". "Quem organiza cria." is born big at the centre letter by letter, then docks
 // at the top centre on a heavy spring while the venue map editor (04-admin/06–08, recreated)
 // expands underneath in a steep isometric view: the sector list Cascade Pops, one block lights per
-// eighth note (0.75 + 0.25 i) and the "Detalhes do setor" glass box under the list follows the
+// even step between polygons.start and polygons.end and the "Detalhes do setor" glass box under the list follows the
 // active sector (name, description, capacity). Small blurred glass pieces, orbs and blue tiles
-// drift far behind. At 3.0 s the plate flips to an ILLUSTRATIVE status board: four events slide
+// drift far behind. At the turn (~53 % of the scene) the plate flips to an ILLUSTRATIVE status board: four events slide
 // into "Aguardando aprovação" and two of them move to "Aprovado", each with a toast. Reading hold,
 // then the camera punches into the approved column before the flash cut.
 
@@ -133,7 +133,8 @@ export const C08Organiza: React.FC = () => {
 	const scope = useSceneTimeline(({timeline: tl, selector: q, L}) => {
 		const iso = q('[data-iso="c08"]');
 		tl.fromTo(iso, {rotateX: 30, rotateY: -22}, {rotateX: 12, rotateY: -8, duration: 1.6, ease: EASE.cubicExpoOut}, L('C08.list.cascade'));
-		tl.to(iso, {rotateX: 9, rotateY: -4, duration: 0.5, ease: EASE.sine}, L('C08.polygons.end'));
+		// Slow drift while the finished map reads, right up to the turn.
+		tl.to(iso, {rotateX: 8, rotateY: -3, duration: LABELS['C08.turn'] - LABELS['C08.polygons.end'], ease: EASE.sine}, L('C08.polygons.end'));
 		tl.to(iso, {rotateX: 5, rotateY: 0, duration: 0.6, ease: EASE.cubicExpoOut}, L('C08.turn'));
 		// Turn: the editor flips away, the status board flips in.
 		tl.to(q('[data-editor]'), {rotateY: 90, opacity: 0.4, duration: 0.2, ease: EASE.in, transformOrigin: '960px 560px'}, L('C08.turn'));
@@ -415,10 +416,10 @@ export const C08Organiza: React.FC = () => {
 
 			{/* Title hand-off in screen space: hero → docked; swaps on the first approval. */}
 			<div style={{position: 'absolute', left: 0, right: 0, top: heroY, display: 'flex', justifyContent: 'center', scale: String(heroScale), transformOrigin: '50% 0%'}}>
-				<Kinetic lines={[[...COPY.C08.title[0].split(' '), ...COPY.C08.title[1].split(' ')]]} at={HERO} mode="pop" size={150} weight={[250, 800]} gradientFrom={2} palette={PALETTE.hero} exitAt={APPROVALS[0] - 0.2} />
+				<Kinetic lines={[[...COPY.C08.title[0].split(' '), ...COPY.C08.title[1].split(' ')]]} at={HERO} mode="pop" size={150} weight={[250, 800]} gradientFrom={2} palette={PALETTE.heroDeep} exitAt={APPROVALS[0] - 0.2} />
 			</div>
 			<div style={{position: 'absolute', left: 0, right: 0, top: 36, display: 'flex', justifyContent: 'center'}}>
-				<Kinetic lines={[[...COPY.C08.title2[0].split(' '), ...COPY.C08.title2[1].split(' ')]]} at={APPROVALS[0]} mode="fly" step={3} size={75} weight={[400, 800]} gradientFrom={3} palette={PALETTE.hero} />
+				<Kinetic lines={[[...COPY.C08.title2[0].split(' '), ...COPY.C08.title2[1].split(' ')]]} at={APPROVALS[0]} mode="fly" step={3} size={75} weight={[400, 800]} gradientFrom={3} palette={PALETTE.heroDeep} />
 			</div>
 		</AbsoluteFill>
 	);

@@ -52,17 +52,18 @@ const SCENE_DEFS = {
 	C07: {name: 'Checkout', base: 3, illustrative: false, labels: {'C07.holders.enter': 0, 'C07.card.slide': 0.25, 'C07.names.type': 0.7}},
 	C08: {
 		name: 'Quem organiza',
-		base: 7.5,
+		base: 8,
 		illustrative: true,
+		// Editor part (0 → turn) is a bit longer than the status-board part (turn → end): ~53 / 47 %.
 		labels: {
 			'C08.title.hero': 0,
 			'C08.list.cascade': 0.5,
-			'C08.polygons.start': 0.75,
-			'C08.polygons.end': 2.5,
-			'C08.turn': 3,
-			'C08.cards.slide': 3.3,
-			'C08.approved1': 4.4,
-			'C08.approved2': 5.4,
+			'C08.polygons.start': 0.8,
+			'C08.polygons.end': 3.4,
+			'C08.turn': 4.2,
+			'C08.cards.slide': 4.45,
+			'C08.approved1': 5.4,
+			'C08.approved2': 6.25,
 			'C08.punch': fromEnd(0.3),
 		},
 	},
@@ -162,8 +163,8 @@ export const COUNTDOWN = accelerating(LABELS['C04.counter.start'], LABELS['C04.s
 	value: Math.round(301 - (300 * i) / (all.length - 1)),
 }));
 
-/** C08: one sector block lights per eighth note between polygons.start and polygons.end. */
-export const C08_POLYS = Array.from({length: 8}, (_, i) => +(LABELS['C08.polygons.start'] + i * 0.25).toFixed(6));
+/** C08: the eight sector blocks light evenly spaced from polygons.start to polygons.end. */
+export const C08_POLYS = Array.from({length: 8}, (_, i) => +(LABELS['C08.polygons.start'] + (i * (LABELS['C08.polygons.end'] - LABELS['C08.polygons.start'])) / 7).toFixed(6));
 
 /** C07: the holders are typed one field at a time (name, then document), one key per char. */
 const KEY_STEP = 0.018;
