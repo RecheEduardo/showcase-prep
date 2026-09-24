@@ -56,6 +56,21 @@ const illus = SCENES.filter((s) => s.illustrative).map((s) => s.id);
 check('(e) illustrative scenes are declared in out/provenance.json', illus.every((id) => /illustrative/.test(prov.scenes.find((p) => p.id === id)?.provenance ?? '')), `illustrative: ${illus.join(', ')}`);
 check('(e2) provenance.json lists every scene', SCENES.every((s) => prov.scenes.some((p) => p.id === s.id)));
 
+// (f) master audio built for the current cut (npm run audio)
+{
+	const built = JSON.parse(fs.readFileSync(path.join(root, 'src', 'data', 'cues.json'), 'utf8'));
+	const samePacing = Object.entries(PACING).every(([k, v]) => built.pacing?.[k] === v);
+	const b = fs.readFileSync(path.join(root, 'public', 'audio', 'master.wav'));
+	let p = 12, frames = 0;
+	while (p < b.length - 8) {
+		const id = b.toString('ascii', p, p + 4), len = b.readUInt32LE(p + 4);
+		if (id === 'fmt ') var fmt = {ch: b.readUInt16LE(p + 10), bits: b.readUInt16LE(p + 22)};
+		if (id === 'data') { frames = len / (fmt.ch * fmt.bits / 8); break; }
+		p += 8 + len + (len % 2);
+	}
+	check('(f) master.wav was built for the current PACING and matches the video length (else: npm run audio)', samePacing && frames === Math.round(TOTAL_SECONDS * 48000), `${frames} samples vs ${Math.round(TOTAL_SECONDS * 48000)}`);
+}
+
 let failed = 0;
 for (const r of results) {
 	if (!r.ok) failed++;

@@ -4,19 +4,19 @@
  * Usage (from `video/`, no package.json needed):
  *   node scripts/audio/synth.mjs
  * Output:
- *   public/audio/music.wav                  48 kHz, stereo, 24-bit PCM, exactly 3,072,000 frames (64.0 s)
+ *   public/audio/music.wav                  48 kHz, stereo, 24-bit PCM, as long as the cut (src/data/cues.json)
  *   audio/analysis/music-sections.json      per-section loudness / band-energy report
  *
- * Musical plan (source of truth for the arrangement; timing comes from src/data/cues.json):
- *   - 120 BPM, 4/4, A minor. Beat = 24,000 samples, bar = 96,000. Every event starts at round(t * 48000).
- *   - Harmony: the suggested Am–F–C–G cycle (1 chord/bar) RESTARTS at each section, so every drop
- *     (6.0 / 28.0 / 44.0 / 48.0 / 56.0) lands on Am (tonic). Deviations, on purpose:
- *       breakdown  Fmaj7(#11) | Gsus4 | Am(add9) | Esus4→E   (E major = harmonic-minor V, pulls into the drop)
- *       intro      Am | F | G              groove_lift  Am | F | C        groove_rise  F | C | G
- *       microdrop  Am | G                  finale       Am | F→G | Am(add9) held from 60.0
- *   - Silences: every event is killed (1.5 ms ramp) at the next silence_gap cue (5.9 and 27.5) and all
- *     reverbs/delays are reset when the gap ends, so nothing leaks across. In 27.5–28.0 only the riser's
- *     own reverb tail is let through.
+ * Musical plan (timing comes from src/data/cues.json, written by scripts/audio/cues.mjs from
+ * src/timeline.ts, i.e. from src/pacing.ts):
+ *   - 120 BPM, 4/4, A minor. Each section is one scene range; its grid, chord cycle and automation
+ *     restart at the section start, so every scene cut lands on a kick whatever the durations are.
+ *   - Harmony: Am–F–C–G style cycles per section (PROGRESSION), one chord per 2 s bar, the last bar
+ *     may be partial; breakdown ends on E (pull into drop 2), the finale strikes Am(add9) with the
+ *     lockup's pop-out (music_anchors.finaleHold) and lets it ring into the tail.
+ *   - Silences: every event is killed (1.5 ms ramp) at the next silence_gap cue (the freeze before
+ *     the hard cut and the queue stop-time) and reverbs/delays reset when the gap ends; during the
+ *     stop-time only the riser's own reverb tail passes.
  *   - PRNG: mulberry32 with fixed per-instrument seeds. Math.random is never used.
  */
 import fs from 'node:fs';
@@ -64,29 +64,33 @@ const CH = {
   Esus: { root: 40, pad: [52, 57, 59, 64] },
   AmAdd9: { root: 45, pad: [57, 60, 64, 71, 76] },
 };
+// Harmony per section: `cycle` repeats one chord per 2 s bar from the section start (the last bar
+// may be partial); `end` pins the final bar (a pull into the next drop, or the final chord). Every
+// section therefore fits whatever length the cut gives it (src/pacing.ts).
 const PROGRESSION = {
-  intro: ['Am', 'F', 'G'],
-  drop1: ['Am', 'F', 'C', 'G'],
-  groove_lift: ['Am', 'F', 'C'],
-  breakdown: ['Fs11', 'Gsus', 'Am9', 'Esus|E'],
-  drop2: ['Am', 'F', 'C', 'G', 'Am'],
-  groove_rise: ['F', 'C', 'G'],
-  microdrop: ['Am', 'G'],
-  swap: ['Am', 'F', 'C', 'G'],
-  finale: ['Am', 'F|G', 'AmAdd9'],
-  tail: ['AmAdd9'],
+  intro: { cycle: ['Am', 'F', 'G'] },
+  drop1: { cycle: ['Am', 'F', 'C', 'G'] },
+  groove_lift: { cycle: ['Am', 'F', 'C'] },
+  breakdown: { cycle: ['Fs11', 'Gsus', 'Am9'], end: 'Esus|E' },
+  drop2: { cycle: ['Am', 'F', 'C', 'G'], end: 'Am' },
+  groove_rise: { cycle: ['F', 'C', 'G'] },
+  microdrop: { cycle: ['Am', 'G'] },
+  swap: { cycle: ['Am', 'F', 'C', 'G'] },
+  finale: { cycle: ['Am', 'F|G'], end: 'AmAdd9' },
+  tail: { cycle: ['AmAdd9'] },
 };
 const SEGS = [];
 for (const sc of SECTIONS) {
   const prog = PROGRESSION[sc.id];
   if (!prog) throw new Error(`no progression for section ${sc.id}`);
-  const nb = Math.round((sc.end - sc.start) / 2);
-  if (prog.length !== nb) throw new Error(`section ${sc.id}: ${nb} bars but ${prog.length} chords`);
-  prog.forEach((bar, b) => {
+  const nb = Math.max(1, Math.ceil((sc.end - sc.start) / 2 - 1e-6));
+  for (let b = 0; b < nb; b++) {
+    const bar = prog.end && b === nb - 1 && nb > 1 ? prog.end : prog.cycle[b % prog.cycle.length];
+    const b0 = sc.start + b * 2, b1 = Math.min(sc.end, b0 + 2);
     const parts = bar.split('|');
-    const d = 2 / parts.length;
-    parts.forEach((p, i) => SEGS.push({ t0: sc.start + b * 2 + i * d, t1: sc.start + b * 2 + (i + 1) * d, name: p, chord: CH[p], sec: sc.id }));
-  });
+    const d = (b1 - b0) / parts.length;
+    parts.forEach((p, i) => SEGS.push({ t0: b0 + i * d, t1: b0 + (i + 1) * d, name: p, chord: CH[p], sec: sc.id }));
+  }
 }
 const segsOf = (id) => SEGS.filter((g) => g.sec === id);
 const chordAt = (t) => (SEGS.find((g) => t >= g.t0 - 1e-9 && t < g.t1 - 1e-9) || SEGS[SEGS.length - 1]).chord;
@@ -241,7 +245,7 @@ const HAT_O = [makeHat(true, 31), makeHat(true, 32)];
 const SNARES = [makeSnare(41), makeSnare(42), makeSnare(43)];
 const CRASH = makeCrash(51);
 const TICK = makeTick();
-/** Music-side impact (finale 56.0): short sub boom + noise burst with a reverb tail (via the crash bus send).
+/** Music-side impact (finale start): short sub boom + noise burst with a reverb tail (via the crash bus send).
  *  Deliberately lighter than the SFX impact_huge that lands on the same sample. */
 function makeImpact() {
   const n = s(0.7);
@@ -414,29 +418,27 @@ function snareRoll(t0, dur) {
 }
 
 // ------------------------------------------------------------------ automation curves
+// All curves are relative to the sections of the current cut.
+const secAt = (t) => SECTIONS.find((x) => t >= x.start && t < x.end) || SECTIONS[SECTIONS.length - 1];
 const bedCut = (t) => {
-  if (t >= 20 && t < 28) return 800;
-  if (t >= 42 && t < 44) return expInterp(16000, 450, (t - 42) / 1.95);
+  const sc = secAt(t);
+  if (sc.id === 'breakdown') return 800;
+  // groove_rise closes with a 2 s low-pass sweep down into the microdrop
+  if (sc.id === 'groove_rise' && t >= sc.end - 2) return expInterp(16000, 450, (t - (sc.end - 2)) / 1.95);
   return 20000;
 };
+const PAD_CUT = { drop1: 1600, groove_lift: 4500, breakdown: 2400, drop2: 3800, groove_rise: 3000, microdrop: 5000, swap: 2600, finale: 4200, tail: 3200 };
 const padCut = (t) => {
-  if (t < 6) return expInterp(220, 3200, t / 5.9);
-  if (t < 14) return 1600;
-  if (t < 20) return 4500;
-  if (t < 28) return 2400;
-  if (t < 38) return 3800;
-  if (t < 44) return 3000;
-  if (t < 48) return 5000;
-  if (t < 56) return 2600;
-  if (t < 60) return 4200;
-  return 3200;
+  const sc = secAt(t);
+  if (sc.id === 'intro') return expInterp(220, 3200, (t - sc.start) / Math.max(0.1, sc.end - sc.start - 0.1));
+  return PAD_CUT[sc.id] ?? 3200;
 };
 const bassCut = (t) => {
-  if (t < 14) return 700;
-  if (t < 20) return expInterp(250, 3000, (t - 14) / 6);
-  if (t < 38) return 1100;
-  if (t < 44) return 900;
-  if (t < 48) return 1500;
+  const sc = secAt(t);
+  if (sc.id === 'intro' || sc.id === 'drop1') return 700;
+  if (sc.id === 'groove_lift') return expInterp(250, 3000, (t - sc.start) / (sc.end - sc.start));
+  if (sc.id === 'groove_rise') return 900;
+  if (sc.id === 'microdrop') return 1500;
   return 1100;
 };
 
@@ -450,8 +452,13 @@ const HOOK = [
   [[0, 4, 76], [4, 4, 72], [8, 8, 69]], // Am (resolve)
 ];
 const HOOK_FINALE_2 = [[0, 2, 69], [2, 2, 72], [4, 4, 77], [8, 2, 74], [10, 2, 76], [12, 4, 79]]; // F→G
-const playHookBar = (barT0, bar, vel = 1) => {
-  for (const [st, ln, m] of bar) leadNote(barT0 + st * 0.125, ln * 0.125 * 0.92, m, vel);
+/** One hook bar; notes that would start at/after `until` are dropped and the last one is shortened. */
+const playHookBar = (barT0, bar, vel = 1, until = Infinity) => {
+  for (const [st, ln, m] of bar) {
+    const t0 = barT0 + st * 0.125;
+    if (t0 >= until - 1e-9) continue;
+    leadNote(t0, Math.min(ln * 0.125 * 0.92, until - t0 - 0.02), m, vel);
+  }
 };
 const arp16 = (a, b) => {
   const pat = [0, 1, 2, 3, 2, 1];
@@ -488,7 +495,9 @@ const inSec = (t, id) => t >= sec(id).start && t < sec(id).end;
   const S = sec('intro');
   padBars('intro', 0.8, (g) => ({ attack: g.t0 === S.start ? 1.6 : 0.5, rel: 0.6 }));
   segsOf('intro').forEach((g) => subNote(g.t0, g.t1 - g.t0, g.chord.root - 12, 0.55, { attack: g.t0 === S.start ? 2.0 : 0.6, rel: 0.3 }));
-  [0.25, 1.25, 2.25, 2.75, 3.25, 3.75, 4.25, 4.5, 4.75, 5.0, 5.25, 5.5, 5.625, 5.75, 5.875].forEach((t, i) => tick(t, 0.5 + 0.5 * i / 14));
+  // sparse ticks, accelerating; authored for a 6 s intro and scaled to the current one
+  const k = (S.end - S.start) / 6;
+  [0.25, 1.25, 2.25, 2.75, 3.25, 3.75, 4.25, 4.5, 4.75, 5.0, 5.25, 5.5, 5.625, 5.75, 5.875].forEach((t, i) => tick(S.start + t * k, 0.5 + 0.5 * i / 14));
 }
 // drop1 — four-on-the-floor, 1/8 + 1/16 hats, pumping bass, no lead
 {
@@ -545,7 +554,7 @@ const inSec = (t, id) => t >= sec(id).start && t < sec(id).end;
   bassDrop2(S.start, S.end);
   subBars('drop2', 0.6);
   padBars('drop2', 0.55, { attack: 0.02, rel: 0.3 });
-  HOOK.forEach((bar, b) => playHookBar(S.start + b * 2, bar));
+  HOOK.forEach((bar, b) => playHookBar(S.start + b * 2, bar, 1, S.end));
   arp16(S.start, S.end);
 }
 // groove_rise — kick, hats, offbeat bass, sustained lead (no melody); bed LP sweeps down 42→44
@@ -601,10 +610,11 @@ const inSec = (t, id) => t >= sec(id).start && t < sec(id).end;
     });
   });
 }
-// finale — impact at 56.0, kick + clap + bass + lead, final Am(add9) held from 60.0 into the tail
+// finale — impact at the final cut, kick + clap + bass + lead, final Am(add9) held from `hold` into the tail
 {
   const S = sec('finale');
-  const hold = S.end - 2; // 60.0
+  // final chord struck with the lockup's pop-out (src/timeline.ts MUSIC_ANCHORS), snapped to the beat grid
+  const hold = Math.min(S.end - 0.5, Math.max(S.start + 1, S.start + Math.round(((cues.music_anchors?.finaleHold ?? S.end - 2) - S.start) * 4) / 4));
   crash(S.start, 1);
   place(BUS.kick, IMPACT.boom, S.start, 0.55);
   place(BUS.crash, IMPACT.burst, S.start, 0.35);
@@ -620,11 +630,11 @@ const inSec = (t, id) => t >= sec(id).start && t < sec(id).end;
   bassDrop2(S.start, hold);
   segsOf('finale').filter((g) => g.t0 < hold).forEach((g) => subNote(g.t0, g.t1 - g.t0, g.chord.root - 12, 0.6));
   segsOf('finale').filter((g) => g.t0 < hold).forEach((g) => padChord(g.t0, g.t1, g.chord.pad, 0.6, { attack: 0.02, rel: 0.3 }));
-  playHookBar(S.start, HOOK[0]);
-  playHookBar(S.start + 2, HOOK_FINALE_2);
+  playHookBar(S.start, HOOK[0], 1, hold);
+  playHookBar(S.start + 2, HOOK_FINALE_2, 1, hold);
   arp16(S.start, hold);
-  // final chord: sustained 60→62, released into the tail reverb (natural decay to 64.0)
-  const release = sec('tail').start; // 62.0
+  // final chord: sustained hold → tail, released into the tail reverb (natural decay to the end)
+  const release = sec('tail').start;
   padChord(hold, release, CH.AmAdd9.pad, 1.0, { attack: 0.01, rel: 0.45, tail: true });
   subNote(hold, release - hold, 33, 0.6, { attack: 0.01, rel: 0.35 });
   bassNote(hold, 0.9, 45, 0.9, () => 500, { envAmt: 1200 });
@@ -752,7 +762,7 @@ for (let n = 0; n < TOTAL; n++) {
   }
 }
 // section gain automation (dB): makes drop2 the clear energy peak; 20 ms linear ramps at the boundaries
-const SECTION_GAIN_DB = { intro: 0, drop1: -1.0, groove_lift: -0.6, breakdown: 0, drop2: 1.2, groove_rise: -0.4, microdrop: 0, swap: -2.0, finale: 0.3, tail: 0.3 };
+const SECTION_GAIN_DB = { intro: 0, drop1: -1.0, groove_lift: -0.6, breakdown: 0, drop2: 1.2, groove_rise: -0.4, microdrop: 0, swap: -2.0, finale: -0.3, tail: 0.3 };
 {
   const rampN = s(0.02);
   const gAt = (t) => dbToGain(SECTION_GAIN_DB[(SECTIONS.find((x) => t >= x.start && t < x.end) || SECTIONS[SECTIONS.length - 1]).id] ?? 0);
@@ -795,7 +805,7 @@ const band = (lo, hi) => {
 const low = band(0, 150), mid = band(150, 2500), high = band(2500, 0);
 const sections = SECTIONS.map((sc) => ({
   id: sc.id, start: sc.start, end: sc.end, intensity: sc.intensity,
-  lufs: +rangeLoudness(cs, sc.start, Math.min(sc.end, 63.9)).toFixed(2),
+  lufs: +rangeLoudness(cs, sc.start, Math.min(sc.end, TOTAL / SR - 0.1)).toFixed(2),
   low_db: +low(sc.start, sc.end).toFixed(1), mid_db: +mid(sc.start, sc.end).toFixed(1), high_db: +high(sc.start, sc.end).toFixed(1),
 }));
 const report = {

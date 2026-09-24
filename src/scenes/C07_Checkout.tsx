@@ -159,7 +159,7 @@ export const C07Checkout: React.FC = () => {
 			</IsoStage>
 
 			<div style={{position: 'absolute', right: 110, top: 56}}>
-				<Kinetic lines={[[...COPY.C07.phrase[0].split(' '), ...COPY.C07.phrase[1].split(' ')]]} at={SLIDE - 0.1} mode="drop" size={100} weight={[300, 800]} gradientFrom={3} palette={PALETTE.hero} align="right" />
+				<Kinetic lines={[[...COPY.C07.phrase[0].split(' '), ...COPY.C07.phrase[1].split(' ')]]} at={SLIDE - 0.1} mode="drop" size={100} weight={[300, 800]} gradientFrom={3} palette={PALETTE.heroDeep} align="right" />
 			</div>
 		</AbsoluteFill>
 	);

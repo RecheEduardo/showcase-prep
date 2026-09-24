@@ -4,7 +4,7 @@
  * Usage (from `video/`, no package.json needed; run synth.mjs and sfx.mjs first):
  *   node scripts/audio/mix.mjs
  * Output:
- *   public/audio/master.wav              48 kHz, stereo, 24-bit PCM, exactly 3,072,000 frames
+ *   public/audio/master.wav              48 kHz, stereo, 24-bit PCM, exactly as long as the cut
  *   public/audio/stems/music_ducked.wav  float32, limiter-input scale (reference only)
  *   public/audio/stems/sfx_bus.wav       float32, limiter-input scale (reference only)
  *   audio/analysis/mix-report.json       levels, per-cue SFX-over-music deltas, limiter stats
@@ -55,7 +55,9 @@ const mw = readWav(PATHS.music);
 if (mw.sr !== SR || mw.channels.length !== 2 || mw.frames !== TOTAL) throw new Error(`music.wav must be 48k stereo ${TOTAL} frames (got ${mw.sr}/${mw.channels.length}/${mw.frames})`);
 const music = mw.channels;
 const mL = measureLoudness(music, { withTruePeak: false });
-const stWin = mL.shortTerm.filter((v) => v.t >= 6 && v.t + 3 <= 62).map((v) => v.lufs).sort((a, b) => a - b);
+// median short-term loudness of the music from the hard cut (end of the intro) to 2 s before the end
+const introEnd = cues.music_sections[0].end;
+const stWin = mL.shortTerm.filter((v) => v.t >= introEnd + 1 && v.t + 3 <= TOTAL / SR - 2).map((v) => v.lufs).sort((a, b) => a - b);
 const musicMedianST = stWin[Math.floor(stWin.length / 2)];
 const M_DB = MUSIC_ST_TARGET - musicMedianST;
 const M = dbToGain(M_DB);
