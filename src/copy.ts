@@ -146,19 +146,20 @@ export const COPY = {
 		title: 'Dados dos portadores',
 		sub: 'Preencha nome e documento de cada ingresso selecionado.',
 		ticket: 'INGRESSO',
-		type: 'Inteira',
 		nameLabel: 'Nome completo',
 		docLabel: 'CPF / Documento',
 		holders: [
-			{name: 'Beatriz Lima', doc: '•••.•••.•••-••'},
-			{name: 'Diego Martins', doc: '•••.•••.•••-••'},
+			{name: 'Beatriz Lima', doc: '•••.•••.•••-••', type: 'Inteira'},
+			{name: 'Diego Martins', doc: '•••.•••.•••-••', type: 'Inteira'},
+			{name: 'Camila Rocha', doc: '•••.•••.•••-••', type: 'Meia entrada'},
+			{name: 'Lucas Ferreira', doc: '•••.•••.•••-••', type: 'Meia entrada'},
 		],
 		event: 'Pulse Open Air',
 		when: 'sábado, 9 de janeiro, 22:00',
 		where: 'Parque da Orla, Rio de Janeiro',
 		sector: 'PISTA',
-		items: 'Inteira × 2',
-		count: '2 ingressos',
+		items: ['Inteira × 2', 'Meia entrada × 2'],
+		count: '4 ingressos',
 	},
 
 	C08: {
@@ -168,15 +169,31 @@ export const COPY = {
 		sectorsHeader: 'Setores',
 		sectorList: ['Pista', 'Cadeira Nível 1', 'Cadeira Superior', 'Pista Premium'],
 		addSector: 'Adicionar setor',
+		details: {
+			title: 'Detalhes do setor',
+			name: 'Nome',
+			desc: 'Descrição',
+			capacity: 'Capacidade',
+			// Same order as sectorList; capacities are the fictitious totals of C05.
+			values: [
+				{desc: 'Gramado central', capacity: '12000 lugares'},
+				{desc: 'Arquibancada inferior numerada', capacity: '8000 lugares'},
+				{desc: 'Arquibancada superior numerada', capacity: '10000 lugares'},
+				{desc: 'Área VIP colada ao palco', capacity: '4500 lugares'},
+			],
+		},
 		boardTitle: 'Meus eventos',
 		columns: {pending: 'Aguardando aprovação', approved: 'Aprovado'},
 		badges: {pending: 'Pendente', approved: 'Aprovado'},
 		approvedToast: 'Evento aprovado',
-		cards: [
+		// Four events waiting for approval (two get approved) + one already approved.
+		pending: [
 			{title: 'Festival Horizonte', category: 'Música'},
 			{title: 'Expo Luz & Cor', category: 'Artes e Cultura'},
-			{title: 'Summit Futuro Digital', category: 'Tecnologia'},
+			{title: 'Sunset Sessions', category: 'Música'},
+			{title: 'Noite do Riso', category: 'Comédia e Stand-up'},
 		],
+		approvedCard: {title: 'Summit Futuro Digital', category: 'Tecnologia'},
 	},
 
 	C09: {

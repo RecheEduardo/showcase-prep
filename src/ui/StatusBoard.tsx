@@ -58,10 +58,10 @@ export const BoardCard: React.FC<{
 	<div
 		style={{
 			width,
-			height: 116,
+			height: 124,
 			boxSizing: 'border-box',
-			padding: '16px 22px 16px 16px',
-			borderRadius: 28,
+			padding: '18px 24px 18px 18px',
+			borderRadius: 34,
 			background: '#ffffff',
 			boxShadow: `0 18px 44px -24px rgba(41,89,185,${0.45 + 0.3 * glow}), 0 0 0 ${6 * glow}px rgba(16,185,129,${0.16 * glow})`,
 			display: 'flex',
@@ -70,7 +70,7 @@ export const BoardCard: React.FC<{
 			fontFamily: FONT,
 		}}
 	>
-		<div style={{width: 84, height: 84, borderRadius: 20, overflow: 'hidden', flexShrink: 0}}>
+		<div style={{width: 84, height: 84, borderRadius: 24, overflow: 'hidden', flexShrink: 0}}>
 			{thumb.photo ? (
 				<Photo src={thumb.photo} width={84} height={84} />
 			) : (

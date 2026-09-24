@@ -4,10 +4,10 @@ import {COPY} from '../copy';
 import {depthScale, IsoStage} from '../motion/patterns';
 import {useSceneTime, useSceneTimeline} from '../motion/scene';
 import {blurFilter, dofBlur, EASE, lerp, prog, tween} from '../motion/tokens';
-import {LABELS, SFX_CUES} from '../timeline';
+import {C00_ERRORS, LABELS} from '../timeline';
 import {Cursor, type CursorKey} from '../ui/Cursor';
 
-// C00 "Caos" (0–5 s) — PROBLEM (0–2.5) + AGITATION (2.5–4.9). ILLUSTRATIVE generic legacy
+// C00 "Caos" — PROBLEM (0–2.5 s) + AGITATION (2.5 s → freeze, 0.1 s before the end). ILLUSTRATIVE generic legacy
 // ticketing site (no brand, not modelled on a real product): progress stuck at 99 %, a spinner,
 // then error dialogs pile up on the accelerating cues while the camera tilts into the mess.
 // ONE cursor carries the emotion: lazy at first, then rage-clicking between "Comprar" and every
@@ -20,7 +20,7 @@ const ENTER = LABELS['C00.problem.enter'];
 const STALL = LABELS['C00.stall.click'];
 const AGITATE = LABELS['C00.agitation.start'];
 const FREEZE = LABELS['C00.freeze'];
-const ERRORS = SFX_CUES.filter((c) => c.parent === 'sfx.c00.errors').map((c) => c.t);
+const ERRORS = C00_ERRORS;
 const WIN = {x: 340, y: 170, w: 1240, h: 720};
 const BUY = {x: WIN.x + 860, y: WIN.y + 470, w: 300, h: 76};
 const DIALOG = {w: 540, h: 210};
@@ -141,7 +141,7 @@ const ErrorDialog: React.FC<{i: number; t: number}> = ({i, t}) => {
 
 export const C00Caos: React.FC = () => {
 	const tRaw = useSceneTime();
-	// Freeze: every React-driven visual holds the 4.9 frame until the hard cut.
+	// Freeze: every React-driven visual holds the freeze frame until the hard cut.
 	const t = Math.min(tRaw, FREEZE);
 	const lag = lagClock(t);
 

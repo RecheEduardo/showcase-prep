@@ -59,3 +59,13 @@ Registro das decisões tomadas de forma autônoma (decisão · alternativas · m
 |---|---|---|---|
 | D32 | H.264 em 4K60 aceito pelo ambiente (teste de 1 s em 3840×2160 a 60 fps passou no `ffprobe`) | H.265 | Não foi preciso trocar de codec. |
 | D33 | Concurrency do render ajustada à RAM (8,4 GB totais) | Padrão | Ver comando em `REPORT.md`. |
+
+## Revisão — ritmo configurável, fundos e ajustes por cena (2026-09-24)
+
+| # | Decisão | Alternativas | Motivo |
+|---|---|---|---|
+| D34 | **`src/pacing.ts` é o único lugar para mudar a duração das cenas (segundos).** `src/timeline.ts` deixou de ser gerado: soma as durações, deriva início/fim, transições, hits, cues de som e a duração total. Labels passaram a ser **locais à cena** (0 = início da cena); `fromEnd(x)` ancora batidas ao fim da cena. Cada cena tem um `min`; `scripts/verify.mjs` falha abaixo dele | Manter o JSON absoluto + gerador | O JSON-fonte (`../data/scene-timeline.json`) nem existia no repositório e qualquer mudança de duração exigia reescrever todos os tempos absolutos. `sync-timeline.mjs` e `src/data/scene-timeline.json` foram removidos; substitui D09 e o alinhamento a kicks de D23. |
+| D35 | Fundos: kit `src/ui/Floaters.tsx` (placas glass com fragmentos de UI abstratos, tiles em gradiente azul, orbes, anéis, mini gráfico) + grade de pontos e vinheta azul sutis no `Chrome`; fotos só como `PhotoChip` pequeno (no máx. 2 por cena) | Fotos grandes de eventos | Pedido do usuário + referência de vídeos SaaS: o gradiente é a luz, o vidro e fragmentos abstratos dão profundidade sem competir com o texto. Revoga o uso de fotos grandes de D15 no fundo. |
+| D36 | Blur-to-focus em toda entrada/saída de texto (`Kinetic`, `FocusIn`, `CascadePop`, entradas GSAP de texto) | Só opacidade/escala | Pedido do usuário (fluidez). Blur proporcional à distância da mola até o pouso; omitido abaixo de 0,25 px. |
+| D37 | C05 sem o bloco de ingressos nem o "throw" de câmera; transição C05→C06 = cross-fade com blur (`fade`) | SnapZoom | Pedido do usuário. Linhas de setor com altura explícita e chips `inline-flex` (o padding vertical de `span` inline vazava para fora da linha). |
+| D38 | Som de digitação da C07 tocado por uma camada de SFX no Remotion (`SfxLayer`, amostras `key_tick_*.wav`), uma tecla por caractere, a partir de `SFX_CUES` | Remixar o master | O master procedural (`AUDIO_ENABLED = false`) já estava desatualizado (64 s) e desativado; a camada segue `pacing.ts` automaticamente. |

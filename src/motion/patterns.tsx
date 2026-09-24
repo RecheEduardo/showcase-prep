@@ -42,7 +42,7 @@ export const UiPanelExpand: React.FC<{
 
 export const cascadeAt = (at: number, index: number, step = CASCADE_STEP) => at + index * step;
 
-/** Cascade Pop: item `index` pops on springSnappy (scale 0 → 1.05 → 1), `step` after the previous one. */
+/** Cascade Pop: item `index` pops on springSnappy (scale 0 → 1.05 → 1) with a focus pull, `step` after the previous one. */
 export const CascadePop: React.FC<{
 	at: number;
 	index: number;
@@ -53,7 +53,8 @@ export const CascadePop: React.FC<{
 }> = ({at, index, step, origin = '50% 50%', style, children}) => {
 	const t = useSceneTime();
 	const s = popScale(t, cascadeAt(at, index, step));
-	return <div style={{...style, scale: String(s), opacity: s > 0.002 ? baseOpacity(style) : 0, transformOrigin: origin}}>{children}</div>;
+	// Focus pull while popping: the item (and any text in it) sharpens as it lands.
+	return <div style={{...style, scale: String(s), opacity: s > 0.002 ? baseOpacity(style) : 0, transformOrigin: origin, filter: style?.filter ?? blurFilter(10 * (1 - Math.min(1, s)))}}>{children}</div>;
 };
 
 /**

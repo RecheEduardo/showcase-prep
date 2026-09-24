@@ -10,17 +10,18 @@ import {BRAND, FONT} from '../theme';
 import {COUNTDOWN, LABELS} from '../timeline';
 import {Icon} from '../ui/Icon';
 
-// C04 "A fila" (13–17 s) — ILLUSTRATIVE (H11 was never captured). Waiting-room card recreated
+// C04 "A fila" — ILLUSTRATIVE (H11 was never captured). Waiting-room card recreated
 // from the real component text (WaitingRoomCard.tsx), no headline: the card itself fills the
 // frame. It expands out of C03's navy card, the position drops 301 -> 1 on the 40 accelerating
-// tick cues (one value per tick) while the isometric camera leans in; everything freezes at 16.5
-// (stop-time) and C05 bursts out of the number on the 17.0 downbeat.
+// tick cues (one value per tick) while the isometric camera leans in; everything freezes 0.5 s
+// before the end (stop-time) and C05 bursts out of the number on the cut.
 
 const ENTER = LABELS['C04.dark.enter'];
 const STOP = LABELS['C04.stoptime'];
 const COUNT_START = LABELS['C04.counter.start'];
-const HIT1 = LABELS['C04.counter.hit1'];
-const LEAN = 15.0;
+const HIT1 = STOP;
+const LEAN = LABELS['C04.lean'];
+const ROLL = LABELS['C04.roll'];
 const CARD = {w: 1180, h: 940, cx: 960, top: 70};
 const NUMBER_CY = INVERT.cy;
 const DOTS = (() => {
@@ -63,22 +64,22 @@ const waitFor = (v: number) => {
 
 export const C04Fila: React.FC = () => {
 	const tRaw = useSceneTime();
-	// Stop-time: every visual is frozen on the 16.5 frame until the drop.
+	// Stop-time: every visual is frozen on the stop frame until the drop.
 	const t = tRaw >= STOP ? STOP : tRaw;
 
 	const scope = useSceneTimeline(({timeline: tl, selector: q, at, L}) => {
 		const iso = q('[data-iso="c04"]');
 		tl.fromTo(iso, {rotateX: 20, scale: 1}, {rotateX: 4, duration: 1.0, ease: EASE.cubicExpoOut}, L('C04.dark.enter'));
-		// Riser: the camera leans in until the freeze. Ends exactly at 16.5 so nothing moves after.
+		// Riser: the camera leans in until the freeze. Ends exactly at the stop so nothing moves after.
 		tl.to(iso, {rotateX: 11, scale: 1.1, duration: STOP - LEAN, ease: EASE.in}, at(LEAN));
-		tl.from(q('[data-cardin]'), {y: 24, opacity: 0, duration: 0.5, ease: EASE.cubicExpoOut, stagger: 0.05}, at(ENTER + 0.15));
+		tl.fromTo(q('[data-cardin]'), {y: 24, opacity: 0, filter: 'blur(12px)'}, {y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.5, ease: EASE.cubicExpoOut, stagger: 0.05}, at(ENTER + 0.15));
 	});
 
 	const value = t < COUNT_START ? COUNTDOWN[0].value : valueAt(t);
 	const sinceTick = t - lastTickAt(t);
 	const punch = t >= HIT1 ? 1 + 0.16 * (1 - prog(sinceTick, 0, 0.12, 'hit')) + 0.06 : 1 + 0.07 * (1 - prog(sinceTick, 0, 0.12, 'out'));
 	const build = prog(t, LEAN, STOP, 'softIn');
-	const roll = prog(t, 15.5, STOP, 'softIn');
+	const roll = prog(t, ROLL, STOP, 'softIn');
 	const shake = roll * 5;
 	const sx = Math.sin(t * 91) * shake;
 	const sy = Math.cos(t * 77) * shake * 0.6;
@@ -203,7 +204,7 @@ export const C04Fila: React.FC = () => {
 					))}
 				</div>
 			</IsoStage>
-			{/* Freeze vignette: the whole frame holds on 16.5 while the audio drops out. */}
+			{/* Freeze vignette: the whole frame holds on the stop frame while the audio drops out. */}
 			<AbsoluteFill style={{pointerEvents: 'none', background: 'radial-gradient(ellipse 75% 70% at 50% 52%, rgba(8,26,49,0) 50%, rgba(8,26,49,0.7) 100%)', opacity: 0.4 + 0.6 * build}} />
 		</AbsoluteFill>
 	);

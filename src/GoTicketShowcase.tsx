@@ -1,7 +1,7 @@
 import {Audio} from '@remotion/media';
 import React from 'react';
 import {AbsoluteFill, Sequence, staticFile, useCurrentFrame} from 'remotion';
-import {AUDIO_ENABLED, MASTER_AUDIO} from './audio';
+import {AUDIO_ENABLED, MASTER_AUDIO, SfxLayer} from './audio';
 import {Flash} from './fx/Flash';
 import {Grain} from './fx/Grain';
 import {Shockwave} from './fx/Shockwave';
@@ -34,8 +34,8 @@ const COMPONENTS: Record<SceneId, React.FC> = {
 	C09: C09Fecho,
 };
 
-// Big visual hits, one per entry of HITS (data/scene-timeline.json _meta.hits): hard cut into the
-// brand (5.0), drop 2 out of the queue number (17.0), final impact (32.0). Each sits on its audio cue.
+// Big visual hits, one per entry of HITS (src/timeline.ts): the hard cut into the brand, drop 2 out
+// of the queue number and the final impact. Their times follow src/pacing.ts.
 const [HIT_CUT, HIT_DROP, HIT_FINALE] = HITS;
 const FX = [
 	{at: HIT_CUT, x: 960, y: 430, flash: 0.85, decay: 0.35, maxR: 1500, width: 40},
@@ -77,6 +77,7 @@ export const GoTicketShowcase: React.FC = () => (
 			})}
 			<GlobalFx />
 			<Grain />
+			<SfxLayer />
 			{AUDIO_ENABLED ? <Audio src={staticFile(MASTER_AUDIO)} /> : null}
 		</AbsoluteFill>
 	</>

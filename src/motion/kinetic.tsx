@@ -3,7 +3,7 @@ import type {SpringConfig} from 'remotion';
 import {FONT} from '../theme';
 import {FPS} from '../timeline';
 import {useSceneTime} from './scene';
-import {lerp, springAt, springSnappy} from './tokens';
+import {blurFilter, lerp, prog, springAt, springSnappy} from './tokens';
 
 // Kinetic typography (replaces the mask fade-in-up). Every glyph is a pure function of the scene
 // time driven by Remotion springs:
@@ -15,6 +15,8 @@ import {lerp, springAt, springSnappy} from './tokens';
 // Variable weight: Plus Jakarta Sans is variable (200–800), so glyphs gain weight as they land.
 // Each glyph sits in a slot sized by its FINAL weight, so the line never reflows while animating.
 // Gradient words get a per-letter colour ramp that keeps flowing, plus a shine after landing.
+// Every unit also racks focus: it enters blurred and sharpens as its spring lands, and blurs out
+// again on the pop-out (blur-to-focus, like a lens pulling focus), so no text ever pops in hard.
 
 export type KineticMode = 'pop' | 'drop' | 'fly' | 'flip' | 'slam';
 
@@ -22,6 +24,8 @@ export const PALETTE = {
 	brand: ['#5fb0e6', '#2a8fd4', '#1c6fb5'],
 	hero: ['#0078f4', '#0dbde4', '#57c5f4'],
 	night: ['#bfe8ff', '#57c5f4', '#2a8fd4'],
+	/** Darker blue ramp for gradient text that sits directly on the light ice background. */
+	deep: ['#1a64c8', '#0f4a94', '#1c6fb5'],
 } as const;
 
 const bouncy: Partial<SpringConfig> = {stiffness: 170, damping: 11, mass: 1};
@@ -88,6 +92,10 @@ export const Kinetic: React.FC<{
 	const unitSpring = (unit: number, cfg: Partial<SpringConfig>) => springAt(t, at + unit * stepS, cfg);
 	const exitOf = (unit: number) => (exitAt === undefined ? 0 : springAt(t, exitAt + unit * (perLetter ? 0.6 : 2) / FPS, springSnappy));
 
+	// Focus pull: blur is proportional to how far the unit still is from its landed state.
+	const maxBlur = Math.min(20, Math.max(8, size * 0.14));
+	const focus = (s: number, e: number) => blurFilter(maxBlur * (Math.max(0, 1 - clamp01(s)) + clamp01(e)));
+
 	const glyphColor = (g: Glyph) => {
 		if (g.gradIndex < 0) return color;
 		const flow = Math.max(0, t - at) * 0.22;
@@ -109,13 +117,13 @@ export const Kinetic: React.FC<{
 			// Speed-driven smear: the faster the word travels, the more it stretches along its path.
 			const speed = Math.abs(s - springAt(t - 1 / FPS, at + order(w) * stepS, cfg)) * FPS;
 			const stretch = Math.min(0.55, speed * 0.09);
-			return {transform: `translateX(${(dir * 1500 * (1 - s)).toFixed(1)}px) skewX(${(-dir * stretch * 22).toFixed(2)}deg) scale(${(1 + stretch) * out}, ${(1 - stretch * 0.3) * out})`, transformOrigin: '50% 80%'};
+			return {transform: `translateX(${(dir * 1500 * (1 - s)).toFixed(1)}px) skewX(${(-dir * stretch * 22).toFixed(2)}deg) scale(${(1 + stretch) * out}, ${(1 - stretch * 0.3) * out})`, transformOrigin: '50% 80%', filter: focus(s, e)};
 		}
 		if (mode === 'flip') {
-			return {transform: `translateY(${(30 * (1 - s)).toFixed(1)}px) rotateX(${(-100 * (1 - s)).toFixed(2)}deg) scale(${out})`, transformOrigin: '50% 100%', opacity: clamp01(s * 3) * clamp01(out * 3)};
+			return {transform: `translateY(${(30 * (1 - s)).toFixed(1)}px) rotateX(${(-100 * (1 - s)).toFixed(2)}deg) scale(${out})`, transformOrigin: '50% 100%', opacity: clamp01(s * 3) * clamp01(out * 3), filter: focus(s, e)};
 		}
 		// slam
-		return {transform: `scale(${(lerp(2.6, 1, s) * out).toFixed(4)})`, transformOrigin: '50% 60%', opacity: clamp01(s * 4) * clamp01(out * 3)};
+		return {transform: `scale(${(lerp(2.6, 1, s) * out).toFixed(4)})`, transformOrigin: '50% 60%', opacity: clamp01(s * 4) * clamp01(out * 3), filter: focus(s, e)};
 	};
 
 	const glyphStyle = (g: Glyph): {slot: React.CSSProperties; weightNow: number} => {
@@ -131,7 +139,7 @@ export const Kinetic: React.FC<{
 			mode === 'pop'
 				? `translate(-50%, ${(size * 0.6 * (1 - s)).toFixed(1)}px) rotate(${(tilt * (1 - s)).toFixed(2)}deg) scale(${(lerp(0.2, 1, s) * out).toFixed(4)})`
 				: `translate(-50%, ${(-size * 1.4 * (1 - s)).toFixed(1)}px) rotate(${((tilt / 2) * (1 - s)).toFixed(2)}deg) scale(${out.toFixed(4)})`;
-		return {slot: {transform, opacity: clamp01(s * 2.5) * clamp01(out * 3)}, weightNow: lerp(weight[0], weight[1], clamp01(s))};
+		return {slot: {transform, opacity: clamp01(s * 2.5) * clamp01(out * 3), filter: focus(s, e)}, weightNow: lerp(weight[0], weight[1], clamp01(s))};
 	};
 
 	return (
@@ -180,6 +188,29 @@ export const Kinetic: React.FC<{
 					))}
 				</div>
 			))}
+		</div>
+	);
+};
+
+/**
+ * Focus pull for plain text blocks (labels, captions, footnotes): the block fades in while it
+ * sharpens from a blur and rises a little; with `exitAt` it blurs and fades out again.
+ */
+export const FocusIn: React.FC<{at: number; dur?: number; exitAt?: number; rise?: number; blur?: number; style?: React.CSSProperties; children: React.ReactNode}> = ({
+	at,
+	dur = 0.5,
+	exitAt,
+	rise = 18,
+	blur = 14,
+	style,
+	children,
+}) => {
+	const t = useSceneTime();
+	const p = prog(t, at, at + dur, 'cubicExpoOut');
+	const e = exitAt === undefined ? 0 : prog(t, exitAt, exitAt + dur * 0.7, 'softIn');
+	return (
+		<div style={{...style, opacity: clamp01(p * 1.6) * (1 - e), translate: `0px ${(rise * (1 - p) - rise * 0.5 * e).toFixed(2)}px`, filter: blurFilter(blur * (1 - p) + blur * e)}}>
+			{children}
 		</div>
 	);
 };
