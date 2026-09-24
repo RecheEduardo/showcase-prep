@@ -4,21 +4,22 @@ import {COPY} from '../copy';
 import {Kinetic} from '../motion/kinetic';
 import {CascadePop, IsoStage, UiPanelExpand} from '../motion/patterns';
 import {useSceneTime, useSceneTimeline} from '../motion/scene';
-import {EASE, prog, tween} from '../motion/tokens';
+import {blurFilter, EASE, prog, tween} from '../motion/tokens';
 import {APP, BRAND, FONT} from '../theme';
-import {LABELS} from '../timeline';
+import {DUR, LABELS} from '../timeline';
 import {Cursor} from '../ui/Cursor';
 import {AppCard} from '../ui/Glass';
 import {Icon} from '../ui/Icon';
 import {Photo} from '../ui/Photo';
 import {Pill} from '../ui/Pill';
 
-// C03 "O evento" (11–13 s). Event page (02-event-details, features/event-details) of the fictitious
+// C03 "O evento". Event page (02-event-details, features/event-details) of the fictitious
 // "Mega Arena Game Show 2026" in an isometric camera: parallax banner with the frontend's
 // transparent → black/90 foot gradient, the title flipping up in 3D at its bottom-left corner,
-// info pills, the "Sobre o Evento" description card (EventDescription.tsx) and the ticket panel
-// whose first date card pulses on the 12.0 kick and is clicked at 12.5. The camera flattens
-// before the click so the card can expand into navy (C04) in screen space.
+// info pills, the "Sobre o Evento" description card (EventDescription.tsx) and the ticket panel.
+// The cursor reaches the first date card and clicks it at 1.5 s; ONLY THEN the card reacts
+// (press + pulse ring), and it expands into navy (C04) over the last 0.45 s of the scene. The
+// camera flattens before the click so the expanding card lives in screen space.
 
 const EVENT = COPY.events.arena;
 const BANNER_H = 620;
@@ -27,9 +28,9 @@ const CARD = {x: PANEL.x + PANEL.pad, w: PANEL.w - PANEL.pad * 2, h: 132, y0: PA
 const PANEL_H = PANEL.pad * 2 + 56 + 22 + CARD.h * 2 + CARD.gap;
 const LEFT = {x: 100, w: 930};
 const EXPAND = LABELS['C03.panel.expand'];
-const PULSE = LABELS['C03.datecard.pulse'];
 const CLICK = LABELS['C03.datecard.click'];
-const OPEN = CLICK + 0.05;
+const OPEN = Math.max(CLICK + 0.3, LABELS['C03.card.open']);
+const END = DUR.C03;
 
 const DateCard: React.FC<{i: number}> = ({i}) => {
 	const d = COPY.C03.dateCards[i];
@@ -69,24 +70,23 @@ export const C03Evento: React.FC = () => {
 
 	const scope = useSceneTimeline(({timeline: tl, selector: q, at, L}) => {
 		const iso = q('[data-iso="c03"]');
-		tl.fromTo(iso, {rotateX: 12, rotateY: 16}, {rotateX: 3, rotateY: 4, duration: 1.0, ease: EASE.cubicExpoOut}, at(11.0));
+		tl.fromTo(iso, {rotateX: 12, rotateY: 16}, {rotateX: 3, rotateY: 4, duration: 1.0, ease: EASE.cubicExpoOut}, at(0));
 		// Flatten before the click: the expanding card lives in screen space.
-		tl.to(iso, {rotateX: 0, rotateY: 0, duration: 0.45, ease: EASE.cubicExpoOut}, L('C03.datecard.pulse'));
-		// Pulse on the kick, press on the click.
-		tl.to(q('[data-date="0"]'), {scale: 1.045, duration: 0.1, ease: EASE.hit}, L('C03.datecard.pulse'));
-		tl.to(q('[data-date="0"]'), {scale: 1, duration: 0.4, ease: EASE.snap}, L('C03.datecard.pulse', 0.1));
-		tl.to(q('[data-date="0"]'), {scale: 0.97, duration: 0.05, ease: EASE.hit}, L('C03.datecard.click'));
-		tl.to(q('[data-date="0"]'), {scale: 1, duration: 0.15, ease: EASE.snap}, L('C03.datecard.click', 0.05));
-		// Card expand (12.55–13.0): the clicked card grows to full frame and turns navy.
+		tl.to(iso, {rotateX: 0, rotateY: 0, duration: 0.45, ease: EASE.cubicExpoOut}, L('C03.datecard.click', -0.5));
+		// The card reacts only once it is clicked: press, then a springy pulse back.
+		tl.to(q('[data-date="0"]'), {scale: 0.96, duration: 0.06, ease: EASE.hit}, L('C03.datecard.click'));
+		tl.to(q('[data-date="0"]'), {scale: 1.045, duration: 0.12, ease: EASE.hit}, L('C03.datecard.click', 0.06));
+		tl.to(q('[data-date="0"]'), {scale: 1, duration: 0.3, ease: EASE.snap}, L('C03.datecard.click', 0.18));
+		// Card expand (last 0.45 s): the clicked card grows to full frame and turns navy.
 		const card = q('[data-expand]');
 		tl.set(card, {opacity: 1}, at(OPEN));
-		tl.to(card, {left: 0, top: 0, width: 1920, height: 1080, borderRadius: 0, duration: 13 - OPEN, ease: EASE.cubicHardSnap}, at(OPEN));
+		tl.to(card, {left: 0, top: 0, width: 1920, height: 1080, borderRadius: 0, duration: END - OPEN, ease: EASE.cubicHardSnap}, at(OPEN));
 		tl.to(card, {backgroundColor: BRAND.navy, duration: 0.25, ease: EASE.soft}, at(OPEN + 0.03));
 	});
 
-	const ringP = prog(t, PULSE, PULSE + 0.6, 'out');
+	const ringP = prog(t, CLICK, CLICK + 0.55, 'out');
 	const card0 = {x: CARD.x, y: CARD.y0};
-	const push = 1.04 + 0.05 * prog(t, 11, 13, 'sine');
+	const push = 1.04 + 0.05 * prog(t, 0, END, 'sine');
 	const chips = [
 		{icon: 'calendar' as const, text: EVENT.day},
 		{icon: 'clock' as const, text: EVENT.time},
@@ -104,18 +104,18 @@ export const C03Evento: React.FC = () => {
 				</div>
 
 				<div style={{position: 'absolute', left: LEFT.x, top: 250}}>
-					<CascadePop at={11.0} index={0} origin="0% 50%" style={{marginBottom: 20, display: 'inline-block'}}>
+					<CascadePop at={0} index={0} origin="0% 50%" style={{marginBottom: 20, display: 'inline-block', filter: blurFilter(14 * (1 - prog(t, 0, 0.4, 'out')))}}>
 						<div style={{display: 'flex', alignItems: 'center', gap: 12, padding: '10px 20px', borderRadius: 999, background: 'rgba(255,255,255,0.14)', border: '1px solid rgba(255,255,255,0.3)', fontFamily: FONT}}>
 							<span style={{width: 10, height: 10, borderRadius: 5, background: '#57c5f4'}} />
 							<span style={{fontSize: 20, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#ffffff'}}>{COPY.C03.eyebrow}</span>
 						</div>
 					</CascadePop>
-					<Kinetic lines={[COPY.C03.title[0].split(' '), COPY.C03.title[1].split(' ')]} at={11.05} mode="flip" step={4} size={104} color="#ffffff" weight={[500, 800]} shadow="0 12px 40px rgba(0,0,0,0.45)" />
+					<Kinetic lines={[COPY.C03.title[0].split(' '), COPY.C03.title[1].split(' ')]} at={0.05} mode="flip" step={4} size={104} color="#ffffff" weight={[500, 800]} shadow="0 12px 40px rgba(0,0,0,0.45)" />
 				</div>
 
 				<div style={{position: 'absolute', left: LEFT.x, top: BANNER_H + 36, display: 'flex', gap: 14}}>
 					{chips.map((c, i) => (
-						<CascadePop key={c.icon} at={11.1} index={i}>
+						<CascadePop key={c.icon} at={0.1} index={i}>
 							<Pill icon={c.icon} text={c.text} />
 						</CascadePop>
 					))}
@@ -158,7 +158,7 @@ export const C03Evento: React.FC = () => {
 						</AppCard>
 					)}
 				</UiPanelExpand>
-				{t >= PULSE && t < PULSE + 0.6 ? (
+				{t >= CLICK && t < CLICK + 0.55 ? (
 					<div
 						style={{
 							position: 'absolute',
@@ -183,15 +183,15 @@ export const C03Evento: React.FC = () => {
 			<Cursor
 				t={t}
 				keys={[
-					{t: 11.85, x: 1880, y: 1140},
-					{t: 12.3, x: card0.x + 250, y: card0.y + 80},
-					{t: 12.7, x: card0.x + 250, y: card0.y + 80},
+					{t: CLICK - 0.65, x: 1880, y: 1140},
+					{t: CLICK - 0.2, x: card0.x + 250, y: card0.y + 80},
+					{t: END, x: card0.x + 250, y: card0.y + 80},
 				]}
 				clicks={[CLICK]}
-				handWindows={[[12.15, 12.5]]}
-				show={[11.85, 12.62]}
+				handWindows={[[CLICK - 0.35, CLICK + 0.25]]}
+				show={[CLICK - 0.65, OPEN + 0.07]}
 			/>
-			{t >= 12.9 ? <AbsoluteFill style={{background: BRAND.navy, opacity: tween(t, 12.9, 13.0, 0, 1, 'soft'), pointerEvents: 'none'}} /> : null}
+			{t >= END - 0.1 ? <AbsoluteFill style={{background: BRAND.navy, opacity: tween(t, END - 0.1, END, 0, 1, 'soft'), pointerEvents: 'none'}} /> : null}
 		</AbsoluteFill>
 	);
 };

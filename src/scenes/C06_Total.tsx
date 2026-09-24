@@ -6,21 +6,21 @@ import {BackdropDrift, CascadePop, IsoStage, UiPanelExpand, type DriftItem} from
 import {useSceneTime, useSceneTimeline} from '../motion/scene';
 import {EASE, popScale, prog} from '../motion/tokens';
 import {APP, APP_CTA, FONT} from '../theme';
-import {LABELS} from '../timeline';
+import {DUR, LABELS} from '../timeline';
 import {Cursor} from '../ui/Cursor';
 import {AppCard} from '../ui/Glass';
+import {GlassPill, GradientTile, MiniChart, Orb, Ring, SkeletonCard} from '../ui/Floaters';
 import {IconTile} from '../ui/Icon';
-import {PhotoCard} from '../ui/Photo';
 import {Pill} from '../ui/Pill';
 import {CounterPill, RollText, TicketTypeRow} from '../ui/TicketCounter';
 import {TotalCard} from '../ui/TotalCard';
 
-// C06 "Quantidade e total" (23–26 s). Ticket types of Cadeira Nível 1 (06-queue-and-purchase/03→04)
+// C06 "Quantidade e total". Ticket types of Cadeira Nível 1 (06-queue-and-purchase/03→04)
 // on an isometric stage. Business value, not commodity labels: "Sem surpresa no valor." slams in
 // word by word, stacked big on the right, with "O total atualiza a cada clique." (10-SCRIPTING-INPUT
-// A: the total updates with quantity and type). Two clicks on "+" (23.5 / 24.0) take Inteira 0 → 2,
-// each throwing a SHARP "+1" that springs up; the TOTAL card expands at 24.25 with R$ 360,00 and
-// "Continuar" shines at 25.0. Blur lives only in the background: other events' prices drift behind.
+// A: the total updates with quantity and type). Two clicks on "+" (0.5 / 1.0 s) take Inteira 0 → 2,
+// each throwing a SHARP "+1" that springs up; the TOTAL card expands at 1.25 s with R$ 360,00 and
+// "Continuar" shines at 2.0 s. Blur lives only in the background: glass fragments and prices.
 
 const CARD = {x: 110, y: 150, w: 930, pad: 30};
 const ROW_SCALE = 1.2;
@@ -37,9 +37,12 @@ const HEADLINE = [...COPY.C06.title[0].split(' ').map((w) => [w]), COPY.C06.titl
 const DRIFT: DriftItem[] = [
 	{x: 1500, y: 160, z: -820, drift: [-260, 10], node: <Pill icon="ticket" text={COPY.events.comedy.price} />},
 	{x: 700, y: 1000, z: -700, drift: [-300, -10], node: <Pill icon="ticket" text={COPY.events.tech.price} />},
-	{x: 1750, y: 980, z: -900, drift: [-240, -20], node: <PhotoCard src="samba" width={360} height={230} />},
-	{x: 260, y: 980, z: -960, drift: [-200, 0], node: <PhotoCard src="food" width={340} height={220} />},
-	{x: 1850, y: 560, z: -1000, drift: [-160, 20], node: <IconTile name="ticket" size={110} />},
+	{x: 1760, y: 990, z: -900, drift: [-240, -20], node: <MiniChart w={260} h={160} />},
+	{x: 250, y: 1000, z: -960, drift: [-200, 0], node: <SkeletonCard w={300} h={150} icon="card" lines={2} />},
+	{x: 1860, y: 560, z: -1000, drift: [-160, 20], node: <GradientTile size={100} icon="ticket" />},
+	{x: 1180, y: 1030, z: -1100, drift: [-150, -10], node: <GlassPill w={230} icon="plus" />},
+	{x: 60, y: 90, z: -1100, drift: [120, 10], node: <Orb size={90} />},
+	{x: 1080, y: 60, z: -1150, drift: [-120, 10], node: <Ring size={130} />},
 ];
 
 const PlusOne: React.FC<{at: number; t: number}> = ({at, t}) => {
@@ -118,16 +121,16 @@ export const C06Total: React.FC = () => {
 	];
 
 	const cursorKeys = [
-		{t: 23.1, x: 1500, y: 1150},
-		{t: 23.42, x: PLUS_POS.x, y: PLUS_POS.y},
-		{t: 24.3, x: PLUS_POS.x, y: PLUS_POS.y},
-		{t: 24.85, x: RIGHT.x + RIGHT.w / 2 + 40, y: 915},
+		{t: PLUS1 - 0.4, x: 1500, y: 1150},
+		{t: PLUS1 - 0.08, x: PLUS_POS.x, y: PLUS_POS.y},
+		{t: PLUS2 + 0.3, x: PLUS_POS.x, y: PLUS_POS.y},
+		{t: SHINE - 0.15, x: RIGHT.x + RIGHT.w / 2 + 40, y: 915},
 	];
 
 	return (
 		<AbsoluteFill ref={scope}>
 			<IsoStage name="c06" origin="760px 540px">
-				<BackdropDrift items={DRIFT} from={23} to={26} />
+				<BackdropDrift items={DRIFT} from={0} to={DUR.C06} />
 				<UiPanelExpand at={APPEAR} radius={[64, 36]} origin="50% 0%" style={{position: 'absolute', left: CARD.x, top: CARD.y}}>
 					{(r) => (
 						<AppCard radius={r} style={{width: CARD.w, boxSizing: 'border-box', padding: CARD.pad}}>
@@ -168,7 +171,7 @@ export const C06Total: React.FC = () => {
 
 				<PlusOne at={PLUS1} t={t} />
 				<PlusOne at={PLUS2} t={t} />
-				<Cursor t={t} keys={cursorKeys} clicks={[PLUS1, PLUS2]} handWindows={[[24.7, 25.7]]} show={[23.1, 25.7]} />
+				<Cursor t={t} keys={cursorKeys} clicks={[PLUS1, PLUS2]} handWindows={[[SHINE - 0.3, DUR.C06 - 0.3]]} show={[PLUS1 - 0.4, DUR.C06 - 0.3]} />
 			</IsoStage>
 
 			{/* Value headline in screen space: stacked big, words slam in on springs. */}

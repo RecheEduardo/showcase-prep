@@ -2,11 +2,10 @@
   "name": "goticket-showcase-video",
   "version": "1.0.0",
   "private": true,
-  "description": "GoTicket demo product video (Remotion + GSAP), 38s @ 60fps, 4K output",
+  "description": "GoTicket demo product video (Remotion + GSAP), 60fps, 4K output; scene durations in src/pacing.ts",
   "type": "module",
   "scripts": {
     "studio": "remotion studio",
-    "sync": "node scripts/sync-timeline.mjs",
     "lint:copy": "node scripts/lint-copy.mjs",
     "lint:motion": "node scripts/lint-motion.mjs",
     "verify": "node scripts/verify.mjs",

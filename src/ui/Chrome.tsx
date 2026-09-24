@@ -6,7 +6,9 @@ import {FPS} from '../timeline';
 // Frame chrome with every slideshow artefact removed (no brand lockup, no section pill). What is
 // left is the backdrop: a light ice gradient of the app palette with a living mesh on top, blue
 // and white pools that drift on slow Lissajous orbits (15–26 s periods) and breathe, so their
-// overlaps keep mixing and swapping. Soft by construction (radial gradients, no filter).
+// overlaps keep mixing and swapping. Soft by construction (radial gradients, no filter). On top, a
+// faint blue dot grid (masked to fade out toward the edges, drifting very slowly) gives the empty
+// space a surface, and a soft blue vignette frames the shot.
 
 type Pool = {x: number; y: number; r: number; color: string; ax: number; ay: number; px: number; py: number; phase: number};
 
@@ -46,6 +48,16 @@ export const Chrome: React.FC<{t?: number}> = ({t: tAbs}) => {
 					/>
 				);
 			})}
+			<AbsoluteFill
+				style={{
+					backgroundImage: 'radial-gradient(circle, rgba(28,111,181,0.2) 1.7px, rgba(28,111,181,0) 2.2px)',
+					backgroundSize: '46px 46px',
+					backgroundPosition: `${(t * 6).toFixed(2)}px ${(t * 3).toFixed(2)}px`,
+					maskImage: 'radial-gradient(ellipse 62% 58% at 50% 46%, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0) 100%)',
+					WebkitMaskImage: 'radial-gradient(ellipse 62% 58% at 50% 46%, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0) 100%)',
+				}}
+			/>
+			<AbsoluteFill style={{background: 'radial-gradient(ellipse 80% 75% at 50% 50%, rgba(28,111,181,0) 55%, rgba(28,111,181,0.14) 100%)'}} />
 		</AbsoluteFill>
 	);
 };
