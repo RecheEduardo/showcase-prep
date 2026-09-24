@@ -160,8 +160,9 @@ export const C08Organiza: React.FC = () => {
 	const detailIdx = Math.max(0, LIST_SECTORS.indexOf(activeSector ?? 'pista'));
 	// The details box refocuses (blur → sharp, focus ring) each time the selected sector changes.
 	const lastSwitch = activeIdx < 0 ? -Infinity : C08_POLYS.reduce((acc, pt, i) => (i <= activeIdx && (i === 0 || sectorOf(i) !== sectorOf(i - 1)) ? pt : acc), -Infinity);
-	const refocus = 1 - prog(t, lastSwitch, lastSwitch + 0.35, 'out');
-	const valueBlur = 8 * (1 - prog(t, lastSwitch, lastSwitch + 0.2, 'out'));
+	// Before the first block lights there is no switch yet: no focus ring, no blur.
+	const refocus = Number.isFinite(lastSwitch) ? 1 - prog(t, lastSwitch, lastSwitch + 0.35, 'out') : 0;
+	const valueBlur = Number.isFinite(lastSwitch) ? 8 * (1 - prog(t, lastSwitch, lastSwitch + 0.2, 'out')) : 0;
 	const details = COPY.C08.details;
 
 	// ---------------------------------------------------------------- board

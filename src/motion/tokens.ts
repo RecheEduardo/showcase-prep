@@ -48,7 +48,8 @@ const CLAMP = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 
 /** Clamped interpolate between two times (seconds) with a named ease. */
 export const tween = (t: number, t0: number, t1: number, from: number, to: number, ease: EaseName | string = 'out') =>
-	interpolate(t, [t0, t1], [from, to], {...CLAMP, easing: easeFn(ease)});
+	// A beat that never happens (±Infinity) just holds the matching end value instead of throwing.
+	Number.isFinite(t0) && Number.isFinite(t1) ? interpolate(t, [t0, t1], [from, to], {...CLAMP, easing: easeFn(ease)}) : t < t0 ? from : to;
 
 /** 0..1 progress between two times with a named ease (defaults to cubicExpoOut). */
 export const prog = (t: number, t0: number, t1: number, ease: EaseName | string = 'out') => tween(t, t0, t1, 0, 1, ease);
